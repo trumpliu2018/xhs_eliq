@@ -1,0 +1,191 @@
+<view class="container">
+  <showbox title="文件路径配置">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">文件路径:</text>
+          <input class="_ui-input" value="{{testFilePath}}" bindinput="onFilePathInput" placeholder="请输入文件路径" />
+        </view>
+        
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">编码格式:</text>
+          <picker value="{{encoding}}" bindchange="onEncodingChange" range="{{encodingList}}">
+            <view class="_ui-setting-button">
+              <text class="_ui-setting-current">{{encoding}}</text>
+              <text class="_ui-setting-arrow">></text>
+            </view>
+          </picker>
+          <text class="_ui-encoding-note">⚠️ 小红书仅支持 utf8 和 binary 编码</text>
+        </view>
+        
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">文件内容:</text>
+          <textarea class="_ui-textarea" value="{{fileContent}}" bindinput="onFileContentInput" placeholder="请输入文件内容" />
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件检查操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="accessFile" disabled="{{isLoading}}">
+            检查文件是否存在
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="accessFileSync" disabled="{{isLoading}}">
+            同步检查文件
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件读写操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="writeFile" disabled="{{isLoading}}">
+            写入文件
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="writeFileSync" disabled="{{isLoading}}">
+            同步写入
+          </button>
+        </view>
+        
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="readFile" disabled="{{isLoading}}">
+            读取文件
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="readFileSync" disabled="{{isLoading}}">
+            同步读取
+          </button>
+        </view>
+        
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="appendFile" disabled="{{isLoading}}">
+            追加内容
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="appendFileSync" disabled="{{isLoading}}">
+            同步追加
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件管理操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="copyFile" disabled="{{isLoading}}">
+            复制文件
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="copyFileSync" disabled="{{isLoading}}">
+            同步复制
+          </button>
+        </view>
+        
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="renameFile" disabled="{{isLoading}}">
+            重命名文件
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="renameFileSync" disabled="{{isLoading}}">
+            同步重命名
+          </button>
+        </view>
+        
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-warn" hover-class="_ui-button-hover" bindtap="unlinkFile" disabled="{{isLoading}}">
+            删除文件
+          </button>
+          <button class="_ui-button _ui-button-warn" hover-class="_ui-button-hover" bindtap="unlinkFileSync" disabled="{{isLoading}}">
+            同步删除
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件信息操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="getFileInfo" disabled="{{isLoading}}">
+            获取文件信息
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="saveFile" disabled="{{isLoading}}">
+            保存临时文件
+          </button>
+        </view>
+        
+        <button class="_ui-button" hover-class="_ui-button-hover" bindtap="getSavedFileList" disabled="{{isLoading}}">
+          获取保存文件列表
+        </button>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="二进制与 Base64 转换">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="testBinaryFileOperations" disabled="{{isLoading}}">
+            测试二进制文件操作
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="testBase64TextFile" disabled="{{isLoading}}">
+            测试 Base64 文本转换
+          </button>
+        </view>
+        
+        <view class="_ui-encoding-warning">
+          <text class="_ui-warning-text">💡 功能说明：自实现 ArrayBuffer ↔ Base64 转换，替代平台有问题的 API</text>
+        </view>
+        
+        <view class="_ui-verification-info">
+          <text class="_ui-info-text">🔍 自动验证：所有文件操作完成后会自动验证结果是否符合预期</text>
+        </view>
+        
+        <view class="_ui-api-info">
+          <text class="_ui-api-text">💡 API兼容性：如 getFileInfo 不可用，将自动使用 stat API 作为备选方案</text>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件信息" xhs:if="{{fileInfo}}">
+    <box>
+      <view class="_ui-info-card">
+        <view class="_ui-info-item">
+          <text class="_ui-label">文件大小:</text>
+          <text class="_ui-value">{{fileInfo.size}} 字节</text>
+        </view>
+        <view class="_ui-info-item">
+          <text class="_ui-label">摘要值:</text>
+          <text class="_ui-value _ui-text-break">{{fileInfo.digest}}</text>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="已保存文件" xhs:if="{{savedFiles.length > 0}}">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-file-list">
+          <view class="_ui-file-item" xhs:for="{{savedFiles}}" xhs:key="filePath">
+            <view class="_ui-file-info">
+              <text class="_ui-file-path">{{item.filePath}}</text>
+              <text class="_ui-file-size">{{item.size}} 字节</text>
+              <text class="_ui-file-time">{{item.createTime}}</text>
+            </view>
+            <button class="_ui-button _ui-button-small _ui-button-warn" bindtap="removeSavedFile" data-path="{{item.filePath}}">
+              删除
+            </button>
+          </view>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+
+</view>

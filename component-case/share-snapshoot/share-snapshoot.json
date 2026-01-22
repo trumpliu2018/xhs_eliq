@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "站外分享(截屏能力)演示",
+  "usingComponents": {
+    "showbox": "../../common/component/showbox/index",
+    "box": "../../common/component/container/index"
+  }
+}

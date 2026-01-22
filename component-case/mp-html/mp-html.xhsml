@@ -1,0 +1,4 @@
+<view style="padding: 20px;">
+  <!-- mp-html 样式采用的是 em 因此需要使用时最好指定font-size -->
+  <mp-html content="{{content}}" style="font-size: 16px;"/>
+</view>

@@ -1,0 +1,33 @@
+<view class="container">
+  <showbox title="转发分享">
+    <box>
+      <view>
+        <view>
+          <label>title:</label>
+          <view class="_ui-input _my8">
+            <input type="text" value="{{shareData.title}}" bindinput="handleTitle" />
+          </view>
+        </view>
+        <view>
+          <label>imageUrl:</label>
+          <view class="_ui-input _my8">
+            <input type="text" value="{{shareData.imageUrl}}" bindinput="handleImageUrl" />
+          </view>
+        </view>
+        <view>
+          <label>webviewUrl:</label>
+          <view class="_ui-input _my8">
+            <input type="text" value="{{shareData.imageUrl}}" bindinput="handleImageUrl" />
+          </view>
+        </view>
+
+        <view class="_dflex _fd_column">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="showShareMenu">显示分享</button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="hideShareMenu">隐藏按钮</button>
+          <button class="_ui-button" hover-class="_ui-button-hover" open-type="share">分享open-type</button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+</view>
+<include src="templates.xhsml" />

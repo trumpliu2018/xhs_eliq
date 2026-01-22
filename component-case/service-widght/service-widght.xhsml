@@ -1,0 +1,30 @@
+<view class="container">
+  <showbox title="在此处获取对应服务组件的token信息">
+    <box class="box">
+      <view class="share-desc">
+        粘贴服务组件id(resourceId)：
+      </view>
+
+      <textarea
+        class="share-input"
+        value="{{ resourceId }}"
+        auto-height
+        placeholder="粘贴 resourceId 到此处"
+        placeholder-style="color: #3333334D;"
+        bindinput="bindTextareaNoBindInput"
+      />
+      
+      <view class="share-desc">
+        token信息：
+      </view>
+      <button class="normal" bindtap="getServiceToken">通过 tap 获取服务组件token信息</button>
+      <view class="share-resp _mt8">
+        {{ serviceInfo ? JSON.stringify(serviceInfo, null, 2) : '暂未获取到分享信息' }}
+      </view>
+    </box>
+
+    <button class="execption" bind:touchstart="getServiceTokenByTouch">
+      注：该按钮，未绑定 bindtap 事件，用于演示限制调用的场景！
+    </button>
+  </showbox>
+</view>

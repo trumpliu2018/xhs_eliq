@@ -1,0 +1,25 @@
+.screen_state_txt {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24rpx;
+}
+
+.screen_state_hidden {
+    color: red;
+}
+
+.screen_state_none {
+    color: green;
+}
+
+.recording-resp {
+    border: 1px solid rgba(0,0,0,.1);
+    background: #f2f2f2;
+    font-style: italic;
+    font-size: 24rpx;
+    padding: 20rpx;
+    margin: 16rpx;
+    color: rgba(0, 0, 0, 0.55);
+    min-height: 200rpx;
+    border-radius: 20px;
+}

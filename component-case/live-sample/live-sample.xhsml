@@ -1,0 +1,51 @@
+<view class="container">
+  <showbox title="直播预约">
+
+    <box class="box">
+      <view class="share-desc">
+        输入直播预约id (trailerId)：
+      </view>
+
+      <input
+        class="share-input"
+        value="{{ trailerId }}"
+        auto-height
+        placeholder="粘贴 trailerId 到此处"
+        placeholder-style="color: #3333334D;"
+        bindinput="handleTrailerIdInput"
+      />
+      
+      <button class="normal" bindtap="handleLiveBooking">点击唤起直播预约弹窗</button>
+      <view class="share-resp _mt8">
+        {{ trailerInfo ? JSON.stringify(trailerInfo, null, 2) : '暂未获取到分享信息' }}
+      </view>
+    </box>
+  </showbox>
+  <showbox title="直播跳转/回放">
+
+    <box class="box">
+      <view class="share-desc">
+        输入直播间id (roomId)：
+      </view>
+
+      <input
+        class="share-input"
+        value="{{ roomId }}"
+        auto-height
+        placeholder="粘贴 roomId 到此处"
+        placeholder-style="color: #3333334D;"
+        bindinput="bindRoomIdInput"
+      />
+      
+      <button class="normal" bindtap="handleLiveJump">点击跳转直播间, roomId({{ roomId }})</button>
+      <view class="share-resp _mt8 margin-room">
+        {{ jumpInfo ? JSON.stringify(jumpInfo, null, 2) : '暂未获取到直播跳转信息' }}
+      </view>
+
+      <button class="normal" bindtap="handleLiveReplay">点击跳转回放, roomId({{ roomId }})</button>
+      <view class="share-resp _mt8">
+        {{ replayInfo ? JSON.stringify(replayInfo, null, 2) : '暂未获取到直播回放信息' }}
+      </view>
+    </box>
+  </showbox>
+</view>

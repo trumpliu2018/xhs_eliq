@@ -1,0 +1,187 @@
+<view class="container xhs_0_container" style="border-color: rgb(238, 238, 238);">
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 98.6758% 100%; position: relative; background-position-x: 0%;">
+          type = floating 悬浮按钮，见屏幕下方
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <view class="sk-button" style="width: 0px; height: 0px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 98.0804% 100%; position: relative; background-position-x: 0%;">
+          type = default 面性按钮
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="flex xhs_0_flex items-center xhs_0_items-center mb-20 xhs_0_mb-20" style="border-color: rgb(238, 238, 238);">
+              <text class="mr-20 xhs_0_mr-20 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                size = medium
+              </text>
+              <view class="sk-button" style="width: 122px; height: 36px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+            </view>
+            <view class="flex xhs_0_flex items-center xhs_0_items-center" style="border-color: rgb(238, 238, 238);">
+              <text class="mr-20 xhs_0_mr-20 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                可自定义宽度
+              </text>
+              <view class="sk-button" style="width: 250px; height: 36px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+            </view>
+          </view>
+        </box>
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="flex xhs_0_flex items-center xhs_0_items-center mb-20 xhs_0_mb-20 w-full xhs_0_w-full" style="border-color: rgb(238, 238, 238);">
+              <text class="mr-20 xhs_0_mr-20 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                size = large
+              </text>
+              <view class="flex xhs_0_flex justify-center xhs_0_justify-center" style="border-color: rgb(238, 238, 238);">
+                <view class="sk-button" style="width: 140px; height: 40px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+              </view>
+            </view>
+            <view class="flex xhs_0_flex items-center xhs_0_items-center" style="border-color: rgb(238, 238, 238);">
+              <text class="mr-20 xhs_0_mr-20 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                可自定义宽度
+              </text>
+              <view class="sk-button" style="width: 250px; height: 40px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 98.2757% 100%; position: relative; background-position-x: 0%;">
+          type = plain 线性按钮
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box class="box xhs_0_box flex xhs_0_flex items-center xhs_0_items-center" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="flex xhs_0_flex items-center xhs_0_items-center" style="border-color: rgb(238, 238, 238);">
+              <text class="mr-20 xhs_0_mr-20 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                size = medium
+              </text>
+              <view class="sk-button" style="width: 122px; height: 36px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+            </view>
+          </view>
+        </box>
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="flex xhs_0_flex items-center xhs_0_items-center" style="border-color: rgb(238, 238, 238);">
+              <text class="mr-20 xhs_0_mr-20 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                size = large
+              </text>
+              <view class="sk-button" style="width: 140px; height: 40px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+          参数设置区域，设置发小红书配置按钮参数
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="mb-8 xhs_0_mb-8" style="border-color: rgb(238, 238, 238);">
+              <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                笔记标题 title，最大长度 20
+              </view>
+            </view>
+            <view class="_ui-input xhs_0__ui-input" style="border-color: rgb(238, 238, 238);">
+              <view style="width: 346px; height: 22px; background-color: rgb(238, 238, 238);" />
+            </view>
+          </view>
+        </box>
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="mb-8 xhs_0_mb-8" style="border-color: rgb(238, 238, 238);">
+              <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                笔记内容 content，最大长度 1000
+              </view>
+            </view>
+            <view class="_ui-input xhs_0__ui-input" style="border-color: rgb(238, 238, 238);">
+              <view style="width: 346px; height: 22px; background-color: rgb(238, 238, 238);" />
+            </view>
+          </view>
+        </box>
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="mb-8 xhs_0_mb-8" style="border-color: rgb(238, 238, 238);">
+              <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                话题 tags，使用英文逗号分割
+              </view>
+            </view>
+            <view class="_ui-input xhs_0__ui-input" style="border-color: rgb(238, 238, 238);">
+              <view style="width: 346px; height: 22px; background-color: rgb(238, 238, 238);" />
+            </view>
+          </view>
+        </box>
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="mb-8 xhs_0_mb-8" style="border-color: rgb(238, 238, 238);">
+              <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                媒体信息，media-info（图片 1-18 张 / 视频 1 个）
+              </view>
+            </view>
+            <view class="_ui-input xhs_0__ui-input" style="border-color: rgb(238, 238, 238);">
+              <view style="width: 300px; height: 739.062px; background-color: rgb(238, 238, 238);" />
+            </view>
+          </view>
+        </box>
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="mb-8 xhs_0_mb-8" style="border-color: rgb(238, 238, 238);">
+              <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+                快速调整 media-info
+              </view>
+            </view>
+            <view style="border-color: rgb(238, 238, 238);">
+              <button class="mb-8 xhs_0_mb-8 sk-pseudo sk-button" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;" />
+              <button class="mb-8 xhs_0_mb-8 sk-pseudo sk-button" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;" />
+              <button class="mb-8 xhs_0_mb-8 sk-pseudo sk-button" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;" />
+              <button class="mb-8 xhs_0_mb-8 sk-pseudo sk-button" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;" />
+              <button class="mb-8 xhs_0_mb-8 sk-pseudo sk-button" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;" />
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+          曝光埋点测试用，下滑直到按钮可见
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box class="box xhs_0_box" style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <scroll-view style="height: 300px; --scroll-view-scrollbar-width: 1px; --show-scroll-bar: block; border-color: rgb(238, 238, 238);" scroll-y="true" show-scrollbar="true" class="xhs-scroll-view-scroll-bar">
+              <view style="height: 500px; background-color: antiquewhite; border-color: rgb(238, 238, 238);" />
+              <view style="margin-top: 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; border-color: rgb(238, 238, 238);">
+                <view class="sk-button" style="width: 122px; height: 36px; background-color: rgb(238, 238, 238); color: transparent; border-color: transparent;" />
+              </view>
+            </scroll-view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <view class="safe-area xhs_0_safe-area" style="border-color: rgb(238, 238, 238);" />
+</view>

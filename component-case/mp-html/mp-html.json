@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "mp-html": "./mp-html-xhs/index"
+    },
+    "navigationBarTitleText": "富文本渲染"
+  }

@@ -1,0 +1,42 @@
+<view class="container">
+  <showbox title="getEntries演示">
+    <box>
+      <api-status
+        show-status="{{false}}"
+        text="{{entriesText}}"
+      >
+      </api-status>
+      <view class="_mt8">
+        <button
+          class="_ui-button"
+          hover-class="_ui-button-hover"
+          bindtap="getEntries"
+          >
+            触发
+        </button>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="getEntriesByName演示">
+    <box>
+      <api-status
+        show-status="{{false}}"
+        text="{{entriesByName}}"
+      >
+      </api-status>
+      <view class="_ui-space _mt8">
+        <view class="_ui-input">
+          <input value="{{nameValue}}" placeholder="name" type="text" bindinput="onNameInput" />
+        </view>
+        <button
+          class="_ui-button"
+          hover-class="_ui-button-hover"
+          bindtap="getEntriesByName"
+          >
+            触发
+        </button>
+      </view>
+    </box>
+  </showbox>
+</view>

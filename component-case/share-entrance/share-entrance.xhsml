@@ -1,0 +1,13 @@
+<view class="container">
+  <view>share-entrance</view>
+  <view>
+    <view>当前页面配置了 onShareTimeline, onShareChat, onShareAppMessage</view>
+  </view>
+
+  <button bindtap="nav"> 跳转 detail 测试 </button>
+  <button bindtap="navAsync"> 跳转测试 shareChat 异步 </button>
+
+  <button open-type="share" data-share-type="normal"> open type share 测试 data-set = "normal"</button>
+  <button open-type="share" data-share-type="shareTimeline"> open type share 测试 data-set = "shareTimeline"</button>
+  <button open-type="share" data-share-type="shareChat"> open type share 测试 data-set = "shareChat"</button>
+</view>

@@ -1,0 +1,74 @@
+<view class="container">
+  <showbox title="短剧播放器(video-player)基础使用">
+    <xhs-video-player 
+      xhs:if="{{videoElVisible}}"
+      id="video-player-test"
+      class="_flex_1 myVideo"
+      muted="{{true}}"
+      controls="{{true}}"
+      show-mute-btn="{{true}}"
+      album-id="{{album_id}}"
+      episode-id="{{episode_id}}"
+      bindloadedmetadata="handleLoadedMetadata"
+      bindplay="handlePlay"
+      bindwaiting="handleWaiting"
+      bindpause="handleVideoPause"
+      bindended="handleVideoEnd"
+      bindprogress="handleProgress"
+      bindfullscreenchange="handFullscreen"
+      binderror="handleError"
+    >
+    </xhs-video-player>
+  </showbox>
+
+  <showbox title="短剧控制">
+    <box>
+      <view class="video-action-input">
+        <view class="video-action-input-item">
+          <view class="player-text">albumId:</view>
+          <view class="player-input">
+            <input value="{{album_id}}" placeholder="输入剧目id" type="text" bindinput="handleAlbumId" />
+          </view>
+        </view>
+        <view class="video-action-input-item">
+          <view class="player-text">episodeId:</view>        
+          <view class="player-input">
+            <input value="{{episode_id}}" placeholder="输入剧集id" type="text" bindinput="handleEpisodeId" />
+          </view>
+        </view>
+      </view>
+      <view class="video-action">
+        <view>
+          <button class="_ui-button-transparent" bindtap="bindVideoPlay">播放</button>
+          <button class="_ui-button-transparent" bindtap="bindVideoPause">暂停</button>
+        </view>
+
+        <view>
+          <button class="_ui-button-transparent" bindtap="bindVideoStop">停止</button>
+          <button class="_ui-button-transparent" bindtap="bindVideoSeek">跳到第10秒</button>
+          <button class="_ui-button-transparent" bindtap="toggleVisible">控制播放器展示</button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox 
+    xhs:for="{{album_2_episode_list}}" 
+    xhs:for-item="albumItem" 
+    title="剧目: {{albumItem.albumName}}"
+  >
+    <box>
+      <view class="album-container">
+        <button 
+          xhs:for="{{ albumItem.episodeList }}" 
+          xhs:for-item="episode" 
+          class="album-item" 
+          data-albumId="{{albumItem.albumId}}"
+          data-episodeId="{{episode.episodeId}}"
+          bindtap="handleEpisodeChange">
+          {{episode.episodeName}}
+        </button>
+      </view>
+    </box>
+  </showbox>
+</view>

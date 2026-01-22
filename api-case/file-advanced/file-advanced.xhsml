@@ -1,0 +1,117 @@
+<view class="container">
+  <showbox title="文件路径配置">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">测试文件路径:</text>
+          <input class="_ui-input" value="{{testFilePath}}" bindinput="onFilePathInput" placeholder="请输入文件路径" />
+        </view>
+        
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">压缩文件路径:</text>
+          <input class="_ui-input" value="{{zipFilePath}}" bindinput="onZipPathInput" placeholder="请输入ZIP文件路径" />
+        </view>
+        
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">解压目标路径:</text>
+          <input class="_ui-input" value="{{targetPath}}" bindinput="onTargetPathInput" placeholder="请输入解压目标路径" />
+        </view>
+        
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">截断长度 (字节):</text>
+          <input class="_ui-input" type="number" value="{{truncateLength}}" bindinput="onTruncateLengthInput" placeholder="请输入截断长度" />
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件创建操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="createLargeTestFile" disabled="{{isLoading}}">
+            创建大测试文件
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="createTestZip" disabled="{{isLoading}}">
+            创建测试ZIP文件
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件读取操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="readFileHead" disabled="{{isLoading}}">
+            读取文件头部
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="readFileRangeSync" disabled="{{isLoading}}">
+            同步读取范围
+          </button>
+        </view>
+        
+        <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="getDetailedFileInfo" disabled="{{isLoading}}">
+          获取文件详细信息
+        </button>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="文件修改操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="truncateFile" disabled="{{isLoading}}">
+            截断文件
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="truncateFileSync" disabled="{{isLoading}}">
+            同步截断文件
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="压缩文件操作">
+    <box>
+      <view class="_ui-space">
+        <button class="_ui-button" hover-class="_ui-button-hover" bindtap="unzipFile" disabled="{{isLoading}}">
+          解压ZIP文件
+        </button>
+        
+        <view class="_ui-info-tip">
+          <text class="_ui-tip-text">💡 提示：解压功能需要真正的ZIP文件。创建的测试ZIP文件只是模拟文件，无法正常解压。</text>
+        </view>
+        
+        <view class="_ui-encoding-warning">
+          <text class="_ui-warning-text">⚠️ 编码限制：小红书文件系统仅支持 utf8 和 binary 编码格式</text>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="完整测试流程">
+    <box>
+      <view class="_ui-space">
+        <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="runAllTests" disabled="{{isLoading}}">
+          🚀 执行完整测试流程
+        </button>
+        
+        <view class="_ui-test-flow">
+          <text class="_ui-flow-title">测试流程说明:</text>
+          <view class="_ui-flow-steps">
+            <text class="_ui-flow-step">1. 创建大测试文件</text>
+            <text class="_ui-flow-step">2. 获取文件详细信息</text>
+            <text class="_ui-flow-step">3. 读取文件头部内容</text>
+            <text class="_ui-flow-step">4. 截断文件到指定长度</text>
+            <text class="_ui-flow-step">5. 验证截断后的文件信息</text>
+          </view>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+
+</view>

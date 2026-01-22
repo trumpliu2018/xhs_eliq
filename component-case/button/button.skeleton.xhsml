@@ -1,0 +1,241 @@
+<view class="container" style="border-color: rgb(238, 238, 238);">
+  <showbox style="border-color: rgb(238, 238, 238);">
+    
+    <view class="xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark sk-animation-shine-2" style="display: inline-block; position: relative; background-position-x: 0%;">一级按钮</view>
+      </view>
+      <view class="xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        
+        <box class="box" style="border-color: rgb(238, 238, 238);">
+          
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            
+            <view style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button sk-button sk-animation-shine-2" hover-class="_ui-button-hover xhs_0__ui-button-hover" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+              <button class="button_disabled _mt8 sk-button sk-animation-shine-2" disabled="" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+            </view>
+            <view class="_mt8" style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button _px10 sk-button sk-animation-shine-2" size="mini" hover-class="_ui-button-hover xhs_0__ui-button-hover" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 104px; height: 40px;"/>
+              <button class="button_disabled _px10 _ml8 sk-button sk-animation-shine-2" disabled="" size="mini" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 104px; height: 40px;"/>
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    
+    <view class="xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark sk-animation-shine-2" style="display: inline-block; position: relative; background-position-x: 0%;">二级按钮</view>
+      </view>
+      <view class="xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        
+        <box class="box" style="border-color: rgb(238, 238, 238);">
+          
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            
+            <view style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button-transparent sk-button sk-animation-shine-2" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+              <button class="_ui-button-transparent-disabled _mt8 sk-button sk-animation-shine-2" disabled="" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+            </view>
+            <view class="_mt8" style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button-transparent _px10 sk-button sk-animation-shine-2" size="mini" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 106px; height: 40px;"/>
+              <button class="_ui-button-transparent-disabled _px10 _ml8 sk-button sk-animation-shine-2" disabled="" size="mini" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 106px; height: 40px;"/>
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    
+    <view class="xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark sk-animation-shine-2" style="display: inline-block; position: relative; background-position-x: 0%;">三级按钮</view>
+      </view>
+      <view class="xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        
+        <box class="box" style="border-color: rgb(238, 238, 238);">
+          
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            
+            <view style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button-gray sk-button sk-animation-shine-2" hover-class="none xhs_0_none" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+              <button class="_mt8 sk-button sk-animation-shine-2" disabled="" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+            </view>
+            <view class="_mt8" style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button-gray _px10 sk-button sk-animation-shine-2" size="mini" hover-class="none xhs_0_none" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 104px; height: 40px;"/>
+              <button class="_px10 _ml8 sk-button sk-animation-shine-2" disabled="" size="mini" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 104px; height: 40px;"/>
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    
+    <view class="xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark sk-animation-shine-2" style="display: inline-block; position: relative; background-position-x: 0%;">四级按钮</view>
+      </view>
+      <view class="xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        
+        <box class="box" style="border-color: rgb(238, 238, 238);">
+          
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            
+            <view style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button-transparent-gray sk-button sk-animation-shine-2" hover-class="none xhs_0_none" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+              <button class="_ui-button-transparent-disabled _mt8 sk-button sk-animation-shine-2" disabled="" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+            </view>
+            <view class="_mt8" style="border-color: rgb(238, 238, 238);">
+              <button class="_ui-button-transparent-gray _px10 sk-button sk-animation-shine-2" size="mini" hover-class="none xhs_0_none" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 106px; height: 40px;"/>
+              <button class="_ui-button-transparent-disabled _px10 _ml8 sk-button sk-animation-shine-2" disabled="" size="mini" style="--button-bg-color: #F7F7F7; --button-color: rgba(0, 0, 0, 0.3); --button-font-size: 13px; --button-display: inline-block; --button-line-height: 2.3; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 106px; height: 40px;"/>
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    
+    <view class="xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark sk-animation-shine-2" style="display: inline-block; position: relative; background-position-x: 0%;">加载状态</view>
+      </view>
+      <view class="xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        
+        <box style="border-color: rgb(238, 238, 238);">
+          
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            
+            <button class="_ui-button sk-button sk-animation-shine-2" hover-class="_ui-button-hover xhs_0__ui-button-hover" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+</view>
+
+<view class="container" style="border-color: rgb(238, 238, 238);">
+  <showbox style="border-color: rgb(238, 238, 238);">
+    
+    <view class="xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark sk-animation-shine-2" style="display: inline-block; position: relative; background-position-x: 0%;">button演示</view>
+      </view>
+      <view class="xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        
+        <box style="border-color: rgb(238, 238, 238);">
+          
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            
+            <view class="_ui-space" style="border-color: rgb(238, 238, 238);">
+              <view style="border-color: rgb(238, 238, 238);">
+                <button size="default" type="default" contact-id="" hover-class="button-hover xhs_0_button-hover" hover-start-time="20" hover-stay-time="70" class="sk-button sk-animation-shine-2" style="--button-bg-color: #F8F8F8; --button-color: #000000; --button-font-size: 18px; --button-display: block; --button-line-height: 2.55555556; --button-active-bg-color: #dedede; --button-active-color: rgba(0, 0, 0, 0.6); --button-border: 1px solid rgba(0, 0, 0, 0.2); --button-active-border-color: 1px solid rgba(0, 0, 0, 0.2); border-color: transparent; background-color: rgb(238, 238, 238); color: transparent; width: 378px; height: 40px;"/>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">size</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <picker range="default,mini" value="0" class="sk-animation-shine-2 skeleton-text-block-mark" style="border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">default</picker>
+                </view>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">type</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <picker range="primary,default,warn" value="1" class="sk-animation-shine-2 skeleton-text-block-mark" style="border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">default</picker>
+                </view>
+              </view>
+              <view class="_dflex _jc_space-between" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">是否开启plain</text>
+                </view>
+                <view class="sk-animation-shine-2" style="width: 57px; height: 32px; background-color: rgba(0, 0, 0, 0); display: block;"/>
+              </view>
+              <view class="_dflex _jc_space-between" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">是否开启disabled</text>
+                </view>
+                <view class="sk-animation-shine-2" style="width: 57px; height: 32px; background-color: rgba(0, 0, 0, 0); display: block;"/>
+              </view>
+              <view class="_dflex _jc_space-between" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">是否开启loading</text>
+                </view>
+                <view class="sk-animation-shine-2" style="width: 57px; height: 32px; background-color: rgba(0, 0, 0, 0); display: block;"/>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">formType</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <picker range="submit,reset" value="-1" class="sk-animation-shine-2 skeleton-text-block-mark" style="border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">请选择</picker>
+                </view>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">openType</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <picker range="share,getPhoneNumber,getUserInfo,openSetting,contact" value="-1" class="sk-animation-shine-2 skeleton-text-block-mark" style="border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">请选择</picker>
+                </view>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">contactType</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <picker range="seller,goods,order" value="-1" class="sk-animation-shine-2 skeleton-text-block-mark" style="border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">请选择</picker>
+                </view>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">contactId</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <view class="sk-animation-shine-2" style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);"/>
+                </view>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">hoverClass</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <view class="sk-animation-shine-2" style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);"/>
+                </view>
+              </view>
+              <view class="_dflex _jc_space-between" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">是否开启hoverStopPropagation</text>
+                </view>
+                <view class="sk-animation-shine-2" style="width: 57px; height: 32px; background-color: rgba(0, 0, 0, 0); display: block;"/>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">hoverStartTime</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <view class="sk-animation-shine-2" style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);"/>
+                </view>
+              </view>
+              <view class="_dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex _ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text class="sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">hoverStayTime</text>
+                </view>
+                <view class="_ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <view class="sk-animation-shine-2" style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);"/>
+                </view>
+              </view>
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+</view>

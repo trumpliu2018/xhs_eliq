@@ -1,0 +1,289 @@
+<view class="container">
+  <showbox title="非受控 Input">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ inputNotBindValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindNotBindInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="非受控 Input，maxLength 设置为 10">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ inputNotBindValueMaxLength }}</text>
+      </view>
+      <view class="_ui-input">
+        <text>长度是: {{ inputNotBindValueMaxLength.length }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          maxlength="10"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInputNotBindValueMaxLength"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Input">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ inputBindValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{ inputBindValue }}"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindBindInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Input，只能输入英文字母，其他会被过滤">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ wordValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{ wordValue }}"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindWordInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Input，最大只能输入 10 个字符">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ inputMaxLengthValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <text>长度是: {{ inputMaxLengthValue.length }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{ inputMaxLengthValue }}"
+          maxlength="10"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindMaxLengthInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Input，maxlength 为 -1，表示不限制长度">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ inputMaxLengthInfinity }}</text>
+      </view>
+      <view class="_ui-input">
+        <text>长度是: {{ inputMaxLengthInfinity.length }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{ inputMaxLengthInfinity }}"
+          maxlength="-1"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInputMaxLengthInfinity"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Input，密码输入">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ inputPassword }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          password
+          value="{{ inputPassword }}"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindPasswordInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Input，数字模式">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ inputNumber }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{ inputNumber }}"
+          type="number"
+          inputmode="numeric"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindNumberInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="不可输入的 Input">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ disabledValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <text>长度: {{ disabledValue.length }}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          disabled
+          value="{{ disabledValue }}"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindDisabledInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="非受控 Textarea，自动换行高度">
+    <box>
+      <view class="_ui-textarea">
+        <textarea
+          auto-height
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindTextareaNoBindInput"
+        />
+      </view>
+      <view class="_ui-textarea">
+        <text>你输入的内容是: {{ textareaNotBindValue }}</text>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Textarea，自动换行高度">
+    <box>
+      <view class="_ui-textarea">
+        <textarea
+          auto-height
+          value="{{ textareaBindValue }}"
+          bindinput="bindTextareaBindValue"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+        />
+      </view>
+      <view class="_ui-textarea">
+        <text>你输入的内容是: {{ textareaBindValue }}</text>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Textarea，只能输入英文字母">
+    <box>
+      <view class="_ui-input">
+        <textarea
+          value="{{ textareaWordValue }}"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindTextareaWordInput"
+        />
+      </view>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ textareaWordValue }}</text>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="非受控 Textarea，maxLength 设置为 10">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ textareaNoBindMaxLengthValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <text>长度是: {{ textareaNoBindMaxLengthValue.length }}</text>
+      </view>
+      <view class="_ui-input">
+        <textarea
+          maxlength="10"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindTextareaNoBindMaxLengthValue"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Textarea，maxLength 设置为 10">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ textareaMaxLengthValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <text>长度是: {{ textareaMaxLengthValue.length }}</text>
+      </view>
+      <view class="_ui-input">
+        <textarea
+          value="{{ textareaMaxLengthValue }}"
+          maxlength="10"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindTextareaMaxLengthInput"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="受控 Textarea，长度不受限">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: {{ textareaInfinityLengthValue }}</text>
+      </view>
+      <view class="_ui-input">
+        <text>长度是: {{ textareaInfinityLengthValue.length }}</text>
+      </view>
+      <view class="_ui-input">
+        <textarea
+          value="{{ textareaInfinityLengthValue }}"
+          maxlength="-1"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindTextareaInfinityLengthValue"
+        />
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="不可输入 textarea">
+    <box>
+      <view class="_ui-input">
+        <text>你输入的内容是: \n{{ textareaDisabled }}</text>
+      </view>
+      <view class="_ui-input">
+        <textarea
+          disabled
+          value="{{ textareaDisabled }}"
+          maxlength="10"
+          placeholder="占位文字"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindTextareaDisabledInput"
+        />
+      </view>
+    </box>
+  </showbox>
+</view>
+<include src="templates.xhsml" />

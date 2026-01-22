@@ -1,0 +1,38 @@
+<view class="page-wrap">
+  <view class="block card">
+    <view class="block-title">数据生成</view>
+    <view class="row">规模 (10 - 100): {{dataSize}}</view>
+    <slider min="10" max="100" value="{{dataSize}}" bindchange="onDataSizeChange" />
+    <view class="row">值范围 (100 - 10000): 100 - {{maxValue}}</view>
+    <slider min="100" max="10000" value="{{maxValue}}" bindchange="onMaxValueChange" />
+    <button size="mini" bindtap="generateTestData">生成数据</button>
+    <view xhs:if="{{testData}}" class="stats">
+      <text>len: {{testData.stats.length}} | avg: {{testData.stats.average}} | min: {{testData.stats.min}} | max: {{testData.stats.max}}</text>
+  <text class="preview">全部数据: {{testData.preview}}</text>
+    </view>
+  </view>
+
+  <view class="block card">
+    <view class="block-title">单算法即时排序</view>
+    <view class="btn-group">
+      <button size="mini" class="{{selectedSort==='quick'?'active':''}}" data-sort="quick" bindtap="selectSort">快速</button>
+      <button size="mini" class="{{selectedSort==='merge'?'active':''}}" data-sort="merge" bindtap="selectSort">归并</button>
+      <button size="mini" class="{{selectedSort==='heap'?'active':''}}" data-sort="heap" bindtap="selectSort">堆</button>
+    </view>
+    <view xhs:if="{{sortResult}}" class="result-line">
+  <text>{{sortResult.algorithm}} => {{sortResult.executionTime}}ms | ok: {{sortResult.isCorrect?'Y':'N'}} | {{sortResult.preview}}</text>
+    </view>
+  </view>
+
+  <view class="block card">
+    <view class="block-title">全部排序对比</view>
+    <button size="mini" bindtap="executeAllSorting">运行全部</button>
+    <view xhs:if="{{sortResults}}" class="compare-list">
+      <block xhs:for="{{sortResults}}" xhs:key="algorithm">
+        <view class="compare-item">
+          <text>{{item.algorithm}}: {{item.executionTime}}ms {{item.isCorrect?'✅':'❌'}} {{item.preview}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

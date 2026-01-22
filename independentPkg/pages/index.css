@@ -1,0 +1,23 @@
+/* 精简样式，仅保留新结构需要的类 */
+
+page, .page-wrap { min-height:100vh; background:#f6f8fa; padding:28rpx; box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif; }
+.block { margin-bottom:36rpx; }
+.card { background:#fff; padding:26rpx 30rpx 30rpx; box-shadow:0 6rpx 18rpx rgba(0,0,0,0.05); border-radius:18rpx; position:relative; overflow:hidden; }
+.card:before { content:''; position:absolute; right:-40rpx; top:-40rpx; width:160rpx; height:160rpx; background:linear-gradient(135deg,#49d391,#2bb3c7); opacity:.08; border-radius:50%; }
+.block-title { font-size:30rpx; font-weight:600; color:#222; margin-bottom:20rpx; position:relative; padding-left:20rpx; }
+.block-title:after { content:''; position:absolute; left:0; top:8rpx; width:10rpx; height:28rpx; background:linear-gradient(180deg,#43e97b,#38f9d7); border-radius:6rpx; }
+.row { font-size:24rpx; color:#444; margin:14rpx 0 6rpx; }
+slider { margin:4rpx 0 18rpx; }
+button { margin-top:10rpx; }
+button[size=mini] { line-height:1.9; }
+.btn-group { display:flex; gap:16rpx; margin-bottom:16rpx; }
+.btn-group button { flex:1; background:#f2f4f6; color:#555; border:none; }
+.btn-group button.active { background:#43e97b; color:#fff; font-weight:600; }
+.stats { margin-top:18rpx; font-size:22rpx; line-height:1.5; color:#333; }
+.stats .preview { display:block; margin-top:8rpx; color:#666; word-break:break-all; }
+.result-line { margin-top:20rpx; background:#f7faf9; border:2rpx solid #d8efe3; padding:20rpx; font-size:24rpx; color:#2f4f3f; border-radius:14rpx; word-break:break-all; }
+.compare-list { margin-top:18rpx; display:flex; flex-direction:column; gap:18rpx; }
+.compare-item { background:#fff; border:2rpx solid #e3e8ef; padding:20rpx 24rpx; border-radius:14rpx; font-size:24rpx; line-height:1.4; position:relative; }
+.compare-item:before { content:''; position:absolute; left:0; top:0; bottom:0; width:8rpx; background:linear-gradient(180deg,#43e97b,#38f9d7); border-radius:8rpx 0 0 8rpx; opacity:.6; }
+.block button { margin-right:0; }
+@media (prefers-color-scheme: dark) { page, .page-wrap { background:#1f2327; } .card { background:#2b3035; box-shadow:0 6rpx 18rpx rgba(0,0,0,0.6); } .block-title { color:#f2f4f6; } .row, .stats, .result-line, .compare-item, .ops-result text { color:#d8dde2; } .btn-group button { background:#3a4046; color:#bbb; } .btn-group button.active { background:#2f9f6f; } .result-line { background:#25342d; border-color:#2f9f6f; } .compare-item { background:#31373d; border-color:#444c55; } .ops-result { background:#3e3329; border-color:#8a6a45; } }

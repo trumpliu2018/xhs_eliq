@@ -1,0 +1,45 @@
+<view class="container">
+  <showbox title="群聊组件 - 参数设置">
+    <view style="padding: 10px; background-color: #eee;">
+      <group-chat-card
+        groupIds="{{groupChatStr}}"
+        bindjoingroup="handleBindJoinGroup"
+        binderror="handleBindError"
+        type="{{arr[typeIndex]}}"
+      >
+      </group-chat-card>
+    </view>
+  </showbox>
+  <showbox title="参数设置区域，修改群组件配置">
+    <box class="box">
+      <view class="mb-8">
+        群聊id，支持传多个，用英文逗号分割，失焦后生效
+      </view>
+      <view class="_ui-input">
+        <textarea
+          type="{{type}}"
+          placeholder="群聊id，支持传多个，用英文逗号分割"
+          value="{{groupChatList}}"
+          maxlength="-1"
+          auto-height
+          bindinput="bindInputGroupChatList"
+          bindblur="bindBlur"
+        ></textarea>
+      </view>
+    </box>
+    <box class="box">
+      <view class="mb-8">
+        群聊 type，支持传 card / cell
+      </view>
+      <view class="_ui-input">
+        <picker
+          bindchange="bindPickerChange"
+          value="{{typeIndex}}"
+          range="{{arr}}"
+        >
+          <view>当前选择: {{arr[typeIndex]}}</view>
+        </picker>
+      </view>
+    </box>
+  </showbox>
+</view>

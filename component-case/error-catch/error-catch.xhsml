@@ -1,0 +1,50 @@
+<view class="container">
+  <showbox title="异步错误捕获测试">
+    <box>
+      仅安卓开启2.0架构以及chopper engine引擎时支持
+      <button
+        class="_ui-button"
+        hover-class="_ui-button-hover"
+        bind:tap="handlePromise"
+      >
+        promise捕获
+      </button>
+    </box>
+  </showbox>
+
+  <showbox title="异步错误捕获测试">
+    <box>
+      <button
+        class="_ui-button"
+        hover-class="_ui-button-hover"
+        bind:tap="handleTimer"
+      >
+        定时器捕获
+      </button>
+    </box>
+  </showbox>
+
+  <showbox title="异步错误捕获测试">
+    <box>
+      <button
+        class="_ui-button"
+        hover-class="_ui-button-hover"
+        bind:tap="handleStringError"
+      >
+        字符类型业务错误捕获
+      </button>
+    </box>
+  </showbox>
+
+  <showbox title="同步错误测试">
+    <box>
+      <button
+        class="_ui-button"
+        hover-class="_ui-button-hover"
+        bind:tap="handleSyncError"
+      >
+        同步错误测试
+      </button>
+    </box>
+  </showbox>
+</view>

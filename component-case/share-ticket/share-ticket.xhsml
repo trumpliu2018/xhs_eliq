@@ -1,0 +1,97 @@
+<view class="container">
+  <showbox title="当前页面用于演示 shareTicket 分享的用法">
+    <box class="box">
+      <view class="title">xhs.getLaunchOptionsSync()</view>
+      <button bindtap="getLaunchOptions">点进获取 launchOptions</button>
+      <view class="sub_desc">获取小程序启动时的参数。与 App.onLaunch 的回调参数一致。</view>
+      <view>
+        <view class="share-desc">
+          返回结果：
+        </view>
+        <view class="share-resp _mt8">
+          <block xhs:if="{{launchOptionKeys.length}}">
+            <view xhs:for="{{launchOptionKeys}}" xhs:key="{{item}}">
+              <text
+                bindtap="copyShareTicket"
+                xhs:if="{{item === 'shareTicket'}}"
+                class="share-resp-ticket"
+                data-shareticket="{{launchOptions[item]}}" 
+              >
+                {{ item }}: {{ launchOptions[item] }},
+              </text>
+              <view 
+                xhs:if="{{item === 'shareTicket'}}"
+                class="share-resp-ticket share-resp-ticket-sub"
+              >[点击文本复制并粘贴到下面的输入框中]</view>
+              <text xhs:else>
+                {{ item }}: {{ JSON.stringify(launchOptions[item], null, 2) }},
+              </text>
+            </view>
+          </block>
+          <block xhs:else>
+            暂无返回
+          </block>
+        </view>
+      </view>
+    </box>
+    <box class="box">
+      <view class="title">xhs.getEnterOptionsSync()</view>
+      <button bindtap="getEnterOptions">点进获取 entryOptions</button>
+      <view class="sub_desc">获取本次小程序启动时的参数。如果当前是冷启动，则返回值与 App.onLaunch 的回调参数一致；如果当前是热启动，则返回值与 App.onShow 一致。</view>
+      <view>
+        <view class="share-desc">
+          返回结果：
+        </view>
+        <view class="share-resp _mt8">
+          <block xhs:if="{{entryOptionKeys.length}}">
+            <view xhs:for="{{entryOptionKeys}}" xhs:key="{{item}}">
+              <text
+                bindtap="copyShareTicket"
+                xhs:if="{{item === 'shareTicket'}}"
+                class="share-resp-ticket"
+                data-shareticket="{{entryOption[item]}}" 
+              >
+                {{ item }}: {{ entryOption[item] }},
+              </text>
+              <view 
+                xhs:if="{{item === 'shareTicket'}}"
+                class="share-resp-ticket share-resp-ticket-sub"
+              >[点击文本复制并粘贴到下面的输入框中]</view>
+              <text xhs:else>
+                {{ item }}: {{ JSON.stringify(entryOption[item], null, 2) }},
+              </text>
+            </view>
+          </block>
+          <block xhs:else>
+            暂无返回
+          </block>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="在此处获取shareTicket对应的分享信息">
+    <box class="box">
+      <view class="share-desc">
+        粘贴信息：
+      </view>
+
+      <textarea
+        class="share-input"
+        value="{{ shareTicket }}"
+        auto-height
+        placeholder="粘贴 shareTicket 到此处"
+        placeholder-style="color: #3333334D;"
+        bindinput="bindTextareaNoBindInput"
+      />
+      
+      <view class="share-desc">
+        分享信息：
+      </view>
+      <button bindtap="getShareInfo">点击获取分享信息</button>
+      <view class="share-resp _mt8">
+        {{ shareInfo ? JSON.stringify(shareInfo, null, 2) : '暂未获取到分享信息' }}
+      </view>
+    </box>
+  </showbox>
+</view>

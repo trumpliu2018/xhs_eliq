@@ -1,0 +1,156 @@
+/* 相机相关样式 */
+._ui-camera-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+._ui-camera-container::before {
+  content: "相机加载中...";
+  position: absolute;
+  z-index: 1;
+  color: #999;
+  font-size: 24rpx;
+  pointer-events: none;
+}
+
+._ui-camera {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: transparent;
+}
+
+/* 模式指示器 */
+._ui-mode-indicator {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20rpx;
+  padding: 8rpx 16rpx;
+}
+
+._ui-mode-text {
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+/* 设置项样式 */
+._ui-setting-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 20rpx;
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+  border: 1rpx solid #e5e5e5;
+  transition: all 0.2s ease;
+}
+
+._ui-setting-label {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+._ui-setting-value {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+._ui-setting-current {
+  font-size: 28rpx;
+  color: #666;
+}
+
+._ui-setting-arrow {
+  font-size: 24rpx;
+  color: #999;
+  font-weight: bold;
+}
+
+/* 缩放滑块容器样式 */
+._ui-zoom-container {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx 20rpx;
+  margin-bottom: 16rpx;
+  border: 1rpx solid #e5e5e5;
+}
+
+._ui-zoom-label {
+  margin-bottom: 20rpx;
+}
+
+._ui-zoom-label text {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+._ui-zoom-slider {
+  width: 100%;
+}
+
+/* 信息卡片样式 */
+._ui-info-card {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 20rpx;
+}
+
+._ui-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+  padding: 8rpx 0;
+}
+
+._ui-info-item:last-child {
+  margin-bottom: 0;
+}
+
+._ui-label {
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 500;
+  min-width: 120rpx;
+  margin-right: 16rpx;
+}
+
+._ui-value {
+  font-size: 28rpx;
+  color: #333;
+  flex: 1;
+  text-align: right;
+}
+
+._ui-text-break {
+  word-break: break-all;
+  text-align: left;
+}
+
+/* 预览样式 */
+._ui-preview-container {
+  width: 100%;
+}
+
+._ui-preview-image {
+  width: 100%;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}

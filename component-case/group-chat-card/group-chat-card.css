@@ -1,0 +1,39 @@
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.safe-area {
+  padding-bottom: 150px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.word-break {
+  word-break: keep-all;
+}

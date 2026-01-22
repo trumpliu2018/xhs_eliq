@@ -1,0 +1,46 @@
+<view class="container">
+  <showbox title="设置截屏/录屏时屏幕表现">
+    <view class="_pa6">
+      当前设置: {{visualEffect}} 
+      <view class="screen_state_txt screen_state_hidden" xhs:if="{{visualEffect === 'hidden'}}">【当前录制的屏幕内容将被隐藏】</view>
+      <view class="screen_state_txt screen_state_none" xhs:else>【当前录制屏幕不受限制】</view>
+      <button
+        class="_mt4 _px6 _ui-button"
+        bindtap="handleSetVisualEffectOnCapture"
+      >切换截屏/录屏时的表现</button>
+    </view>
+  </showbox>
+  <showbox title="监听用户主动截屏事件">
+    <view class="_pa6">
+      当前截屏次数: {{captureScreenTimes}}
+      <button
+        bindtap="handleOffCaptureScreen"
+        class="_mt4 _px6 _ui-button"
+      >点击取消截屏监听</button>
+    </view>
+  </showbox>
+  <showbox title="查询用户录屏信息">
+    <view class="_pa6">
+      当前录屏状态: {{isRecording}}
+      <button
+        class="_mt4 _px6 _ui-button"
+        bindtap="handleGetScreenRecordingState"
+      >查询用户录屏信息</button>
+    </view>
+    <view class="recording-resp">
+      {{ isRecordingState ? JSON.stringify(isRecordingState, null, 2) : '暂无返回' }}
+    </view>
+  </showbox>
+  <showbox title="监听用户录屏事件【注：该事件仅在 iOS 设备中生效】">
+    <view class="_pa6">
+      当前录屏状态: {{recordState}}
+      <button
+        class="_mt4 _px6 _ui-button"
+        bindtap="handleOffScreenRecordingState"
+      >点击取消录屏监听</button>
+    </view>
+    <view class="recording-resp">
+      {{ screenRecordingState ? JSON.stringify(screenRecordingState, null, 2) : '暂无信息' }}
+    </view>
+  </showbox>
+</view>

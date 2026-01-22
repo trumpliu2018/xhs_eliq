@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "小程序示例",
+  "backgroundColor": "#EFF1F2",
+  "navigationStyle": "custom",
+  "usingComponents": {},
+  "skeleton": {
+    "options": {
+      "minGrayBlockWidth": 0,
+      "animation": "shine2"
+    },
+    "path": "component.skeleton.xhsml"
+  }
+}

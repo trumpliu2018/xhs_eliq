@@ -1,0 +1,215 @@
+<view class="container xhs_0_container" style="border-color: rgb(238, 238, 238);">
+    <showbox style="border-color: rgb(238, 238, 238);">
+
+        <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+            <view
+                class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo"
+                style="border-color: rgb(238, 238, 238);">
+                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                    横向布局
+                </view>
+            </view>
+            <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+
+                <box style="border-color: rgb(238, 238, 238);">
+
+                    <view style="padding: 10px; border-color: rgb(238, 238, 238);">
+
+                        <view class="flex-container-x xhs_0_flex-container-x" style="border-color: rgb(238, 238, 238);">
+                            <view class="flex-item xhs_0_flex-item demo-1 xhs_0_demo-1"
+                                style="border-color: rgb(238, 238, 238);">
+                                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                                    A
+                                </view>
+                            </view>
+                            <view class="flex-item xhs_0_flex-item demo-2 xhs_0_demo-2"
+                                style="border-color: rgb(238, 238, 238);">
+                                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                                    B
+                                </view>
+                            </view>
+                            <view class="flex-item xhs_0_flex-item demo-3 xhs_0_demo-3"
+                                style="border-color: rgb(238, 238, 238);">
+                                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                                    C
+                                </view>
+                            </view>
+                        </view>
+
+                    </view>
+
+                </box>
+
+            </view>
+        </view>
+
+    </showbox>
+    <showbox style="border-color: rgb(238, 238, 238);">
+
+        <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+            <view
+                class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo"
+                style="border-color: rgb(238, 238, 238);">
+                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                    纵向布局
+                </view>
+            </view>
+            <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+
+                <box style="border-color: rgb(238, 238, 238);">
+
+                    <view style="padding: 10px; border-color: rgb(238, 238, 238);">
+
+                        <view class="flex-container-y xhs_0_flex-container-y" style="border-color: rgb(238, 238, 238);">
+                            <view class="flex-item xhs_0_flex-item demo-1 xhs_0_demo-1"
+                                style="border-color: rgb(238, 238, 238);">
+                                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                                    A
+                                </view>
+                            </view>
+                            <view class="flex-item xhs_0_flex-item demo-2 xhs_0_demo-2"
+                                style="border-color: rgb(238, 238, 238);">
+                                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                                    B
+                                </view>
+                            </view>
+                            <view class="flex-item xhs_0_flex-item demo-3 xhs_0_demo-3"
+                                style="border-color: rgb(238, 238, 238);">
+                                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                                    C
+                                </view>
+                            </view>
+                        </view>
+
+                    </view>
+
+                </box>
+
+            </view>
+        </view>
+
+    </showbox>
+</view>
+
+<view class="container xhs_0_container" style="border-color: rgb(238, 238, 238);">
+    <showbox style="border-color: rgb(238, 238, 238);">
+
+        <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+            <view
+                class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver sk-pseudo"
+                style="border-color: rgb(238, 238, 238);">
+                <view class="skeleton-text-block-mark sk-animation-shine-2"
+                    style="display: inline-block; position: relative; background-position-x: 0%;">
+                    view演示
+                </view>
+            </view>
+            <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+
+                <box style="border-color: rgb(238, 238, 238);">
+
+                    <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+
+                        <view class="_ui-space xhs_0__ui-space" style="border-color: rgb(238, 238, 238);">
+                            <view style="border-color: rgb(238, 238, 238);">
+                                <view hover-class="none xhs_0_none" hover-start-time="50" hover-stay-time="400"
+                                    style="height: 100px; background-color: red; border-color: rgb(238, 238, 238);">
+
+                                </view>
+                            </view>
+                            <view class="_dflex xhs_0__dflex" style="border-color: rgb(238, 238, 238);">
+                                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center"
+                                    style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                                    <text class="sk-animation-shine-2 skeleton-text-block-mark"
+                                        style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+                                        hoverClass
+                                    </text>
+                                </view>
+                                <view class="_ui-input xhs_0__ui-input"
+                                    style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                                    <view class="sk-animation-shine-2"
+                                        style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);">
+
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="_dflex xhs_0__dflex _jc_space-between xhs_0__jc_space-between"
+                                style="border-color: rgb(238, 238, 238);">
+                                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center"
+                                    style="border-color: rgb(238, 238, 238);">
+                                    <text class="sk-animation-shine-2 skeleton-text-block-mark"
+                                        style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+                                        是否开启hoverStopPropagation
+                                    </text>
+                                </view>
+                                <view class="sk-animation-shine-2"
+                                    style="width: 57px; height: 32px; background-color: rgba(0, 0, 0, 0); display: block;">
+
+                                </view>
+                            </view>
+                            <view class="_dflex xhs_0__dflex" style="border-color: rgb(238, 238, 238);">
+                                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center"
+                                    style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                                    <text class="sk-animation-shine-2 skeleton-text-block-mark"
+                                        style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+                                        hoverStartTime
+                                    </text>
+                                </view>
+                                <view class="_ui-input xhs_0__ui-input"
+                                    style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                                    <view class="sk-animation-shine-2"
+                                        style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);">
+
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="_dflex xhs_0__dflex" style="border-color: rgb(238, 238, 238);">
+                                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center"
+                                    style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                                    <text class="sk-animation-shine-2 skeleton-text-block-mark"
+                                        style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+                                        hoverStayTime
+                                    </text>
+                                </view>
+                                <view class="_ui-input xhs_0__ui-input"
+                                    style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                                    <view class="sk-animation-shine-2"
+                                        style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);">
+
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="_dflex xhs_0__dflex" style="border-color: rgb(238, 238, 238);">
+                                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center"
+                                    style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                                    <text class="sk-animation-shine-2 skeleton-text-block-mark"
+                                        style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+                                        style
+                                    </text>
+                                </view>
+                                <view class="_ui-input xhs_0__ui-input"
+                                    style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                                    <view class="sk-animation-shine-2"
+                                        style="width: 207.602px; height: 22px; background-color: rgba(0, 0, 0, 0);">
+
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+
+                    </view>
+
+                </box>
+
+            </view>
+        </view>
+
+    </showbox>
+</view>

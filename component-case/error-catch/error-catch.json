@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "error捕获测试",
+  "disableScroll": true,
+  "usingComponents": {
+      "showbox": "../../common/component/showbox/index",
+      "box": "../../common/component/container/index"
+  }
+}

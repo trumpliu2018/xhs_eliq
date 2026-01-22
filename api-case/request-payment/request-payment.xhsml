@@ -1,0 +1,64 @@
+<view class="container">
+  <showbox title="测试担保支付">
+    <box>
+      <view class="_ui-input">
+        输入payToken
+        <input
+          placeholder="输入payToken"
+          placeholder-style="color: #3333334D;"
+          value="{{ customPaytoken }}"
+          bindinput="handlePayTokenChange"
+        />
+      </view>
+      <view class="_ui-input">
+        输入orderId
+        <input
+          placeholder="输入orderId"
+          placeholder-style="color: #3333334D;"
+          value="{{ customOrderId }}"
+          bindinput="handleOrderIdChange"
+        />
+      </view>
+      <view class="_ui-input">
+        输入payMethod
+        <input
+          placeholder="payMethod"
+          placeholder-style="color: #3333334D;"
+          value="{{ customPayMethod }}"
+          bindinput="handlePayMethodChange"
+        />
+      </view>
+      <view class="_ui-input">
+        输入appId
+        <input
+          placeholder="appId"
+          placeholder-style="color: #3333334D;"
+          value="{{ customAppId }}"
+          bindinput="handleAppIdChange"
+        />
+      </view>
+      <view>
+        <button
+          class="_ui-button"
+          hover-class="_ui-button-hover"
+          bindtap="handleCustomPayment"
+        >
+          调支付bridge
+        </button>
+      </view>
+    </box>
+  </showbox>
+  <showbox title="支付演示">
+    <box>
+      <view>
+        <button
+          class="_ui-button"
+          hover-class="_ui-button-hover"
+          bindtap="handlePayment"
+        >
+          支付 0.1元
+        </button>
+      </view>
+    </box>
+  </showbox>
+</view>

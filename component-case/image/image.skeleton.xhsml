@@ -1,0 +1,266 @@
+<view class="container xhs_0_container" style="border-color: rgb(238, 238, 238);">
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.1238% 100%; position: relative; background-position-x: 0%;">
+          scaleToFill：不保持纵横比缩放图片，使图片完全适应
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="scaleToFill" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" class="" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 0.198rem; position: relative;">
+          aspectFit：保持纵横比缩放图片，使图片的长边能完全显示出来
+          <span style="display: inline-block; width: 50%; height: 18px; background: rgb(255, 255, 255); position: absolute; bottom: 0px; right: 0px;" />
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="aspectFit" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" class="" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 0.198rem; position: relative;">
+          aspectFill：保持纵横比缩放图片，只保证图片的短边能完全显示出来
+          <span style="display: inline-block; width: 50%; height: 18px; background: rgb(255, 255, 255); position: absolute; bottom: 0px; right: 0px;" />
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="aspectFill" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" class="" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.702% 100%; position: relative; background-position-x: 0%;">
+          top：不缩放图片，只显示图片的顶部区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="top" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="3" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.4648% 100%; position: relative; background-position-x: 0%;">
+          bottom：不缩放图片，只显示图片的底部区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="bottom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="4" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.4371% 100%; position: relative; background-position-x: 0%;">
+          center：不缩放图片，只显示图片的中间区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="center" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="5" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.5946% 100%; position: relative; background-position-x: 0%;">
+          left：不缩放图片，只显示图片的左边区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="left" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="6" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.5362% 100%; position: relative; background-position-x: 0%;">
+          right：不缩放图片，只显示图片的右边边区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="right" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="7" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.3884% 100%; position: relative; background-position-x: 0%;">
+          top left：不缩放图片，只显示图片的左上边区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="top left" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="8" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.3225% 100%; position: relative; background-position-x: 0%;">
+          top right：不缩放图片，只显示图片的右上边区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="top right" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="9" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.2013% 100%; position: relative; background-position-x: 0%;">
+          bottom left：不缩放图片，只显示图片的左下边区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="bottom left" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="10" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 99.1478% 100%; position: relative; background-position-x: 0%;">
+          bottom right：不缩放图片，只显示图片的右下边区域
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <image mode="bottom right" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="11" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;">
+          图片加载失败
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="section__ctn xhs_0_section__ctn" style="border-color: rgb(238, 238, 238);">
+              <image src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" observe-id="12" style="width: 200px; height: 200px; background-color: rgb(238, 238, 238); border-color: rgb(238, 238, 238);" width="200" height="200" />
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+</view>
+<view class="container xhs_0_container" style="border-color: rgb(238, 238, 238);">
+  <showbox style="border-color: rgb(238, 238, 238);">
+    <view class="xhs-demo-card xhs_1_xhs-demo-card" style="border-color: rgb(238, 238, 238);">
+      <view class="xhs-demo-card-title xhs_1_xhs-demo-card-title xhs-demo-card-spiver xhs_1_xhs-demo-card-spiver" style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark" style="display: inline-block; background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 98.0651% 100%; position: relative; background-position-x: 0%;">
+          image演示
+        </view>
+      </view>
+      <view class="xhs-demo-card-content xhs_1_xhs-demo-card-content" style="border-color: rgb(238, 238, 238);">
+        <box style="border-color: rgb(238, 238, 238);">
+          <view style="padding: 16px; border-color: rgb(238, 238, 238);">
+            <view class="_ui-space xhs_0__ui-space" style="border-color: rgb(238, 238, 238);">
+              <view style="border-color: rgb(238, 238, 238);">
+                <image src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" mode="scaleToFill" lazy-load="" observe-id="13" width="320" height="225" style="border-color: rgb(238, 238, 238); background-color: rgb(238, 238, 238);" />
+              </view>
+              <view class="_dflex xhs_0__dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text style="--text-display: inline; --text-selectable: none; opacity: 0;">
+                    src
+                  </text>
+                </view>
+                <view class="_ui-input xhs_0__ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <view style="width: 207.602px; height: 22px; background-color: rgb(238, 238, 238);" />
+                </view>
+              </view>
+              <view class="_dflex xhs_0__dflex" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center" style="flex: 4 1 0%; border-color: rgb(238, 238, 238);">
+                  <text style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;" class="skeleton-text-block-mark">
+                    mode
+                  </text>
+                </view>
+                <view class="_ui-input xhs_0__ui-input" style="flex: 6 1 0%; border-color: rgb(238, 238, 238);">
+                  <picker range="scaleToFill,aspectFit,aspectFill,widthFix,heightFix,top,bottom,center,left,right,top left,top right,bottom left,bottom right" value="0" class="skeleton-text-block-mark" style="border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 31.0917% 100%; position: relative; background-position-x: 0%;">
+                    scaleToFill
+                  </picker>
+                </view>
+              </view>
+              <view class="_dflex xhs_0__dflex _jc_space-between xhs_0__jc_space-between" style="border-color: rgb(238, 238, 238);">
+                <view class="_dflex xhs_0__dflex _ai_center xhs_0__ai_center" style="border-color: rgb(238, 238, 238);">
+                  <text style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); background-image: linear-gradient(transparent 20%, rgb(238, 238, 238) 0%, rgb(238, 238, 238) 80%, transparent 0%); background-size: 100% 100%; position: relative; background-position-x: 0%;" class="skeleton-text-block-mark">
+                    是否开启lazyLoad
+                  </text>
+                </view>
+                <view style="width: 57px; height: 32px; background-color: rgb(238, 238, 238); display: block;" />
+              </view>
+            </view>
+          </view>
+        </box>
+      </view>
+    </view>
+  </showbox>
+</view>

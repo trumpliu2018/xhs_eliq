@@ -1,0 +1,71 @@
+<view class="container">
+  <showbox title="SSE 流式请求演示">
+    <box>
+      <view class="_ui-button-group">
+        <button class="_ui-button _ui-button-small" hover-class="_ui-button-hover" bindtap="clearMessages">清空消息</button>
+        <button class="_ui-button _ui-button-small" hover-class="_ui-button-hover" bindtap="showActionSheet">选择URL</button>
+        <button class="_ui-button _ui-button-small {{ isConnected ? '_ui-button-warn' : '_ui-button-primary' }}" hover-class="_ui-button-hover" bindtap="toggleConnect">{{ isConnected ? '断开连接' : '开始接收' }}</button>
+      </view>
+
+      <view class="_ui-space _mt8">
+        <view class="_ui-flex _ui-align-center">
+          <text class="_ui-text">enbaleChunked：</text>
+          <switch class="_ui-switch" checked="{{ enbaleChunked }}" bindchange="toggleEnableChunked"></switch>
+          <text class="_ui-text _ml8">{{ enbaleChunked ? '已启动' : '未启用' }}</text>
+        </view>
+      </view>
+
+      <view class="_ui-space _mt8">
+        <view class="_ui-info-card">
+          <view class="_ui-info-item">
+            <text class="_ui-label">当前URL描述:</text>
+            <text class="_ui-value">{{ urls[currentIndex].name }}</text>
+          </view>
+          <view class="_ui-info-item">
+            <text class="_ui-label">请求方法:</text>
+            <text class="_ui-value">{{ urls[currentIndex].method }}</text>
+          </view>
+          <view class="_ui-info-item">
+            <text class="_ui-label">当前URL:</text>
+            <text class="_ui-value _ui-text-break">{{ urls[currentIndex].url }}</text>
+          </view>
+          <view class="_ui-info-item">
+            <text class="_ui-label">接口状态:</text>
+            <text class="_ui-value _ui-status-{{ statusText === '连接中' ? 'success' : 'default' }}">{{ statusText }}</text>
+          </view>
+        </view>
+      </view>
+
+    </box>
+  </showbox>
+
+  <showbox title="响应数据" wx:if="{{responseData}}">
+    <box>
+      <scroll-view class="_ui-log-scroll" scroll-y="true">
+        <view class="_ui-log-item">
+          <view class="_ui-response-field">
+            <text class="_ui-response-label">响应数据:</text>
+            <text class="_ui-response-value _ui-response-data">{{responseData.data}}</text>
+          </view>
+          <view class="_ui-response-field" wx:if="{{responseData.header}}">
+            <text class="_ui-response-label">响应头:</text>
+            <text class="_ui-response-value _ui-response-data">{{responseData.header}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </box>
+  </showbox>
+
+  <showbox title="实时消息" wx:if="{{messages.length > 0}}">
+    <box>
+      <scroll-view class="_ui-log-scroll" scroll-y="true">
+        <view wx:for="{{messages}}" wx:key="index" class="_ui-log-item">
+          <view class="_ui-log-text" wx:if="{{item.data}}">data: {{item.data}}</view>
+          <view class="_ui-log-text" wx:if="{{item.id}}">id: {{item.id}}</view>
+          <view class="_ui-log-text" wx:if="{{item.retry}}">retry: {{item.retry}}</view>
+          <view class="_ui-log-text" wx:if="{{item.event}}">event: {{item.event}}</view>
+        </view>
+      </scroll-view>
+    </box>
+  </showbox>
+</view>

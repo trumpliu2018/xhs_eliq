@@ -1,0 +1,37 @@
+<view class="container">
+  <!-- 顶部区域 - 请求地址和发送消息 -->
+  <showbox title="请求地址">
+    <view class="_ui-input">
+      <input class="custom-input" value="{{socketUrl}}" placeholder-style="color: #3333334D;" bindinput="urlInputOnChange"></input>
+      <button class="_ui-button" hover-class="_ui-button-hover" bindtap="connect">connect</button>
+    </view>
+  </showbox>
+
+  <showbox title="发送消息">
+    <view class="_ui-input">
+      <input class="custom-input" value="{{message}}" placeholder-style="color: #3333334D;" bindinput='sendInputOnChange'></input>
+      <button class="_ui-button" hover-class="_ui-button-hover" bindtap="sendMessage">send</button>
+    </view>
+  </showbox>
+
+  <!-- 中间内容区域 - 充满剩余空间 -->
+  <showbox class="message-showbox" title="接收消息">
+    <view class="message-content">
+      <textarea 
+        id="messageTextarea"
+        value="{{receivedMsg}}"
+        placeholder-class="textarea-placeholder"
+        disabled="false"
+        auto-focus="false"
+        focus="false"
+        auto-height="false"
+        fixed="true"
+      ></textarea>
+    </view>
+  </showbox>
+
+  <!-- 底部按钮区域 -->
+  <view class="bottom-button-container">
+    <button class="close-btn" hover-class="close-btn-hover" bindtap="closeSocket">close</button>
+  </view>
+</view>

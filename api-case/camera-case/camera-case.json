@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "相机功能演示",
+  "usingComponents": {
+    "showbox": "../../common/component/showbox/index",
+    "box": "../../common/component/container/index"
+  }
+}

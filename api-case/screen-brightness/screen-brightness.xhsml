@@ -1,0 +1,46 @@
+<view class="container">
+  <showbox title="当前屏幕亮度">
+    <view class="_pa6">
+      当前亮度: {{screenBrightness}}
+    </view>
+  </showbox>
+  <showbox title="读取屏幕亮度（回调输出展示）">
+    <view class="_pa6">
+      <button
+        class="_mt4 _px6 _ui-button"
+        bindtap="handleGetScreenBrightness"
+      >调用 getScreenBrightness</button>
+    </view>
+    <view class="api-resp">
+      {{ getBrightnessResp ? JSON.stringify(getBrightnessResp, null, 2) : '暂无返回' }}
+    </view>
+  </showbox>
+  <showbox title="拖动设置屏幕亮度">
+    <view class="_pa6">
+      <slider bindchange="changeBrightness" value="{{screenBrightness}}" min="0" max="1" step="0.1"/>
+    </view>
+  </showbox>
+  <showbox title="跟随系统亮度（仅 Android）">
+    <view class="_pa6">
+      <view>
+        Android 端支持将亮度设置为 -1 表示跟随系统
+        <button
+          class="_mt4 _px6 _ui-button"
+          bindtap="setFollowSystemBrightness"
+        >设置为跟随系统（-1）</button>
+      </view>
+      <view>
+        该能力仅在 Android 可用
+      </view>
+    </view>
+  </showbox>
+  <!-- <showbox title="设置屏幕常亮">
+    <view class="_pa6">
+      当前状态: {{keepScreenOn ? '开启' : '关闭'}}
+      <button
+        class="_mt4 _px6 _ui-button"
+        bindtap="toggleKeepScreenOn"
+      >切换常亮</button>
+    </view>
+  </showbox> -->
+</view>

@@ -1,0 +1,195 @@
+/* 扩展通用样式类 */
+
+/* 按钮样式扩展 */
+._ui-button-warn {
+  background-color: #fa5151 !important;
+  color: white !important;
+}
+
+._ui-button-primary {
+  background-color: rgb(255, 36, 66) !important;
+  color: white !important;
+}
+
+._ui-button-small {
+  padding: 16rpx 20rpx !important;
+  font-size: 26rpx !important;
+  font-weight: 500 !important;
+  min-height: 64rpx !important;
+  line-height: 1.2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  border-radius: 8rpx !important;
+}
+
+/* 文本样式 */
+._ui-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+._ui-text-break {
+  word-break: break-all;
+}
+
+/* 布局样式 */
+._ui-flex {
+  display: flex;
+}
+
+._ui-align-center {
+  align-items: center;
+}
+
+._ml8 {
+  margin-left: 16rpx;
+}
+
+._mt8 {
+  margin-top: 16rpx;
+}
+
+/* 按钮组样式 */
+._ui-button-group {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+}
+
+._ui-button-group ._ui-button {
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+/* 确保第三个按钮（状态切换按钮）有足够空间 */
+._ui-button-group ._ui-button:nth-child(3) {
+  flex: 1.2;
+}
+
+/* 开关样式 */
+._ui-switch {
+  margin: 0 16rpx;
+}
+
+/* 信息卡片样式 */
+._ui-info-card {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+._ui-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+  padding: 8rpx 0;
+}
+
+._ui-info-item:last-child {
+  margin-bottom: 0;
+}
+
+._ui-label {
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 500;
+  min-width: 160rpx;
+  margin-right: 16rpx;
+}
+
+._ui-value {
+  font-size: 28rpx;
+  color: #333;
+  flex: 1;
+  text-align: right;
+}
+
+._ui-status-success {
+  color: #07C160;
+  font-weight: 500;
+}
+
+._ui-status-default {
+  color: #999;
+}
+
+._ui-status-error {
+  color: #fa5151;
+  font-weight: 500;
+}
+
+/* 日志样式 */
+
+._ui-log-scroll {
+  height: 500rpx;
+  background-color: #ffffff;
+}
+
+._ui-log-item {
+  padding: 20rpx 16rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+._ui-log-item:last-child {
+  border-bottom: none;
+}
+
+._ui-log-text {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.6;
+  word-break: break-all;
+  margin-bottom: 8rpx;
+}
+
+._ui-log-text:last-child {
+  margin-bottom: 0;
+}
+
+._ui-log-empty {
+  padding: 80rpx 16rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 响应数据样式 */
+._ui-response-field {
+  margin-bottom: 16rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+._ui-response-field:last-child {
+  margin-bottom: 0;
+}
+
+._ui-response-label {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+._ui-response-value {
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+._ui-response-data {
+  word-break: break-all;
+  white-space: pre-wrap;
+  background-color: #f8f9fa;
+  padding: 16rpx;
+  border-radius: 8rpx;
+  font-family: 'Courier New', monospace;
+  font-size: 24rpx;
+}

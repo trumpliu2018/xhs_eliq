@@ -1,0 +1,2757 @@
+{
+  "schemes": [],
+  "swagger": "2.0",
+  "info": {
+    "description": "MBTI 性格成长平台 API 文档",
+    "title": "Personality Growth API",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "API Support",
+      "email": "support@example.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/api",
+  "paths": {
+    "/admin/bingo/rooms": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "管理员获取房间列表，支持分页和筛选（按状态、房间号）",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo房间管理"
+        ],
+        "summary": "获取房间列表",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "default": 1,
+            "description": "页码",
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "default": 20,
+            "description": "每页数量",
+            "name": "page_size",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "active",
+              "finished"
+            ],
+            "type": "string",
+            "description": "房间状态",
+            "name": "status",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "房间号",
+            "name": "room_code",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "创建新的 Bingo 游戏房间，需要管理员权限",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo房间管理"
+        ],
+        "summary": "创建房间",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "创建房间请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.CreateRoomRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/handlers.CreateRoomResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/bingo/rooms/{room_id}": {
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "删除指定的 Bingo 游戏房间，需要管理员权限",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo房间管理"
+        ],
+        "summary": "删除房间",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "房间ID",
+            "name": "room_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "description": "获取已发布的文章列表，不包含文章内容，支持分页",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "文章"
+        ],
+        "summary": "获取文章列表",
+        "parameters": [
+          {
+            "type": "integer",
+            "default": 1,
+            "description": "页码",
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "default": 10,
+            "description": "每页数量",
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/handlers.ArticleListItem"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}": {
+      "get": {
+        "description": "根据文章ID获取文章详情，包含完整内容，并自动增加浏览量",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "文章"
+        ],
+        "summary": "获取文章详情",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "文章ID",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.Article"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "description": "使用手机号和验证码登录，如果用户不存在会自动创建",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "认证"
+        ],
+        "summary": "用户登录",
+        "parameters": [
+          {
+            "description": "登录请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/handlers.AuthResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "description": "使用手机号和验证码注册新用户",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "认证"
+        ],
+        "summary": "用户注册",
+        "parameters": [
+          {
+            "description": "注册请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.RegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/handlers.AuthResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/send-code": {
+      "post": {
+        "description": "向指定手机号发送验证码（开发环境返回固定验证码 123456）",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "认证"
+        ],
+        "summary": "发送验证码",
+        "parameters": [
+          {
+            "description": "发送验证码请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.SendCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/handlers.SendCodeResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bingo/interactions": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "评价某个用户，选中某个评语格子。如果之前有软删除的记录会自动恢复",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo游戏"
+        ],
+        "summary": "创建评价",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "创建评价请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.CreateInteractionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/handlers.CreateInteractionResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "取消之前对某个用户的评价，删除评价记录",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo游戏"
+        ],
+        "summary": "删除评价",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "删除评价请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.DeleteInteractionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bingo/interactions/received": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "获取指定用户在该房间收到的所有评价，按评语分组，包含成就列表",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo游戏"
+        ],
+        "summary": "获取收到的评价",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "房间ID",
+            "name": "room_id",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "被评价者用户ID",
+            "name": "target_id",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/handlers.GetReceivedEvaluationsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bingo/rooms/{room_code}/join": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "加入指定的 Bingo 游戏房间，需要提供 MBTI 类型",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo游戏"
+        ],
+        "summary": "加入房间",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "example": "1234",
+            "description": "房间号",
+            "name": "room_code",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "加入房间请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.JoinRoomRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/handlers.JoinRoomResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bingo/rooms/{room_code}/leave": {
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "离开指定的 Bingo 游戏房间",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo游戏"
+        ],
+        "summary": "离开房间",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "example": "1234",
+            "description": "房间号",
+            "name": "room_code",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bingo/rooms/{room_code}/participants": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "获取指定房间的所有参与者列表",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo游戏"
+        ],
+        "summary": "获取房间参与者列表",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "example": "1234",
+            "description": "房间号",
+            "name": "room_code",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/handlers.RoomParticipantsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bingo/traits/{mbti_type}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "获取指定 MBTI 类型的 25 个评语列表（对应 5x5 格子）",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Bingo游戏"
+        ],
+        "summary": "获取 MBTI 评语列表",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "example": "INTJ",
+            "description": "MBTI类型",
+            "name": "mbti_type",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mbti-info/{type}": {
+      "get": {
+        "description": "根据 MBTI 类型（如 INTJ, ENFP）获取对应的基础信息",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "MBTI信息"
+        ],
+        "summary": "获取 MBTI 类型信息",
+        "parameters": [
+          {
+            "type": "string",
+            "example": "INTJ",
+            "description": "MBTI类型",
+            "name": "type",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.MBTIInfo"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/questions": {
+      "get": {
+        "description": "获取所有启用中的 MBTI 测试题目，按 order 正序排列",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "MBTI测试"
+        ],
+        "summary": "获取 MBTI 测试题目列表",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.Question"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/test/answers": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "提交测试答案并计算 MBTI 类型结果",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "MBTI测试"
+        ],
+        "summary": "提交答案",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "提交答案请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.SubmitAnswersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/handlers.SubmitAnswersResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/test/session": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "为用户创建一个新的 MBTI 测试会话",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "MBTI测试"
+        ],
+        "summary": "创建测试会话",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/handlers.CreateTestSessionResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/test/session/current": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "获取用户正在进行的测试会话，如果没有则返回 null",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "MBTI测试"
+        ],
+        "summary": "获取当前测试会话",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.TestSession"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/change-phone": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "更换当前登录用户的手机号，需要验证码",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "用户"
+        ],
+        "summary": "更换手机号",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "更换手机号请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.ChangePhoneRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/profile": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "获取当前登录用户的详细信息",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "用户"
+        ],
+        "summary": "获取用户信息",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.User"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "更新当前登录用户的昵称、MBTI类型、头像等信息",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "用户"
+        ],
+        "summary": "更新用户信息",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer {token}",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "更新用户信息请求",
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/handlers.UpdateProfileRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.User"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "handlers.AnswerItem": {
+      "type": "object",
+      "required": [
+        "answer",
+        "question_id"
+      ],
+      "properties": {
+        "answer": {
+          "description": "答案：yes 或 no",
+          "type": "string"
+        },
+        "question_id": {
+          "description": "题目ID",
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.ArticleListItem": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "cover_image": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "like_count": {
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/definitions/models.ArticleStatus"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "view_count": {
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.AuthResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/models.User"
+        }
+      }
+    },
+    "handlers.ChangePhoneRequest": {
+      "type": "object",
+      "required": [
+        "code",
+        "new_phone"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "new_phone": {
+          "type": "string"
+        }
+      }
+    },
+    "handlers.CreateInteractionRequest": {
+      "type": "object",
+      "required": [
+        "room_id",
+        "target_id",
+        "trait_id"
+      ],
+      "properties": {
+        "room_id": {
+          "description": "房间ID",
+          "type": "integer"
+        },
+        "target_id": {
+          "description": "被评价者用户ID",
+          "type": "integer"
+        },
+        "trait_id": {
+          "description": "评语ID",
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.CreateInteractionResponse": {
+      "type": "object",
+      "properties": {
+        "achievements": {
+          "description": "新达成的成就列表",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/models.BingoAchievement"
+          }
+        },
+        "interaction": {
+          "$ref": "#/definitions/models.BingoInteraction"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "handlers.CreateRoomRequest": {
+      "type": "object",
+      "properties": {
+        "max_participants": {
+          "description": "最大参与人数，默认10",
+          "type": "integer",
+          "maximum": 200,
+          "minimum": 5
+        }
+      }
+    },
+    "handlers.CreateRoomResponse": {
+      "type": "object",
+      "properties": {
+        "room": {
+          "$ref": "#/definitions/models.BingoRoom"
+        }
+      }
+    },
+    "handlers.CreateTestSessionResponse": {
+      "type": "object",
+      "properties": {
+        "session": {
+          "$ref": "#/definitions/models.TestSession"
+        },
+        "test_session_id": {
+          "type": "string"
+        },
+        "total_questions": {
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.DeleteInteractionRequest": {
+      "type": "object",
+      "required": [
+        "room_id",
+        "target_id",
+        "trait_id"
+      ],
+      "properties": {
+        "room_id": {
+          "description": "房间ID",
+          "type": "integer"
+        },
+        "target_id": {
+          "description": "被评价者用户ID",
+          "type": "integer"
+        },
+        "trait_id": {
+          "description": "评语ID",
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.EvaluationDetail": {
+      "type": "object",
+      "properties": {
+        "evaluators": {
+          "description": "评价过这个trait的用户列表",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/handlers.EvaluatorInfo"
+          }
+        },
+        "score": {
+          "description": "该格子被选中的次数",
+          "type": "integer"
+        },
+        "trait": {
+          "$ref": "#/definitions/models.BingoMbtiTrait"
+        },
+        "trait_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.EvaluatorInfo": {
+      "type": "object",
+      "properties": {
+        "avatar": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.GetReceivedEvaluationsResponse": {
+      "type": "object",
+      "properties": {
+        "achievements": {
+          "description": "成就列表",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/models.BingoAchievement"
+          }
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/handlers.EvaluationDetail"
+          }
+        },
+        "room_id": {
+          "type": "integer"
+        },
+        "target_id": {
+          "type": "integer"
+        },
+        "total": {
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.JoinRoomRequest": {
+      "type": "object",
+      "required": [
+        "mbti_type"
+      ],
+      "properties": {
+        "mbti_type": {
+          "description": "MBTI类型，如 INTJ, ENFP",
+          "type": "string"
+        }
+      }
+    },
+    "handlers.JoinRoomResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "participant": {
+          "$ref": "#/definitions/models.BingoRoomParticipant"
+        },
+        "room": {
+          "$ref": "#/definitions/models.BingoRoom"
+        }
+      }
+    },
+    "handlers.LoginRequest": {
+      "type": "object",
+      "required": [
+        "code",
+        "phone"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "handlers.RegisterRequest": {
+      "type": "object",
+      "required": [
+        "code",
+        "phone"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "handlers.RoomParticipantsResponse": {
+      "type": "object",
+      "properties": {
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/models.BingoRoomParticipant"
+          }
+        },
+        "room_code": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer"
+        }
+      }
+    },
+    "handlers.SendCodeRequest": {
+      "type": "object",
+      "required": [
+        "phone"
+      ],
+      "properties": {
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "handlers.SendCodeResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "开发环境返回验证码，生产环境不返回",
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "handlers.SubmitAnswersRequest": {
+      "type": "object",
+      "required": [
+        "answers",
+        "test_session_id"
+      ],
+      "properties": {
+        "answers": {
+          "description": "答案列表",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/handlers.AnswerItem"
+          }
+        },
+        "test_session_id": {
+          "description": "测试会话ID",
+          "type": "string"
+        }
+      }
+    },
+    "handlers.SubmitAnswersResponse": {
+      "type": "object",
+      "properties": {
+        "mbti_type": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/models.MBTIResult"
+        },
+        "test_session_id": {
+          "type": "string"
+        }
+      }
+    },
+    "handlers.UpdateProfileRequest": {
+      "type": "object",
+      "properties": {
+        "avatar": {
+          "type": "string"
+        },
+        "mbti_type": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        }
+      }
+    },
+    "models.Article": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "description": "作者ID",
+          "type": "string"
+        },
+        "category": {
+          "description": "分类",
+          "type": "string"
+        },
+        "content": {
+          "description": "内容（Markdown格式）",
+          "type": "string"
+        },
+        "content_html": {
+          "description": "HTML缓存（可选，用于提高性能）",
+          "type": "string"
+        },
+        "cover_image": {
+          "description": "封面图URL",
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "like_count": {
+          "description": "点赞数",
+          "type": "integer"
+        },
+        "status": {
+          "description": "状态",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.ArticleStatus"
+            }
+          ]
+        },
+        "summary": {
+          "description": "摘要",
+          "type": "string"
+        },
+        "tags": {
+          "description": "标签（逗号分隔）",
+          "type": "string"
+        },
+        "title": {
+          "description": "标题",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "view_count": {
+          "description": "浏览量",
+          "type": "integer"
+        }
+      }
+    },
+    "models.ArticleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "archived"
+      ],
+      "x-enum-comments": {
+        "ArticleStatusArchived": "已归档",
+        "ArticleStatusDraft": "草稿",
+        "ArticleStatusPublished": "已发布"
+      },
+      "x-enum-descriptions": [
+        "草稿",
+        "已发布",
+        "已归档"
+      ],
+      "x-enum-varnames": [
+        "ArticleStatusDraft",
+        "ArticleStatusPublished",
+        "ArticleStatusArchived"
+      ]
+    },
+    "models.BingoAchievement": {
+      "type": "object",
+      "properties": {
+        "achieved_at": {
+          "description": "达成时间",
+          "type": "string"
+        },
+        "achievement_type": {
+          "description": "成就类型",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.BingoAchievementType"
+            }
+          ]
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "line_index": {
+          "description": "线索引（行号0-4，列号0-4，斜线0-1）",
+          "type": "integer"
+        },
+        "room": {
+          "description": "关联关系（不使用外键约束）",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.BingoRoom"
+            }
+          ]
+        },
+        "room_id": {
+          "description": "房间ID",
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/models.User"
+        },
+        "user_id": {
+          "description": "用户ID（达成成就的用户）",
+          "type": "integer"
+        }
+      }
+    },
+    "models.BingoAchievementType": {
+      "type": "string",
+      "enum": [
+        "row",
+        "col",
+        "diagonal"
+      ],
+      "x-enum-comments": {
+        "BingoAchievementTypeCol": "竖线",
+        "BingoAchievementTypeDiagonal": "斜线",
+        "BingoAchievementTypeRow": "横线"
+      },
+      "x-enum-descriptions": [
+        "横线",
+        "竖线",
+        "斜线"
+      ],
+      "x-enum-varnames": [
+        "BingoAchievementTypeRow",
+        "BingoAchievementTypeCol",
+        "BingoAchievementTypeDiagonal"
+      ]
+    },
+    "models.BingoInteraction": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "evaluator": {
+          "$ref": "#/definitions/models.User"
+        },
+        "evaluator_id": {
+          "description": "评价者用户ID（谁在评价）",
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "room": {
+          "description": "关联关系（不使用外键约束）",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.BingoRoom"
+            }
+          ]
+        },
+        "room_id": {
+          "description": "房间ID",
+          "type": "integer"
+        },
+        "target": {
+          "$ref": "#/definitions/models.User"
+        },
+        "target_id": {
+          "description": "被评价者用户ID（评价谁）",
+          "type": "integer"
+        },
+        "trait": {
+          "$ref": "#/definitions/models.BingoMbtiTrait"
+        },
+        "trait_id": {
+          "description": "评语ID（选中了哪个评语）",
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "models.BingoMbtiTrait": {
+      "type": "object",
+      "properties": {
+        "col_index": {
+          "description": "列索引（0-4）",
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "is_active": {
+          "description": "是否启用",
+          "type": "boolean"
+        },
+        "mbti_type": {
+          "description": "MBTI类型",
+          "type": "string"
+        },
+        "order": {
+          "description": "排序",
+          "type": "integer"
+        },
+        "position": {
+          "description": "位置（1-25）",
+          "type": "integer"
+        },
+        "row_index": {
+          "description": "行索引（0-4）",
+          "type": "integer"
+        },
+        "trait_text": {
+          "description": "评语内容",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "models.BingoRoom": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "creator": {
+          "description": "关联关系（不使用外键约束）",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.User"
+            }
+          ]
+        },
+        "creator_id": {
+          "description": "创建者用户ID",
+          "type": "integer"
+        },
+        "finished_at": {
+          "description": "游戏结束时间",
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "max_participants": {
+          "description": "最大参与人数",
+          "type": "integer"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/models.BingoRoomParticipant"
+          }
+        },
+        "room_code": {
+          "description": "房间号（4位数字）",
+          "type": "string"
+        },
+        "started_at": {
+          "description": "游戏开始时间",
+          "type": "string"
+        },
+        "status": {
+          "description": "房间状态",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.BingoRoomStatus"
+            }
+          ]
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "models.BingoRoomParticipant": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "joined_at": {
+          "description": "加入房间时间",
+          "type": "string"
+        },
+        "mbti_type": {
+          "description": "该用户在房间中的MBTI类型",
+          "type": "string"
+        },
+        "room": {
+          "description": "关联关系（不使用外键约束）",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.BingoRoom"
+            }
+          ]
+        },
+        "room_id": {
+          "description": "房间ID",
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/models.User"
+        },
+        "user_id": {
+          "description": "用户ID",
+          "type": "integer"
+        }
+      }
+    },
+    "models.BingoRoomStatus": {
+      "type": "string",
+      "enum": [
+        "active",
+        "finished"
+      ],
+      "x-enum-comments": {
+        "BingoRoomStatusActive": "进行中",
+        "BingoRoomStatusFinished": "已结束"
+      },
+      "x-enum-descriptions": [
+        "进行中",
+        "已结束"
+      ],
+      "x-enum-varnames": [
+        "BingoRoomStatusActive",
+        "BingoRoomStatusFinished"
+      ]
+    },
+    "models.MBTIInfo": {
+      "type": "object",
+      "properties": {
+        "brief": {
+          "description": "类型简介",
+          "type": "string"
+        },
+        "career_path": {
+          "description": "职业道路",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.MBTIInfoDetail"
+            }
+          ]
+        },
+        "compatible_with": {
+          "description": "兼容的类型（逗号分隔）",
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "description": {
+          "description": "类型简介",
+          "type": "string"
+        },
+        "famous_people": {
+          "description": "著名人物示例（JSON数组）",
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "description": "类型名称（如：建筑师、倡导者）",
+          "type": "string"
+        },
+        "percentage": {
+          "description": "该类型在人群中的占比",
+          "type": "number"
+        },
+        "personal_growth": {
+          "description": "个人成长",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.MBTIInfoDetail"
+            }
+          ]
+        },
+        "relationships": {
+          "description": "人际关系",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.MBTIInfoDetail"
+            }
+          ]
+        },
+        "summary": {
+          "description": "总体简介",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.MBTIInfoDetail"
+            }
+          ]
+        },
+        "type": {
+          "description": "MBTI类型（INTJ, ENFP等）",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "models.MBTIInfoDetail": {
+      "type": "object",
+      "properties": {
+        "introduction": {
+          "type": "string"
+        },
+        "strengths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "weaknesses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "models.MBTIResult": {
+      "type": "object",
+      "properties": {
+        "completed_at": {
+          "description": "完成时间（暂时使用当前时间）",
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "mbti_info": {
+          "$ref": "#/definitions/models.MBTIInfo"
+        },
+        "mbti_type": {
+          "description": "MBTI类型（如INTJ）",
+          "type": "string"
+        },
+        "percentage_e": {
+          "description": "各维度百分比（0-100，表示倾向程度）",
+          "type": "integer"
+        },
+        "percentage_f": {
+          "description": "F 倾向百分比",
+          "type": "integer"
+        },
+        "percentage_i": {
+          "description": "I 倾向百分比",
+          "type": "integer"
+        },
+        "percentage_j": {
+          "description": "J 倾向百分比",
+          "type": "integer"
+        },
+        "percentage_n": {
+          "description": "N 倾向百分比",
+          "type": "integer"
+        },
+        "percentage_p": {
+          "description": "P 倾向百分比",
+          "type": "integer"
+        },
+        "percentage_s": {
+          "description": "S 倾向百分比",
+          "type": "integer"
+        },
+        "percentage_t": {
+          "description": "T 倾向百分比",
+          "type": "integer"
+        },
+        "score_ei": {
+          "description": "各维度得分（正分表示前者，负分表示后者）",
+          "type": "integer"
+        },
+        "score_jp": {
+          "description": "J/P 维度得分（正=J，负=P）",
+          "type": "integer"
+        },
+        "score_sn": {
+          "description": "S/N 维度得分（正=S，负=N）",
+          "type": "integer"
+        },
+        "score_tf": {
+          "description": "T/F 维度得分（正=T，负=F）",
+          "type": "integer"
+        },
+        "test_session_id": {
+          "description": "测评会话ID（关联test_sessions表）",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "user_id": {
+          "description": "用户ID",
+          "type": "integer"
+        }
+      }
+    },
+    "models.Question": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "description": "题目分类",
+          "type": "string"
+        },
+        "content": {
+          "description": "题目内容",
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "dimension": {
+          "description": "测评维度: EI=外向/内向, SN=感觉/直觉, TF=思考/情感, JP=判断/知觉",
+          "type": "string"
+        },
+        "direction": {
+          "description": "正向反向: positive=正向, negative=反向",
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "is_active": {
+          "description": "是否启用",
+          "type": "boolean"
+        },
+        "order": {
+          "description": "题目排序",
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "models.TestSession": {
+      "type": "object",
+      "properties": {
+        "answered_questions": {
+          "description": "已答题数",
+          "type": "integer"
+        },
+        "completed_at": {
+          "description": "完成时间（NULL表示未完成）",
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "result": {
+          "$ref": "#/definitions/models.MBTIResult"
+        },
+        "started_at": {
+          "description": "开始时间",
+          "type": "string"
+        },
+        "status": {
+          "description": "测评状态",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.TestSessionStatus"
+            }
+          ]
+        },
+        "test_session_id": {
+          "description": "测评会话ID（UUID格式）",
+          "type": "string"
+        },
+        "total_questions": {
+          "description": "总题数",
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "user_id": {
+          "description": "用户ID",
+          "type": "integer"
+        }
+      }
+    },
+    "models.TestSessionStatus": {
+      "type": "string",
+      "enum": [
+        "in_progress",
+        "completed",
+        "abandoned"
+      ],
+      "x-enum-comments": {
+        "TestSessionStatusAbandoned": "已放弃",
+        "TestSessionStatusCompleted": "已完成",
+        "TestSessionStatusInProgress": "进行中"
+      },
+      "x-enum-descriptions": [
+        "进行中",
+        "已完成",
+        "已放弃"
+      ],
+      "x-enum-varnames": [
+        "TestSessionStatusInProgress",
+        "TestSessionStatusCompleted",
+        "TestSessionStatusAbandoned"
+      ]
+    },
+    "models.User": {
+      "type": "object",
+      "properties": {
+        "avatar": {
+          "description": "头像URL",
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "email": {
+          "description": "邮箱（可选）",
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "is_active": {
+          "description": "是否激活",
+          "type": "boolean"
+        },
+        "mbti_type": {
+          "description": "MBTI类型",
+          "type": "string"
+        },
+        "nickname": {
+          "description": "昵称",
+          "type": "string"
+        },
+        "phone": {
+          "description": "手机号（必填，用于登录）",
+          "type": "string"
+        },
+        "role": {
+          "description": "用户角色：user=普通用户, admin=管理员",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "username": {
+          "description": "用户名（可选）",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "description": "JWT 认证，格式: Bearer {token}",
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

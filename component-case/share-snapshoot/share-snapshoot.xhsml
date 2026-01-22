@@ -1,0 +1,43 @@
+<view class="container">
+  <showbox title="分享快照，将对当前分享页生成截屏图片(比例5:7)">
+    <box class="box">
+      <view class="title">站外分享页样式(带截屏)</view>
+      <view class="share-landing-showcase">
+        <image 
+          bindtap="onShareLandingClick"
+          src="https://picasso-static.xiaohongshu.com/fe-platform/a2f1eca7501ff9abe939ef17964315d07cb7123e.png" 
+          class="share-landing-showcase-image" mode="aspectFit"></image>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="当前页面配置了【onShareAppMessage】【onShareChat】【onCopyUrl】">
+
+    <box class="box">
+      <view>
+        <view class="title">打开「胶囊按钮」，点击「复制链接」，「站外分享中间面」将展示配置的页面</view>
+        <view class="share-desc">
+          [onCopyUrl] 配置如下：
+        </view>
+        <view class="code">{</view>
+        <view class="code"><view class="code-placeholader"></view>"query": "a=1&b=2&c=3",</view>
+        <view class="code"><view class="code-placeholader"></view>"externalImageUrl": "https://test.png"</view>
+        <view class="code">}</view>
+      </view>
+    </box>
+
+    <box class="box">
+      <view>
+        <view class="title">打开「胶囊按钮」，点击「微信-私信分享」，「站外分享中间面」将使用当前页面的截屏（系统会自动截图）</view>
+        <view class="share-desc">
+          [onShareChat] 配置如下：
+        </view>
+        <view class="code">{</view>
+        <view class="code"><view class="code-placeholader"></view>"title": "onShareChat h5 转发测试: " + args.from,</view>
+        <view class="code"><view class="code-placeholader"></view>"path": "mponent-case/share-snapshoot/share-snapshoot",</view>
+        <view class="code"><view class="code-placeholader"></view>"query": "a=1&b=2&c=3"</view>
+        <view class="code">}</view>
+      </view>
+    </box>
+  </showbox>
+</view>

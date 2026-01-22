@@ -1,0 +1,108 @@
+<view class="page xhs_0_page" style="border-color: rgb(238, 238, 238);">
+  <view class="head-bg xhs_0_head-bg" data-skeleton-bgcolor='"#f60"' style="border-color: rgb(238, 238, 238); color: transparent;">
+    <view class="head-bg-logo xhs_0_head-bg-logo" style="border-color: rgb(238, 238, 238);">
+      <image src="" mode="widthFix" style="width: 154px; height: 55px; border-color: rgb(238, 238, 238);" class="sk-animation-shine-2" width="154" height="55" />
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="skeleton-text-block-mark sk-animation-shine-2" style="display: inline-block; position: relative; background-position-x: 0%;">
+          官方演示小程序
+        </view>
+      </view>
+    </view>
+    <view class="search xhs_0_search" style="border-color: rgb(238, 238, 238);">
+      <view class="search-box xhs_0_search-box sk-pseudo" style="border-color: rgb(238, 238, 238);">
+        <view class="search-icon xhs_0_search-icon" style="background: rgb(238, 238, 238); border-color: rgb(238, 238, 238);">
+          <image src="" class="sk-animation-shine-2" width="18" height="18" style="border-color: rgb(238, 238, 238);" />
+        </view>
+        <text style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;" class="sk-animation-shine-2 skeleton-text-block-mark">
+          搜索组件、能力或指南
+        </text>
+      </view>
+    </view>
+    <image class="head-bg-img xhs_0_head-bg-img sk-animation-shine-2" src="" mode="widthFix" style="height: 339.413px; border-color: rgb(238, 238, 238);" width="430" height="339.40625" />
+  </view>
+  <view class="card-container xhs_0_card-container" style="border-color: rgb(238, 238, 238);">
+    <view class="card-content xhs_0_card-content" style="border-color: rgb(238, 238, 238);">
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="0" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="24" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            业务组件
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="25" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="1" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="26" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            表单组件
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="27" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="2" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="28" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            基础内容
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="29" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="3" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="30" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            媒体组件
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="31" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="4" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="32" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            地图组件
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="33" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="5" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="34" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            视图容器
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="35" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="6" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="36" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            导航组件
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="37" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close sk-pseudo" data-index="7" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="38" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            开放能力
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="39" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+      <view style="border-color: rgb(238, 238, 238);">
+        <view class="card-item xhs_0_card-item item-close xhs_0_item-close card-item-last xhs_0_card-item-last sk-pseudo" data-index="8" style="border-color: rgb(238, 238, 238);">
+          <image class="item-logo xhs_0_item-logo sk-animation-shine-2" src="" observe-id="40" width="24" height="24" style="border-color: rgb(238, 238, 238);" />
+          <text class="item-desc xhs_0_item-desc sk-animation-shine-2 skeleton-text-block-mark" style="--text-display: inline; --text-selectable: none; border-color: rgb(238, 238, 238); position: relative; background-position-x: 0%;">
+            自定义组件
+          </text>
+          <image class="item-logo xhs_0_item-logo item-toggle xhs_0_item-toggle sk-animation-shine-2" src="" mode="widthFix" observe-id="41" width="12" height="0" style="border-color: rgb(238, 238, 238);" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

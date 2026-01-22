@@ -1,0 +1,146 @@
+<view class="container">
+  <view class="tip-container" xhs:if="{{showTip}}">
+    <view class="tip-content">
+      <text class="tip-text">提示：postNote API 只允许小组件调用，小程序中无法调用</text>
+    </view>
+  </view>
+
+  <showbox title="发布笔记API演示">
+    <box>
+      <api-status
+        success="{{apiSuccess}}"
+        fail="{{apiFail}}"
+        complete="{{apiComplete}}"
+        text="{{apiResultText}}"
+      ></api-status>
+      <button class="_ui-button" hover-class="_ui-button-hover" bindtap="callPostNoteApi">调用发布笔记API</button>
+    </box>
+  </showbox>
+
+  <showbox title="参数设置区域，设置发布笔记API参数">
+    <box class="box">
+      <view class="mb-8">
+        笔记标题 title，最大长度 20
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{ noteTitle }}"
+          placeholder="输入笔记标题"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInputNoteTitle"
+          maxlength="-1"
+        />
+      </view>
+    </box>
+
+    <box class="box">
+      <view class="mb-8">
+        笔记内容 content，最大长度 1000
+      </view>
+      <view class="_ui-input">
+        <textarea
+          auto-height
+          value="{{ noteContent }}"
+          placeholder="输入笔记内容"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInputNoteContent"
+          maxlength="-1"
+        />
+      </view>
+    </box>
+
+    <box class="box">
+      <view class="mb-8">
+        话题 tags，使用英文逗号分割
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{ tags }}"
+          placeholder="话题，使用英文逗号分割"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInputTags"
+          maxlength="-1"
+        />
+      </view>
+    </box>
+
+    <box class="box">
+      <view class="mb-8">
+        快速调整 media-info
+      </view>
+      <view>
+        <button
+          class="mb-8"
+          bindtap="changeMediaInfoToImageResource"
+        >
+          调整到发布 1 张图片
+        </button>
+        <button
+          class="mb-8"
+          bindtap="changeMediaInfoToVideoResource"
+        >
+          调整到发布视频资源
+        </button>
+        <button
+          class="mb-8"
+          bindtap="changeMediaInfoToDifferentImageResource"
+        >
+          调整到图片为 18 张不同的
+        </button>
+        <button
+          class="mb-8"
+          bindtap="changeMediaInfoToSameImageResource"
+        >
+          调整到图片为 18 张一样的
+        </button>
+        <button
+          class="mb-8"
+          bindtap="changeMediaInfoTooLong"
+        >
+          调整到图片资源个数不符合要求（19）
+        </button>
+      </view>
+    </box>
+
+    <box class="box">
+      <view class="mb-8">
+        媒体信息，media-info（图片 1-18 张 / 视频 1 个）
+      </view>
+      <view class="_ui-input">
+        <textarea
+          value="{{ mediaInfo }}"
+          auto-height
+          placeholder="媒体信息JSON字符串"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInputMediaInfo"
+          maxlength="-1"
+        />
+      </view>
+    </box>
+
+    <box class="box">
+      <view class="mb-8">
+        小程序会话信息，miniapp-session-info
+      </view>
+      <view class="_ui-input">
+        <textarea
+          value="{{ miniappSessionInfo }}"
+          auto-height
+          placeholder="小程序会话信息JSON字符串"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInputMiniappSessionInfo"
+          maxlength="-1"
+        />
+      </view>
+    </box>
+
+    <box class="box">
+      <view class="mb-8 flex items-center justify-between">
+        <text>是否自动挂载当前小组件 component-mounted</text>
+        <switch checked="{{componentMounted}}" bindchange="toggleComponentMounted" color="rgba(255, 36, 66, 1)" />
+      </view>
+    </box>
+  </showbox>
+
+  <view class="safe-area"></view>
+</view>

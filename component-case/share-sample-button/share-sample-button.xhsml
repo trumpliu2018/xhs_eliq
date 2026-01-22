@@ -1,0 +1,42 @@
+<view class="container">
+  <showbox title="当前页面配置了【onShareAppMessage】【onShareChat】【onShareTimeline】">
+    <box class="box">
+      <view class="title">点击 button 按钮，观察「onShareAppMessage」消息回调内容</view>
+      <button open-type="share" data-share-type="normal">share-type="normal"</button>
+      <view>
+        <view class="share-desc">
+          [onShareAppMessage] 消息回调内容：
+        </view>
+        <view class="share-resp _mt8">
+          {{ onShareAppMessageResult ? JSON.stringify(onShareAppMessageResult, null, 2) : '暂无返回' }}
+        </view>
+      </view>
+    </box>
+
+    <box class="box">
+      <view>
+        <view class="title">点击 button 按钮，点击「微信-私信分享」，观察「onShareChat」消息回调内容</view>
+        <button open-type="share" data-share-type="shareChat">share-type="shareChat"</button>
+        <view class="share-desc">
+          [onShareChat] 消息回调内容：
+        </view>
+        <view class="share-resp _mt8">
+          {{ onShareChatResult ? JSON.stringify(onShareChatResult, null, 2) : '暂无返回' }}
+        </view>
+      </view>
+    </box>
+
+    <box class="box">
+      <view>
+        <view class="title">点击 button 按钮，点击「微信-朋友圈分享」，观察「onShareTimeline」消息回调内容</view>
+        <button open-type="share" data-share-type="shareTimeline">share-type="shareTimeline"</button>
+        <view class="share-desc">
+          [onShareTimeline] 消息回调内容：
+        </view>
+        <view class="share-resp _mt8">
+          {{ onShareTimelineResult ? JSON.stringify(onShareTimelineResult, null, 2) : '暂无返回' }}
+        </view>
+      </view>
+    </box>
+  </showbox>
+</view>

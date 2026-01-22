@@ -1,0 +1,34 @@
+<view class="container">
+  <showbox title="支付宝信息授权">
+    <box>
+      <view class="_ui-input">
+        <text style="word-break:break-all;">输入的 authInfo 为: {{authInfo}}</text>
+      </view>
+      <view class="_ui-input">
+        <input
+          value="{{authInfo}}"
+          placeholder="填参数 authInfo，类型字符串"
+          placeholder-style="color: #3333334D;"
+          bindinput="bindInput"
+          maxlength="3000"
+        />
+      </view>
+      <view class="_ui-input">
+        修改 showLoading
+        <switch
+          style="transform:scale(0.7)"
+          checked="{{showLoading}}"
+          color="rgba(255, 36, 66, 1)"
+          bindchange="changeLoading"
+        />
+      </view>
+      <view class="_ui-space mt-8">
+        <button
+          class="_ui-button"
+          hover-class="_ui-button-hover"
+          bindtap="auth"
+        >点击授权</button>
+      </view>
+    </box>
+  </showbox>
+</view>

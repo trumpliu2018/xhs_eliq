@@ -1,0 +1,100 @@
+<view class="container">
+
+  <video 
+    src="https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4"
+    bindloadedmetadata="handleLoadedMetadata"
+    class="_flex_1 myVideo"
+    muted="{{true}}"
+    show-mute-btn="{{true}}"
+    controls="{{true}}"
+    initial-time="100"
+    bindplay="handlePlay"
+    bindwaiting="handleWaiting"
+    bindpause="handleVideoPause"
+    bindended="handleVideoEnd"
+    bindprogress="handleProgress"
+    bindfullscreenchange="handFullscreen"
+    binderror="handleError"
+  >
+  </video>
+
+  <video 
+    src="https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4"
+    bindloadedmetadata="handleLoadedMetadata"
+    class="_flex_1 myVideo"
+    muted="{{true}}"
+    show-mute-btn="{{true}}"
+    controls="{{true}}"
+    initial-time="100"
+    bindplay="handlePlay"
+    bindwaiting="handleWaiting"
+    bindpause="handleVideoPause"
+    bindended="handleVideoEnd"
+    bindprogress="handleProgress"
+    bindfullscreenchange="handFullscreen"
+    binderror="handleError"
+  >
+  </video>
+
+  <showbox title=".mp4 (使用 VideoContext 控制自动播放)">
+    <view 
+      bindtouchstart="touchStart"
+      bindtouchmove="touchMove"
+      bindtouchend="touchEnd"
+      style="height: 500rpx; background: #f60;"
+      class="video-show">
+      <video 
+        id="myVideo3"
+        src="https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4"
+        bindloadedmetadata="handleLoadedMetadata"
+        class="_flex_1 myVideo"
+        muted="{{true}}"
+        show-mute-btn="{{false}}"
+        controls="{{false}}"
+        initial-time="100"
+        bindplay="handlePlay"
+        bindwaiting="handleWaiting"
+        bindpause="handleVideoPause"
+        bindended="handleVideoEnd"
+        bindprogress="handleProgress"
+        bindfullscreenchange="handFullscreen"
+        binderror="handleError"
+      >
+      </video>
+    </view>
+  </showbox>
+
+
+  <!-- 注释说明：小红书暂不支持 hls 视频流播放 -->
+  <!-- <showbox title=".m3u8 (hls 视频播放)">
+    <view class="video-show">
+      <video 
+        id="myVideo" 
+        class="_flex_1 myVideo"
+        muted="{{true}}" 
+        autoplay="{{ true }}"
+        controls="{{ false }}"
+        enableDanmu="{{true}}"
+        show-center-play-btn="{{false}}" 
+        show-mute-btn="{{showMute}}"
+        src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8">
+      </video>
+    </view>
+  </showbox> -->
+
+  <!-- <showbox title="基础使用">
+    <box>
+      <view class="video-action">
+        <view>
+          <button class="_ui-button-transparent" bindtap="bindVideoPlay">播放</button>
+          <button class="_ui-button-transparent" bindtap="bindVideoPause">暂停</button>
+        </view>
+
+        <view>
+          <button class="_ui-button-transparent" bindtap="bindVideoStop">停止</button>
+          <button class="_ui-button-transparent" bindtap="bindVideoSeek">跳到第10秒</button>
+        </view>
+      </view>
+    </box>
+  </showbox> -->
+</view>

@@ -1,0 +1,147 @@
+<view class="container">
+  <showbox title="目录路径配置">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-setting-item">
+          <text class="_ui-setting-label">目录路径:</text>
+          <input class="_ui-input" value="{{testDirPath}}" bindinput="onDirPathInput" placeholder="请输入目录路径" />
+        </view>
+        
+        <view class="_ui-api-warning">
+          <text class="_ui-warning-text">⚠️ 注意：如果目录操作报错 "is not a function"，说明当前平台不支持相关API</text>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="目录管理操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="makeDir" disabled="{{isLoading}}">
+            创建目录
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="makeDirSync" disabled="{{isLoading}}">
+            同步创建
+          </button>
+        </view>
+        
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-warn" hover-class="_ui-button-hover" bindtap="removeDir" disabled="{{isLoading}}">
+            删除目录
+          </button>
+          <button class="_ui-button _ui-button-warn" hover-class="_ui-button-hover" bindtap="removeDirSync" disabled="{{isLoading}}">
+            同步删除
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="目录内容操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button _ui-button-primary" hover-class="_ui-button-hover" bindtap="readDir" disabled="{{isLoading}}">
+            读取目录
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="readDirSync" disabled="{{isLoading}}">
+            同步读取
+          </button>
+        </view>
+        
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="createTestFile" disabled="{{isLoading}}">
+            创建测试文件
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="createSubDir" disabled="{{isLoading}}">
+            创建子目录
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="状态信息操作">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="getStats" disabled="{{isLoading}}">
+            获取状态信息
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="getStatsSync" disabled="{{isLoading}}">
+            同步获取状态
+          </button>
+        </view>
+        
+        <view class="_ui-button-group">
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="getStatsRecursive" disabled="{{isLoading}}">
+            递归获取状态
+          </button>
+          <button class="_ui-button" hover-class="_ui-button-hover" bindtap="getStatsRecursiveSync" disabled="{{isLoading}}">
+            同步递归状态
+          </button>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="目录内容" xhs:if="{{dirContents.length > 0}}">
+    <box>
+      <view class="_ui-space">
+        <view class="_ui-dir-list">
+          <view class="_ui-dir-item" xhs:for="{{dirContents}}" xhs:key="*this">
+            <view class="_ui-dir-icon">
+              📁
+            </view>
+            <view class="_ui-dir-info">
+              <text class="_ui-dir-name">{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+  <showbox title="状态信息" xhs:if="{{statsInfo}}">
+    <box>
+      <view class="_ui-space" xhs:if="{{!Array.isArray(statsInfo)}}">
+        <view class="_ui-info-card">
+          <view class="_ui-info-item">
+            <text class="_ui-label">类型:</text>
+            <text class="_ui-value">{{statsInfo.isDirectory() ? '目录' : '文件'}}</text>
+          </view>
+          <view class="_ui-info-item">
+            <text class="_ui-label">大小:</text>
+            <text class="_ui-value">{{statsInfo.size}} 字节</text>
+          </view>
+          <view class="_ui-info-item">
+            <text class="_ui-label">修改时间:</text>
+            <text class="_ui-value">{{statsInfo.lastModifiedTime}}</text>
+          </view>
+          <view class="_ui-info-item">
+            <text class="_ui-label">访问时间:</text>
+            <text class="_ui-value">{{statsInfo.lastAccessedTime}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="_ui-space" xhs:if="{{Array.isArray(statsInfo)}}">
+        <view class="_ui-stats-list">
+          <view class="_ui-stats-item" xhs:for="{{statsInfo}}" xhs:key="path">
+            <view class="_ui-stats-header">
+              <text class="_ui-stats-path">{{item.path}}</text>
+              <text class="_ui-stats-type">{{item.stats.isDirectory() ? '目录' : '文件'}}</text>
+            </view>
+            <view class="_ui-stats-details">
+              <text class="_ui-stats-detail">大小: {{item.stats.size}} 字节</text>
+              <text class="_ui-stats-detail">修改: {{item.stats.lastModifiedTime}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </box>
+  </showbox>
+
+
+</view>

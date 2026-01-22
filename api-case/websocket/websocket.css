@@ -1,0 +1,52 @@
+/* 调整输入框高度为24px */
+.custom-input {
+  height: 36px !important;
+  line-height: 36px !important;
+  padding: 0 12px !important;
+  font-size: medium;
+}
+
+/* 中间容器充满剩余空间 */
+.container {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: calc(60px + env(safe-area-inset-bottom));
+}
+
+.message-content {
+  min-height: 220px;
+  max-height: 100vh;
+  padding: 0 12px !important;
+  margin: 16px !important;
+}
+
+/* 吸底关闭按钮 - 适配安全区域 */
+.bottom-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px;
+  /* 添加安全区域底部内边距 */
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  z-index: 100;
+}
+
+.close-btn {
+  width: 100%;
+  height: 44px;
+  background-color: #ff2442;
+  color: white;
+  border: none;
+  /* border-radius: 8px; */
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.close-btn-hover {
+  background-color: #ff4d67;
+}

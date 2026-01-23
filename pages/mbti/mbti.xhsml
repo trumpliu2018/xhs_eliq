@@ -18,25 +18,35 @@
       <view class="section-icon">💡</view>
       <text class="title-medium">什么是MBTI？</text>
     </view>
-    <text class="text-body mt-16">
-      MBTI（Myers-Briggs Type Indicator）是一种性格分类模型，通过评估个体在四个维度上的偏好，将人格分为16种类型。
-    </text>
-    <view class="dimension-list mt-24">
-      <view class="dimension-item">
-        <view class="dimension-label">外向 E / 内向 I</view>
-        <text class="text-secondary">能量来源</text>
+    <view class="text-body mt-16">MBTI（Myers-Briggs Type Indicator）是一种性格分类模型，通过评估个体在四个维度上的偏好，将人格分为16种类型。</view>
+    <view class="dimension-grid mt-24">
+      <view class="dimension-card">
+        <view class="dimension-icon">⚡</view>
+        <view class="dimension-content">
+          <text class="dimension-title">外向 E / 内向 I</text>
+          <text class="dimension-desc">能量来源</text>
+        </view>
       </view>
-      <view class="dimension-item">
-        <view class="dimension-label">感觉 S / 直觉 N</view>
-        <text class="text-secondary">信息获取</text>
+      <view class="dimension-card">
+        <view class="dimension-icon">👁️</view>
+        <view class="dimension-content">
+          <text class="dimension-title">感觉 S / 直觉 N</text>
+          <text class="dimension-desc">信息获取</text>
+        </view>
       </view>
-      <view class="dimension-item">
-        <view class="dimension-label">思考 T / 情感 F</view>
-        <text class="text-secondary">决策方式</text>
+      <view class="dimension-card">
+        <view class="dimension-icon">🧠</view>
+        <view class="dimension-content">
+          <text class="dimension-title">思考 T / 情感 F</text>
+          <text class="dimension-desc">决策方式</text>
+        </view>
       </view>
-      <view class="dimension-item">
-        <view class="dimension-label">判断 J / 感知 P</view>
-        <text class="text-secondary">生活态度</text>
+      <view class="dimension-card">
+        <view class="dimension-icon">🎯</view>
+        <view class="dimension-content">
+          <text class="dimension-title">判断 J / 感知 P</text>
+          <text class="dimension-desc">生活态度</text>
+        </view>
       </view>
     </view>
   </view>
@@ -56,7 +66,7 @@
             <text class="text-light">{{review.mbti}} · {{review.intro}}</text>
           </view>
         </view>
-        <text class="text-secondary mt-12">{{review.content}}</text>
+        <view class="text-secondary mt-12">{{review.content}}</view>
       </view>
     </view>
   </view>

@@ -1,5 +1,6 @@
 Page({
   data: {
+    coverImage: '',
     selectedType: '',
     personalityTypes: [
       { code: 'INTJ', name: '建筑师' },
@@ -21,27 +22,37 @@ Page({
     ],
     reviews: [
       {
-        avatar: '/pages/assets/avatar1.png',
+        avatar: 'https://nengying-1304691500.cos.ap-shanghai.myqcloud.com/avatar.png',
         username: '小红',
         mbti: 'INFP',
+        intro: '互联网设计师',
         content: '测评结果非常准确！帮助我更好地理解了自己的性格特点，推荐给大家！'
       },
       {
-        avatar: '/pages/assets/avatar2.png',
+        avatar: 'https://nengying-1304691500.cos.ap-shanghai.myqcloud.com/avatar.png',
         username: '阿明',
         mbti: 'ENTJ',
+        intro: '创业者',
         content: '专业的性格分析，对我的职业规划很有帮助，值得一试！'
       },
       {
-        avatar: '/pages/assets/avatar3.png',
+        avatar: 'https://nengying-1304691500.cos.ap-shanghai.myqcloud.com/avatar.png',
         username: '晓雯',
         mbti: 'ISFJ',
+        intro: '教育工作者',
         content: '界面设计很美观，测评过程体验流畅，结果分析也很详细。'
       }
     ]
   },
 
   onLoad() {
+    // 随机选择背景图 (cover1.jpg 到 cover10.jpg)
+    const randomNum = Math.floor(Math.random() * 10) + 1;
+    const coverImage = `https://nengying-1304691500.cos.ap-shanghai.myqcloud.com/cover${randomNum}.jpg`;
+    this.setData({
+      coverImage: coverImage
+    });
+
     // 检查是否已经完成过测评
     const mbtiResult = xhs.getStorageSync('mbti_result');
     if (mbtiResult) {

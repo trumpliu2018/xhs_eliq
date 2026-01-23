@@ -1,6 +1,7 @@
 <view class="page-container">
   <!-- 顶部banner -->
-  <view class="hero-section">
+  <view class="hero-section" style="background-image: url({{coverImage}});">
+    <view class="hero-overlay"></view>
     <view class="hero-content">
       <text class="hero-title">探索你的性格密码</text>
       <text class="hero-subtitle">MBTI专业性格测评</text>
@@ -9,8 +10,6 @@
         <view class="tag tag-success">专业指导</view>
       </view>
     </view>
-    <image class="hero-image" src="/pages/assets/mbti-hero.png" mode="aspectFill"></image>
-    <view class="hero-gradient"></view>
   </view>
 
   <!-- 什么是MBTI -->
@@ -54,9 +53,8 @@
           <image class="avatar avatar-small" src="{{review.avatar}}" mode="aspectFill"></image>
           <view class="review-user">
             <text class="text-body">{{review.username}}</text>
-            <text class="text-light">{{review.mbti}}</text>
+            <text class="text-light">{{review.mbti}} · {{review.intro}}</text>
           </view>
-          <view class="review-stars">⭐⭐⭐⭐⭐</view>
         </view>
         <text class="text-secondary mt-12">{{review.content}}</text>
       </view>

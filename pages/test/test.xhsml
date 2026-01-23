@@ -1,0 +1,100 @@
+<view class="page-container">
+  <!-- 进度条 -->
+  <view class="progress-section">
+    <view class="progress-header">
+      <text class="progress-text">第 {{currentIndex + 1}} / {{questions.length}} 题</text>
+      <text class="progress-percent">{{progressPercent}}%</text>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+  </view>
+
+  <!-- 题目卡片 -->
+  <view class="question-card">
+    <view class="question-number">Q{{currentIndex + 1}}</view>
+    <text class="question-text">{{currentQuestion.question}}</text>
+    
+    <!-- 题目配图（可选） -->
+    <image xhs:if="{{currentQuestion.image}}" 
+           class="question-image" 
+           src="{{currentQuestion.image}}" 
+           mode="aspectFill"></image>
+  </view>
+
+  <!-- 选项按钮 -->
+  <view class="options-section">
+    <view class="option-card" bindtap="selectOption" data-value="yes">
+      <view class="option-icon">✓</view>
+      <view class="option-content">
+        <text class="option-title">是的</text>
+        <text class="option-desc">符合我的情况</text>
+      </view>
+      <view class="option-arrow">→</view>
+    </view>
+
+    <view class="option-card" bindtap="selectOption" data-value="no">
+      <view class="option-icon">✗</view>
+      <view class="option-content">
+        <text class="option-title">不是</text>
+        <text class="option-desc">不太符合我</text>
+      </view>
+      <view class="option-arrow">→</view>
+    </view>
+  </view>
+
+  <!-- 导航按钮 -->
+  <view class="nav-buttons">
+    <button class="btn-ghost nav-btn" bindtap="prevQuestion" disabled="{{currentIndex === 0}}">
+      上一题
+    </button>
+    <button xhs:if="{{currentIndex < questions.length - 1}}" 
+            class="btn-secondary nav-btn" 
+            bindtap="nextQuestion"
+            disabled="{{!answers[currentIndex]}}">
+      下一题
+    </button>
+    <button xhs:else 
+            class="btn-primary nav-btn" 
+            bindtap="submitTest"
+            disabled="{{!isAllAnswered}}">
+      提交测评
+    </button>
+  </view>
+
+  <!-- 题目索引导航 -->
+  <view class="question-nav">
+    <scroll-view scroll-x class="question-nav-scroll">
+      <view class="question-nav-list">
+        <view xhs:for-items="{{questions}}" 
+              xhs:for-item="q" 
+              xhs:for-index="idx"
+              xhs:key="*item"
+              class="question-nav-item {{answers[idx] ? 'answered' : ''}} {{currentIndex === idx ? 'current' : ''}}"
+              bindtap="jumpToQuestion"
+              data-index="{{idx}}">
+          {{idx + 1}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 退出提示弹窗 -->
+  <view xhs:if="{{showExitModal}}" class="modal-mask" bindtap="hideExitModal">
+    <view class="modal-content" catchtap="preventClose">
+      <view class="modal-header">
+        <text class="modal-title">确认退出？</text>
+      </view>
+      <view class="modal-body">
+        <text class="modal-text">当前测评进度将会丢失，确定要退出吗？</text>
+      </view>
+      <view class="modal-footer">
+        <button class="btn-ghost modal-btn" bindtap="hideExitModal">继续测评</button>
+        <button class="btn-secondary modal-btn" bindtap="confirmExit">确认退出</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-bottom"></view>
+</view>

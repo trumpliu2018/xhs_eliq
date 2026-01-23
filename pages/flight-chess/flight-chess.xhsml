@@ -1,0 +1,92 @@
+<view class="page-container">
+  <!-- 游戏标题 -->
+  <view class="game-header">
+    <text class="game-title">飞行棋</text>
+    <text class="game-subtitle">童年经典，欢乐对战</text>
+  </view>
+
+  <!-- 游戏棋盘 -->
+  <view class="chess-board">
+    <image class="board-image" src="/pages/assets/flight-chess-board.png" mode="aspectFit"></image>
+    
+    <!-- 棋子显示（示意） -->
+    <view class="chess-pieces">
+      <view xhs:for-items="{{players}}" xhs:for-item="player" xhs:key="*item"
+            class="chess-piece player-{{player.id}}"
+            style="left: {{player.x}}%; top: {{player.y}}%;">
+        <view class="piece-inner">{{player.id}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 游戏控制 -->
+  <view class="game-controls">
+    <!-- 当前玩家 -->
+    <view class="current-player">
+      <text class="player-label">当前玩家</text>
+      <view class="player-indicator player-{{currentPlayer}}">
+        <text class="player-number">{{currentPlayer}}</text>
+      </view>
+    </view>
+
+    <!-- 骰子 -->
+    <view class="dice-container">
+      <view class="dice {{rolling ? 'rolling' : ''}}" bindtap="rollDice">
+        <text class="dice-number">{{diceNumber}}</text>
+      </view>
+      <text class="dice-hint">点击投骰子</text>
+    </view>
+
+    <!-- 游戏信息 -->
+    <view class="game-stats">
+      <view class="stat-row">
+        <text class="stat-label">回合</text>
+        <text class="stat-value">{{round}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 玩家状态 -->
+  <view class="players-status">
+    <view xhs:for-items="{{players}}" xhs:for-item="player" xhs:key="*item"
+          class="player-status {{currentPlayer === player.id ? 'active' : ''}}">
+      <view class="status-icon player-{{player.id}}">
+        <text>{{player.id}}</text>
+      </view>
+      <view class="status-info">
+        <text class="status-name">玩家 {{player.id}}</text>
+        <text class="status-progress">进度: {{player.progress}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="game-actions">
+    <button class="btn-ghost action-btn" bindtap="showRules">游戏规则</button>
+    <button class="btn-secondary action-btn" bindtap="resetGame">重新开始</button>
+  </view>
+
+  <!-- 规则弹窗 -->
+  <view xhs:if="{{showRulesModal}}" class="modal-mask" bindtap="hideRules">
+    <view class="modal-content rules-modal" catchtap="preventClose">
+      <view class="modal-header">
+        <text class="modal-title">游戏规则</text>
+      </view>
+      <scroll-view scroll-y class="rules-content">
+        <view class="rule-section">
+          <text class="rule-title">基本规则</text>
+          <text class="rule-text">1. 每位玩家投掷骰子，按点数移动棋子</text>
+          <text class="rule-text">2. 投到6可以再投一次</text>
+          <text class="rule-text">3. 先到达终点的玩家获胜</text>
+        </view>
+        <view class="rule-section">
+          <text class="rule-title">特殊规则</text>
+          <text class="rule-text">• 同色格子可以跳跃前进</text>
+          <text class="rule-text">• 遇到其他棋子可以将其击退</text>
+          <text class="rule-text">• 飞行快捷通道加速前进</text>
+        </view>
+      </scroll-view>
+      <button class="btn-primary modal-btn" bindtap="hideRules">知道了</button>
+    </view>
+  </view>
+</view>

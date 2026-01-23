@@ -1,0 +1,293 @@
+@import "../theme.css";
+
+.page-container {
+  padding: 20px 16px;
+  min-height: 100vh;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.game-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.game-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  display: block;
+}
+
+/* 棋盘 */
+.chess-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.board-image {
+  width: 100%;
+  height: 100%;
+}
+
+.chess-pieces {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chess-piece {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s;
+}
+
+.piece-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.player-1 .piece-inner { background: #FF2442; }
+.player-2 .piece-inner { background: #00D9A3; }
+.player-3 .piece-inner { background: #6C5CE7; }
+.player-4 .piece-inner { background: #FFA940; }
+
+/* 游戏控制 */
+.game-controls {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.current-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.player-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.player-indicator {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.player-indicator.player-1 { background: #FF2442; }
+.player-indicator.player-2 { background: #00D9A3; }
+.player-indicator.player-3 { background: #6C5CE7; }
+.player-indicator.player-4 { background: #FFA940; }
+
+/* 骰子 */
+.dice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dice {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(255, 36, 66, 0.4);
+  transition: all 0.1s;
+}
+
+.dice:active {
+  transform: scale(0.95);
+}
+
+.dice.rolling {
+  animation: roll 0.1s infinite;
+}
+
+@keyframes roll {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dice-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+}
+
+.dice-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.game-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* 玩家状态 */
+.players-status {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.player-status {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.player-status.active {
+  border-color: var(--primary-color);
+  transform: scale(1.02);
+}
+
+.status-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.status-icon.player-1 { background: #FF2442; }
+.status-icon.player-2 { background: #00D9A3; }
+.status-icon.player-3 { background: #6C5CE7; }
+.status-icon.player-4 { background: #FFA940; }
+
+.status-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.status-progress {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* 操作按钮 */
+.game-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-btn {
+  flex: 1;
+  height: 44px;
+  font-size: 15px;
+}
+
+/* 规则弹窗 */
+.rules-modal {
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rules-content {
+  flex: 1;
+  padding: 20px 24px;
+  max-height: 400px;
+}
+
+.rule-section {
+  margin-bottom: 24px;
+}
+
+.rule-section:last-child {
+  margin-bottom: 0;
+}
+
+.rule-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.rule-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  display: block;
+  margin-bottom: 8px;
+}

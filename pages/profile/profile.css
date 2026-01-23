@@ -1,0 +1,257 @@
+@import "../theme.css";
+
+.page-container {
+  background: linear-gradient(180deg, #FFF5F7 0%, #F7F8FA 30%);
+  padding-bottom: 40px;
+}
+
+/* 用户信息卡片 */
+.user-card {
+  margin: 16px 16px 20px;
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.user-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--bg-page);
+  border: 3px solid var(--primary-color);
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.user-id {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* MBTI徽章 */
+.mbti-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%);
+  border-radius: 16px;
+  color: white;
+  transition: all 0.3s;
+}
+
+.mbti-badge:active {
+  transform: scale(0.98);
+}
+
+.mbti-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mbti-icon {
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mbti-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mbti-type {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.mbti-name {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.mbti-arrow {
+  font-size: 24px;
+}
+
+/* 未测评提示 */
+.mbti-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 100%);
+  border-radius: 16px;
+  border: 2px dashed var(--primary-color);
+  transition: all 0.3s;
+}
+
+.mbti-empty:active {
+  transform: scale(0.98);
+}
+
+.empty-icon {
+  font-size: 40px;
+}
+
+.empty-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.empty-btn {
+  padding: 8px 24px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* 统计卡片 */
+.stats-card {
+  margin: 0 16px 24px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+}
+
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-color);
+}
+
+/* 菜单部分 */
+.menu-section {
+  margin: 0 16px 20px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0 8px 12px;
+  display: block;
+}
+
+.menu-list {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 12px;
+  transition: all 0.3s;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:active {
+  background: var(--bg-page);
+}
+
+.menu-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.cooperation-icon { background: linear-gradient(135deg, #FF6B9D 0%, #FFB347 100%); }
+.about-icon { background: linear-gradient(135deg, #6C5CE7 0%, #A8A4F5 100%); }
+.contact-icon { background: linear-gradient(135deg, #00D9A3 0%, #00E5B8 100%); }
+.privacy-icon { background: linear-gradient(135deg, #FFB347 0%, #FFA940 100%); }
+.terms-icon { background: linear-gradient(135deg, #A8A4F5 0%, #B8B5FF 100%); }
+.cache-icon { background: linear-gradient(135deg, #FF6B9D 0%, #FF8FAB 100%); }
+.update-icon { background: linear-gradient(135deg, #00D9A3 0%, #5FE3C0 100%); }
+.share-icon { background: linear-gradient(135deg, #6C5CE7 0%, #8B7EE8 100%); }
+
+.menu-text {
+  flex: 1;
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.menu-arrow {
+  font-size: 20px;
+  color: var(--text-light);
+}
+
+.menu-badge {
+  font-size: 13px;
+  color: var(--text-light);
+  padding: 4px 12px;
+  background: var(--bg-page);
+  border-radius: 12px;
+}
+
+.menu-version {
+  font-size: 13px;
+  color: var(--text-light);
+}

@@ -1,0 +1,153 @@
+<view class="page-container">
+  <!-- 顶部标题 -->
+  <view class="page-header">
+    <text class="page-title">互动游戏</text>
+    <text class="page-subtitle">放松心情，享受乐趣</text>
+  </view>
+
+  <!-- Bingo游戏卡片 -->
+  <view class="game-card bingo-card" bindtap="navigateToBingo">
+    <view class="game-content">
+      <view class="game-header">
+        <view class="game-icon">🎯</view>
+        <view class="game-info">
+          <text class="game-title">Bingo游戏</text>
+          <text class="game-desc">经典的宾果游戏，挑战你的运气</text>
+        </view>
+      </view>
+      
+      <view class="game-preview">
+        <image class="game-image" src="/pages/assets/bingo-preview.png" mode="aspectFill"></image>
+      </view>
+
+      <view class="game-features">
+        <view class="feature-tag">
+          <text class="feature-icon">⚡</text>
+          <text class="feature-text">快速配对</text>
+        </view>
+        <view class="feature-tag">
+          <text class="feature-icon">🏆</text>
+          <text class="feature-text">趣味挑战</text>
+        </view>
+        <view class="feature-tag">
+          <text class="feature-icon">🎁</text>
+          <text class="feature-text">丰富奖励</text>
+        </view>
+      </view>
+
+      <view class="game-stats">
+        <view class="stat-item">
+          <text class="stat-value">2,348</text>
+          <text class="stat-label">参与人数</text>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <text class="stat-value">4.8</text>
+          <text class="stat-label">游戏评分</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="game-action">
+      <text class="action-text">立即体验</text>
+      <text class="action-arrow">→</text>
+    </view>
+  </view>
+
+  <!-- 飞行棋游戏卡片 -->
+  <view class="game-card chess-card" bindtap="navigateToChess">
+    <view class="game-content">
+      <view class="game-header">
+        <view class="game-icon chess-icon">🎲</view>
+        <view class="game-info">
+          <text class="game-title">飞行棋</text>
+          <text class="game-desc">童年记忆，休闲对战</text>
+        </view>
+      </view>
+      
+      <view class="game-preview">
+        <image class="game-image" src="/pages/assets/chess-preview.png" mode="aspectFill"></image>
+      </view>
+
+      <view class="game-features">
+        <view class="feature-tag">
+          <text class="feature-icon">👥</text>
+          <text class="feature-text">多人对战</text>
+        </view>
+        <view class="feature-tag">
+          <text class="feature-icon">🎮</text>
+          <text class="feature-text">经典玩法</text>
+        </view>
+        <view class="feature-tag">
+          <text class="feature-icon">🌈</text>
+          <text class="feature-text">怀旧乐趣</text>
+        </view>
+      </view>
+
+      <view class="game-stats">
+        <view class="stat-item">
+          <text class="stat-value">1,856</text>
+          <text class="stat-label">参与人数</text>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <text class="stat-value">4.6</text>
+          <text class="stat-label">游戏评分</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="game-action">
+      <text class="action-text">立即体验</text>
+      <text class="action-arrow">→</text>
+    </view>
+  </view>
+
+  <!-- 更多游戏提示 -->
+  <view class="more-games-hint">
+    <view class="hint-icon">🎮</view>
+    <text class="hint-text">更多精彩游戏即将上线，敬请期待！</text>
+  </view>
+
+  <!-- 游戏规则说明 -->
+  <view class="card rules-card">
+    <view class="section-header">
+      <text class="section-icon">📖</text>
+      <text class="title-medium">游戏说明</text>
+    </view>
+    
+    <view class="rules-list mt-24">
+      <view class="rule-item">
+        <view class="rule-number">1</view>
+        <view class="rule-content">
+          <text class="rule-title">选择游戏</text>
+          <text class="rule-desc">点击上方游戏卡片进入游戏</text>
+        </view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-number">2</view>
+        <view class="rule-content">
+          <text class="rule-title">了解规则</text>
+          <text class="rule-desc">游戏开始前会有详细的规则说明</text>
+        </view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-number">3</view>
+        <view class="rule-content">
+          <text class="rule-title">开始游戏</text>
+          <text class="rule-desc">按照提示进行操作，享受游戏乐趣</text>
+        </view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-number">4</view>
+        <view class="rule-content">
+          <text class="rule-title">分享好友</text>
+          <text class="rule-desc">邀请好友一起玩，乐趣加倍</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-bottom"></view>
+</view>

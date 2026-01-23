@@ -1,0 +1,266 @@
+@import "../theme.css";
+
+.page-container {
+  padding-bottom: 40px;
+}
+
+/* 页面头部 */
+.page-header {
+  padding: 32px 24px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, #FFF5F7 0%, transparent 100%);
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  display: block;
+}
+
+/* 游戏卡片 */
+.game-card {
+  margin: 0 16px 20px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s;
+}
+
+.game-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.game-content {
+  padding: 24px;
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.game-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.chess-icon {
+  background: linear-gradient(135deg, #6C5CE7 0%, #A8A4F5 100%);
+}
+
+.game-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.game-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.game-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* 游戏预览图 */
+.game-preview {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: var(--bg-page);
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 游戏特性标签 */
+.game-features {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.feature-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 100%);
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+.feature-icon {
+  font-size: 16px;
+}
+
+.feature-text {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 游戏统计 */
+.game-stats {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-color);
+}
+
+/* 游戏操作按钮 */
+.game-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chess-card .game-action {
+  background: linear-gradient(135deg, #6C5CE7 0%, #A8A4F5 100%);
+}
+
+.action-text {
+  font-size: 16px;
+}
+
+.action-arrow {
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+
+.game-card:active .action-arrow {
+  transform: translateX(4px);
+}
+
+/* 更多游戏提示 */
+.more-games-hint {
+  margin: 0 16px 24px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px dashed var(--primary-color);
+}
+
+.hint-icon {
+  font-size: 24px;
+}
+
+.hint-text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 规则卡片 */
+.rules-card {
+  margin: 0 16px 24px;
+}
+
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rule-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.rule-number {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.rule-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
+}
+
+.rule-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rule-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

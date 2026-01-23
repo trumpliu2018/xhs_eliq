@@ -1,0 +1,8 @@
+<view class="page-container">
+  <view class="content-card">
+    <text class="page-title">联系我们</text>
+    <scroll-view scroll-y class="content-scroll">
+      <text class="content-text">客服邮箱: support@mbti.com\n客服电话: 400-123-4567</text>
+    </scroll-view>
+  </view>
+</view>

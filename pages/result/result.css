@@ -1,0 +1,368 @@
+@import "../theme.css";
+
+.page-container {
+  padding-bottom: 120px;
+}
+
+/* 结果Hero区域 */
+.result-hero {
+  position: relative;
+  margin: 0 16px 24px;
+  padding: 40px 24px;
+  background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 50%, #FFB347 100%);
+  border-radius: 24px;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  z-index: 2;
+}
+
+.result-type {
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  letter-spacing: 4px;
+}
+
+.result-name {
+  font-size: 24px;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.result-tagline {
+  font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.6;
+  max-width: 300px;
+  z-index: 2;
+}
+
+.result-image {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 200px;
+  height: 200px;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+/* 特征列表 */
+.traits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trait-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 100%);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.trait-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trait-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trait-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.trait-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* 维度分析 */
+.dimensions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dimension-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dimension-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dimension-bar {
+  height: 40px;
+  background: var(--bg-page);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+.dimension-fill {
+  height: 100%;
+  transition: width 0.5s ease-out;
+}
+
+.dimension-fill-left {
+  background: linear-gradient(90deg, #FF2442 0%, #FF6B9D 100%);
+}
+
+.dimension-fill-right {
+  background: linear-gradient(90deg, #6C5CE7 0%, #A8A4F5 100%);
+}
+
+.dimension-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  z-index: 2;
+  background: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 职业网格 */
+.career-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.career-tag {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 100%);
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+  border: 1px solid rgba(255, 36, 66, 0.2);
+}
+
+/* 名人列表 */
+.celebrity-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.celebrity-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.celebrity-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+}
+
+.celebrity-name {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* 咨询卡片 */
+.consult-card {
+  background: linear-gradient(135deg, #6C5CE7 0%, #A8A4F5 100%);
+  color: white;
+  margin: 0 16px 16px;
+  padding: 32px 24px;
+}
+
+.consult-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.consult-title {
+  font-size: 22px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.consult-subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  display: block;
+}
+
+.consult-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.consult-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.consult-feature-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.consult-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.price-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.price-value {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.price-original {
+  font-size: 16px;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.consult-button {
+  width: 100%;
+  background: white;
+  color: var(--secondary-color);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 联系方式 */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-page);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.contact-item:active {
+  background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 100%);
+  transform: scale(0.98);
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: white;
+  padding: 8px;
+}
+
+.contact-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.contact-value {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.contact-arrow {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+/* 操作按钮 */
+.action-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, white 0%, rgba(255, 255, 255, 0.95) 80%, transparent 100%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.action-btn {
+  flex: 1;
+  height: 48px;
+  font-size: 16px;
+}

@@ -1,0 +1,6 @@
+@import "../theme.css";
+.page-container { padding: 20px 16px; min-height: 100vh; }
+.content-card { background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-card); min-height: 600px; }
+.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); display: block; }
+.content-scroll { max-height: 70vh; }
+.content-text { font-size: 15px; color: var(--text-secondary); line-height: 1.8; white-space: pre-wrap; }

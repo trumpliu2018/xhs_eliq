@@ -1,0 +1,8 @@
+<view class="page-container">
+  <view class="content-card">
+    <text class="page-title">关于我们</text>
+    <scroll-view scroll-y class="content-scroll">
+      <text class="content-text">MBTI性格测评是一款专业的心理测评应用...</text>
+    </scroll-view>
+  </view>
+</view>

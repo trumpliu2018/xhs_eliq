@@ -1,0 +1,147 @@
+<view class="page-container">
+  <!-- 结果卡片 -->
+  <view class="result-hero">
+    <view class="result-badge">
+      <text class="result-type">{{result.type}}</text>
+      <text class="result-name">{{result.name}}</text>
+    </view>
+    <text class="result-tagline">{{result.tagline}}</text>
+    <image class="result-image" src="{{result.image}}" mode="aspectFill"></image>
+  </view>
+
+  <!-- 人格特征 -->
+  <view class="card section-card">
+    <view class="section-header">
+      <text class="section-icon">✨</text>
+      <text class="title-medium">人格特征</text>
+    </view>
+    <text class="text-body mt-16">{{result.description}}</text>
+    
+    <view class="traits-list mt-24">
+      <view xhs:for-items="{{result.traits}}" xhs:for-item="trait" xhs:key="*trait" class="trait-item">
+        <view class="trait-icon">{{trait.icon}}</view>
+        <view class="trait-content">
+          <text class="trait-title">{{trait.title}}</text>
+          <text class="trait-desc">{{trait.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 维度得分 -->
+  <view class="card section-card">
+    <view class="section-header">
+      <text class="section-icon">📊</text>
+      <text class="title-medium">维度分析</text>
+    </view>
+    <view class="dimensions-list mt-24">
+      <view xhs:for-items="{{dimensions}}" xhs:for-item="dim" xhs:key="*dim" class="dimension-row">
+        <view class="dimension-labels">
+          <text class="dimension-left">{{dim.left}}</text>
+          <text class="dimension-right">{{dim.right}}</text>
+        </view>
+        <view class="dimension-bar">
+          <view class="dimension-fill dimension-fill-left" style="width: {{dim.leftPercent}}%"></view>
+          <view class="dimension-center">{{dim.leftScore}} : {{dim.rightScore}}</view>
+          <view class="dimension-fill dimension-fill-right" style="width: {{dim.rightPercent}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 职业建议 -->
+  <view class="card section-card">
+    <view class="section-header">
+      <text class="section-icon">💼</text>
+      <text class="title-medium">适合职业</text>
+    </view>
+    <view class="career-grid mt-24">
+      <view xhs:for-items="{{result.careers}}" xhs:for-item="career" xhs:key="*career" class="career-tag">
+        {{career}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 名人代表 -->
+  <view class="card section-card">
+    <view class="section-header">
+      <text class="section-icon">⭐</text>
+      <text class="title-medium">名人代表</text>
+    </view>
+    <view class="celebrity-list mt-24">
+      <view xhs:for-items="{{result.celebrities}}" xhs:for-item="celeb" xhs:key="*celeb" class="celebrity-item">
+        <image class="celebrity-avatar" src="{{celeb.avatar}}" mode="aspectFill"></image>
+        <text class="celebrity-name">{{celeb.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 专业咨询服务 -->
+  <view class="card consult-card">
+    <view class="consult-header">
+      <text class="consult-title">想要更深入了解自己？</text>
+      <text class="consult-subtitle">专业心理咨询师为您提供1对1深度解析</text>
+    </view>
+    
+    <view class="consult-features">
+      <view class="consult-feature">
+        <text class="consult-feature-icon">✓</text>
+        <text class="consult-feature-text">30分钟深度交流</text>
+      </view>
+      <view class="consult-feature">
+        <text class="consult-feature-icon">✓</text>
+        <text class="consult-feature-text">个性化发展建议</text>
+      </view>
+      <view class="consult-feature">
+        <text class="consult-feature-icon">✓</text>
+        <text class="consult-feature-text">职业规划指导</text>
+      </view>
+    </view>
+
+    <view class="consult-price">
+      <text class="price-label">体验价</text>
+      <text class="price-value">¥99</text>
+      <text class="price-original">原价¥299</text>
+    </view>
+
+    <button class="btn-primary consult-button" bindtap="bookConsultation">
+      立即预约咨询
+    </button>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="card contact-card">
+    <view class="section-header">
+      <text class="section-icon">📱</text>
+      <text class="title-medium">联系我们</text>
+    </view>
+    
+    <view class="contact-list mt-24">
+      <view xhs:for-items="{{contacts}}" xhs:for-item="contact" xhs:key="*contact" 
+            class="contact-item"
+            data-type="{{contact.type}}"
+            data-value="{{contact.value}}"
+            bindtap="handleContact">
+        <image class="contact-icon" src="{{contact.icon}}" mode="aspectFit"></image>
+        <view class="contact-content">
+          <text class="contact-name">{{contact.name}}</text>
+          <text class="contact-value">{{contact.value}}</text>
+        </view>
+        <text class="contact-arrow">→</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="btn-secondary action-btn" bindtap="shareResult">
+      分享结果
+    </button>
+    <button class="btn-primary action-btn" bindtap="retakeTest">
+      重新测评
+    </button>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-bottom"></view>
+</view>

@@ -1,0 +1,75 @@
+<view class="page-container">
+  <!-- 顶部banner -->
+  <view class="hero-section">
+    <view class="hero-content">
+      <text class="hero-title">探索你的性格密码</text>
+      <text class="hero-subtitle">MBTI专业性格测评</text>
+      <view class="hero-tags">
+        <view class="tag tag-primary">科学严谨</view>
+        <view class="tag tag-success">专业指导</view>
+      </view>
+    </view>
+    <image class="hero-image" src="/pages/assets/mbti-hero.png" mode="aspectFill"></image>
+    <view class="hero-gradient"></view>
+  </view>
+
+  <!-- 什么是MBTI -->
+  <view class="card section-card">
+    <view class="section-header">
+      <view class="section-icon">💡</view>
+      <text class="title-medium">什么是MBTI？</text>
+    </view>
+    <text class="text-body mt-16">
+      MBTI（Myers-Briggs Type Indicator）是一种性格分类模型，通过评估个体在四个维度上的偏好，将人格分为16种类型。
+    </text>
+    <view class="dimension-list mt-24">
+      <view class="dimension-item">
+        <view class="dimension-label">外向 E / 内向 I</view>
+        <text class="text-secondary">能量来源</text>
+      </view>
+      <view class="dimension-item">
+        <view class="dimension-label">感觉 S / 直觉 N</view>
+        <text class="text-secondary">信息获取</text>
+      </view>
+      <view class="dimension-item">
+        <view class="dimension-label">思考 T / 情感 F</view>
+        <text class="text-secondary">决策方式</text>
+      </view>
+      <view class="dimension-item">
+        <view class="dimension-label">判断 J / 感知 P</view>
+        <text class="text-secondary">生活态度</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 用户评价 -->
+  <view class="card section-card">
+    <view class="section-header">
+      <view class="section-icon">💬</view>
+      <text class="title-medium">用户评价</text>
+    </view>
+    <view class="review-list mt-24">
+      <view xhs:for-items="{{reviews}}" xhs:for-item="review" xhs:key="*review" class="review-item">
+        <view class="review-header">
+          <image class="avatar avatar-small" src="{{review.avatar}}" mode="aspectFill"></image>
+          <view class="review-user">
+            <text class="text-body">{{review.username}}</text>
+            <text class="text-light">{{review.mbti}}</text>
+          </view>
+          <view class="review-stars">⭐⭐⭐⭐⭐</view>
+        </view>
+        <text class="text-secondary mt-12">{{review.content}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始测评按钮 -->
+  <view class="start-button-container">
+    <button class="btn-primary start-button" bindtap="startTest">
+      <text class="button-text">开始测评</text>
+    </button>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-bottom"></view>
+</view>

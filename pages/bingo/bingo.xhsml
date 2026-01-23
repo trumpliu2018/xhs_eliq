@@ -1,0 +1,49 @@
+<view class="page-container">
+  <!-- 游戏标题 -->
+  <view class="game-header">
+    <text class="game-title">Bingo游戏</text>
+    <text class="game-subtitle">连成一线即可获胜！</text>
+  </view>
+
+  <!-- 游戏板 -->
+  <view class="bingo-board">
+    <view xhs:for-items="{{board}}" xhs:for-item="row" xhs:for-index="i" xhs:key="*item" class="bingo-row">
+      <view xhs:for-items="{{row}}" xhs:for-item="cell" xhs:for-index="j" xhs:key="*item"
+            class="bingo-cell {{cell.selected ? 'selected' : ''}}"
+            bindtap="selectCell"
+            data-row="{{i}}"
+            data-col="{{j}}">
+        <text class="cell-number">{{cell.number}}</text>
+        <view xhs:if="{{cell.selected}}" class="cell-mark">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 游戏信息 -->
+  <view class="game-info-panel">
+    <view class="info-item">
+      <text class="info-label">已选择</text>
+      <text class="info-value">{{selectedCount}}/25</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">连线数</text>
+      <text class="info-value">{{bingoLines}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="game-actions">
+    <button class="btn-secondary action-btn" bindtap="resetGame">重新开始</button>
+    <button class="btn-primary action-btn" bindtap="checkBingo">检查Bingo</button>
+  </view>
+
+  <!-- 获胜弹窗 -->
+  <view xhs:if="{{showWinModal}}" class="modal-mask" bindtap="hideWinModal">
+    <view class="modal-content win-modal" catchtap="preventClose">
+      <view class="win-icon">🎉</view>
+      <text class="win-title">恭喜获胜！</text>
+      <text class="win-text">你成功连成了 {{bingoLines}} 条线！</text>
+      <button class="btn-primary modal-btn" bindtap="resetGame">再玩一局</button>
+    </view>
+  </view>
+</view>

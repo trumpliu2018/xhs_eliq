@@ -68,7 +68,29 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "MBTI首页",
+          "pathName": "pages/mbti/mbti",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "互动游戏",
+          "pathName": "pages/interact/interact",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/profile/profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
     }
   },
   "projectName": "eliq"

@@ -1,5 +1,17 @@
 {
   "pages": [
+    "pages/mbti/mbti",
+    "pages/interact/interact",
+    "pages/profile/profile",
+    "pages/test/test",
+    "pages/result/result",
+    "pages/bingo/bingo",
+    "pages/flight-chess/flight-chess",
+    "pages/cooperation/cooperation",
+    "pages/privacy/privacy",
+    "pages/terms/terms",
+    "pages/about/about",
+    "pages/contact/contact",
     "entry/component/component",
     "entry/api/api",
     "entry/search/search",
@@ -148,32 +160,33 @@
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "演示",
+    "navigationBarTitleText": "MBTI性格测评",
     "navigationBarBackgroundColor": "#ffffff",
     "backgroundColor": "#f7f7f7"
   },
   "tabBar": {
-    "color": "#33333366",
-    "selectedColor": "#FF0000",
-    "backgroundColor": "#FFF",
+    "color": "#666666",
+    "selectedColor": "#FF2442",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
     "list": [
       {
-        "pagePath": "entry/component/component",
-        "iconPath": "image/Status=Default.png",
-        "selectedIconPath": "image/Status=Filled.png",
-        "text": "组件"
+        "pagePath": "pages/mbti/mbti",
+        "iconPath": "image/tab-mbti.png",
+        "selectedIconPath": "image/tab-mbti-active.png",
+        "text": "MBTI"
       },
       {
-        "pagePath": "entry/api/api",
-        "iconPath": "image/Status=Default-1.png",
-        "selectedIconPath": "image/Status=Filled-1.png",
-        "text": "能力演示"
+        "pagePath": "pages/interact/interact",
+        "iconPath": "image/tab-game.png",
+        "selectedIconPath": "image/tab-game-active.png",
+        "text": "互动"
       },
       {
-        "pagePath": "entry/guide/guide",
-        "iconPath": "image/Status=Default-2.png",
-        "selectedIconPath": "image/Status=Filled-2.png",
-        "text": "运营指南"
+        "pagePath": "pages/profile/profile",
+        "iconPath": "image/tab-profile.png",
+        "selectedIconPath": "image/tab-profile-active.png",
+        "text": "我"
       }
     ]
   },

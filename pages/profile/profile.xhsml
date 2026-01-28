@@ -1,11 +1,21 @@
 <view class="page-container">
   <!-- 用户信息卡片 -->
   <view class="user-card">
-    <view class="user-header">
+    <!-- 已登录状态 -->
+    <view xhs:if="{{isLoggedIn}}" class="user-header">
       <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill" bindtap="changeAvatar"></image>
       <view class="user-info">
-        <text class="user-name">{{userInfo.name}}</text>
-        <text class="user-id">ID: {{userInfo.id}}</text>
+        <text class="user-name">{{userInfo.nickname}}</text>
+        <text class="user-id" xhs:if="{{userInfo.id}}">ID: {{userInfo.id}}</text>
+      </view>
+    </view>
+
+    <!-- 未登录状态 -->
+    <view xhs:else class="user-header login-prompt">
+      <image class="user-avatar avatar-placeholder" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+      <view class="user-info">
+        <text class="user-name">{{userInfo.nickname}}</text>
+        <button class="login-button" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">点击登录</button>
       </view>
     </view>
 
@@ -105,6 +115,11 @@
       <view class="menu-item" bindtap="shareApp">
         <view class="menu-icon share-icon">📤</view>
         <text class="menu-text">分享给好友</text>
+        <text class="menu-arrow">→</text>
+      </view>
+      <view xhs:if="{{isLoggedIn}}" class="menu-item logout-item" bindtap="handleLogout">
+        <view class="menu-icon logout-icon">🚪</view>
+        <text class="menu-text">退出登录</text>
         <text class="menu-arrow">→</text>
       </view>
     </view>

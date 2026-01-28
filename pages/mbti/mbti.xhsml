@@ -55,7 +55,7 @@
   <view class="card section-card">
     <view class="section-header">
       <view class="section-icon">💬</view>
-      <text class="title-medium">用户评价</text>
+      <text class="title-medium">声音</text>
     </view>
     <view class="review-list mt-24">
       <view xhs:for-items="{{reviews}}" xhs:for-item="review" xhs:key="*review" class="review-item">

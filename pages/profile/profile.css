@@ -255,3 +255,41 @@
   font-size: 13px;
   color: var(--text-light);
 }
+
+/* 登录相关样式 */
+.login-prompt .user-avatar {
+  opacity: 0.6;
+}
+
+.avatar-placeholder {
+  filter: grayscale(50%);
+}
+
+.login-button {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #FF6B9D 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  height: auto;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(255, 36, 66, 0.25);
+}
+
+.login-button::after {
+  border: none;
+}
+
+.logout-item {
+  color: #FF4D4F;
+}
+
+.logout-item .menu-text {
+  color: #FF4D4F;
+}
+
+.logout-icon {
+  background: linear-gradient(135deg, #FF4D4F 0%, #FF7875 100%);
+}

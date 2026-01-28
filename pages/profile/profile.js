@@ -24,7 +24,31 @@ Page({
       games: 0,
       days: 1
     },
-    cacheSize: '0 KB'
+    cacheSize: '0 KB',
+    showUpdateForm: false,
+    updateForm: {
+      nickname: '',
+      mbti_type: '',
+      avatar: ''
+    },
+    mbtiTypes: [
+      { type: 'ENFJ', name: '主人公', avatar: '/pages/assets/avatar/enfj.png' },
+      { type: 'ENFP', name: '竞选者', avatar: '/pages/assets/avatar/enfp.png' },
+      { type: 'ENTJ', name: '指挥官', avatar: '/pages/assets/avatar/entj.png' },
+      { type: 'ENTP', name: '辩论家', avatar: '/pages/assets/avatar/entp.png' },
+      { type: 'ESFJ', name: '执政官', avatar: '/pages/assets/avatar/esfj.png' },
+      { type: 'ESFP', name: '表演者', avatar: '/pages/assets/avatar/esfp.png' },
+      { type: 'ESTJ', name: '总经理', avatar: '/pages/assets/avatar/estj.png' },
+      { type: 'ESTP', name: '企业家', avatar: '/pages/assets/avatar/estp.png' },
+      { type: 'INFJ', name: '提倡者', avatar: '/pages/assets/avatar/infj.png' },
+      { type: 'INFP', name: '调停者', avatar: '/pages/assets/avatar/infp.png' },
+      { type: 'INTJ', name: '建筑师', avatar: '/pages/assets/avatar/intj.png' },
+      { type: 'INTP', name: '逻辑学家', avatar: '/pages/assets/avatar/intp.png' },
+      { type: 'ISFJ', name: '守护者', avatar: '/pages/assets/avatar/isfj.png' },
+      { type: 'ISFP', name: '探险家', avatar: '/pages/assets/avatar/isfp.png' },
+      { type: 'ISTJ', name: '物流师', avatar: '/pages/assets/avatar/istj.png' },
+      { type: 'ISTP', name: '鉴赏家', avatar: '/pages/assets/avatar/istp.png' }
+    ]
   },
 
   onLoad() {
@@ -341,5 +365,137 @@ Page({
       path: '/pages/mbti/mbti',
       imageUrl: '/pages/assets/share-app.png'
     };
+  },
+
+  // 显示更新信息弹窗
+  showUpdateModal() {
+    if (!this.data.isLoggedIn) {
+      xhs.showToast({
+        title: '请先登录',
+        icon: 'none'
+      });
+      return;
+    }
+
+    // 预填充当前用户信息
+    const userInfo = this.data.userInfo;
+    this.setData({
+      showUpdateForm: true,
+      updateForm: {
+        nickname: userInfo.nickname || '',
+        mbti_type: userInfo.mbti_type || '',
+        avatar: userInfo.avatar || ''
+      }
+    });
+  },
+
+  // 隐藏更新信息弹窗
+  hideUpdateModal() {
+    this.setData({
+      showUpdateForm: false
+    });
+  },
+
+  // 阻止弹窗关闭（点击弹窗内容区域）
+  preventClose() {
+    // 阻止事件冒泡
+  },
+
+  // 昵称输入
+  onNicknameInput(e) {
+    this.setData({
+      'updateForm.nickname': e.detail.value
+    });
+  },
+
+  // 选择MBTI类型
+  selectMBTIType(e) {
+    const type = e.currentTarget.dataset.type;
+    this.setData({
+      'updateForm.mbti_type': type
+    });
+  },
+
+  // 提交更新
+  submitUpdate() {
+    const { nickname, mbti_type } = this.data.updateForm;
+
+    // 验证
+    if (!nickname || !nickname.trim()) {
+      xhs.showToast({
+        title: '请输入昵称',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (!mbti_type) {
+      xhs.showToast({
+        title: '请选择MBTI类型',
+        icon: 'none'
+      });
+      return;
+    }
+
+    xhs.showLoading({
+      title: '更新中...'
+    });
+
+    // 调用更新API
+    api.updateUserProfile({
+      nickname: nickname.trim(),
+      mbti_type: mbti_type,
+      avatar: ''
+    })
+      .then((res) => {
+        xhs.hideLoading();
+        
+        xhs.showToast({
+          title: '更新成功',
+          icon: 'success'
+        });
+
+        // 更新本地用户信息
+        const userInfo = this.data.userInfo;
+        userInfo.nickname = nickname.trim();
+        userInfo.mbti_type = mbti_type;
+        
+        // 根据MBTI类型更新头像
+        const avatarPath = `/pages/assets/avatar/${mbti_type.toLowerCase()}.png`;
+        userInfo.avatar = avatarPath;
+
+        this.setData({
+          userInfo: userInfo,
+          showUpdateForm: false
+        });
+
+        // 保存到本地存储
+        auth.saveAuthInfo(auth.getToken(), userInfo);
+
+        // 更新MBTI结果显示
+        this.setData({
+          mbtiResult: {
+            type: mbti_type,
+            name: mbtiNames[mbti_type] || mbti_type
+          }
+        });
+
+        // 同时保存到 mbti_result 存储
+        xhs.setStorageSync('mbti_result', {
+          type: mbti_type,
+          name: mbtiNames[mbti_type] || mbti_type
+        });
+      })
+      .catch((err) => {
+        xhs.hideLoading();
+        
+        console.error('Update profile failed:', err);
+        
+        xhs.showToast({
+          title: err.message || '更新失败',
+          icon: 'none',
+          duration: 2000
+        });
+      });
   }
 });

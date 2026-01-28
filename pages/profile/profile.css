@@ -293,3 +293,239 @@
 .logout-icon {
   background: linear-gradient(135deg, #FF4D4F 0%, #FF7875 100%);
 }
+
+/* 更新信息按钮 */
+.update-btn {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #FF6B9D 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  height: auto;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(255, 36, 66, 0.25);
+  flex-shrink: 0;
+}
+
+.update-btn::after {
+  border: none;
+}
+
+.update-btn:active {
+  opacity: 0.8;
+  transform: scale(0.95);
+}
+
+/* 更新信息弹窗 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-container {
+  width: 100%;
+  max-width: 600px;
+  max-height: 85vh;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.3s ease-out;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 32px 24px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: block;
+}
+
+.modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.form-item {
+  margin-bottom: 28px;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.form-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.required {
+  color: #FF4D4F;
+}
+
+.test-link {
+  font-size: 13px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  background: var(--bg-page);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-size: 15px;
+  color: var(--text-primary);
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  background: white;
+}
+
+/* MBTI 类型网格 */
+.mbti-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.mbti-type-card {
+  background: var(--bg-page);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.mbti-type-card:active {
+  transform: scale(0.95);
+}
+
+.mbti-type-card.selected {
+  background: linear-gradient(135deg, #FFF5F7 0%, #FFF0F0 100%);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(255, 36, 66, 0.15);
+}
+
+.mbti-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+}
+
+.mbti-type-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.mbti-type-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.mbti-type-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.modal-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 12px;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  line-height: 1;
+  transition: all 0.3s;
+}
+
+.modal-btn::after {
+  border: none;
+}
+
+.cancel-btn {
+  background: var(--bg-page);
+  color: var(--text-secondary);
+}
+
+.cancel-btn:active {
+  background: #E8E8E8;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #FF6B9D 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 36, 66, 0.25);
+}
+
+.submit-btn:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}

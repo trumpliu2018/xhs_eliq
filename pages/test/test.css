@@ -200,29 +200,16 @@
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
+  justify-content: space-between;
 }
 
 .nav-btn {
   height: 48px;
   line-height: 48px;
   font-size: 15px;
-  min-width: 0;
   padding: 0 !important;
-}
-
-.nav-btn:first-child {
-  flex: 0 0 auto;
-  width: 90px;
-}
-
-.nav-btn:nth-child(2) {
   flex: 1;
-  min-width: 90px;
-}
-
-.nav-btn:last-child {
-  flex: 1;
-  min-width: 100px;
+  max-width: 120px;
 }
 
 /* 题目索引导航 */

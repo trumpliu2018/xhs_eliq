@@ -78,7 +78,8 @@ function updateUserProfile(data) {
 // 获取 MBTI 测试题目
 function getQuestions() {
   return request('/questions', {
-    method: 'GET'
+    method: 'GET',
+    needAuth: true
   });
 }
 

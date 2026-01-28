@@ -1,75 +1,96 @@
-// MBTI测评题库 - 每个维度10道题，共40题
-const questions = [
-  // E-I 维度 (外向-内向)
-  { id: 1, question: '在社交场合中，我通常是主动与他人交谈的那个人', dimension: 'EI', yesScore: 'E' },
-  { id: 2, question: '我更喜欢参加热闹的聚会，而不是安静地独处', dimension: 'EI', yesScore: 'E' },
-  { id: 3, question: '我觉得与陌生人交流是一件有趣的事情', dimension: 'EI', yesScore: 'E' },
-  { id: 4, question: '长时间独处会让我感到孤独和不安', dimension: 'EI', yesScore: 'E' },
-  { id: 5, question: '我在团队中更喜欢担任领导或协调的角色', dimension: 'EI', yesScore: 'E' },
-  { id: 6, question: '我需要独处的时间来充电和恢复精力', dimension: 'EI', yesScore: 'I' },
-  { id: 7, question: '我更喜欢一对一的深度交流，而不是大型聚会', dimension: 'EI', yesScore: 'I' },
-  { id: 8, question: '在做决定前，我倾向于先独自思考', dimension: 'EI', yesScore: 'I' },
-  { id: 9, question: '我觉得在人群中待太久会让我感到疲惫', dimension: 'EI', yesScore: 'I' },
-  { id: 10, question: '我通常在说话前会先仔细考虑', dimension: 'EI', yesScore: 'I' },
-
-  // S-N 维度 (感觉-直觉)
-  { id: 11, question: '我更关注事物的具体细节，而非整体概念', dimension: 'SN', yesScore: 'S' },
-  { id: 12, question: '我喜欢按照既定的步骤和方法做事', dimension: 'SN', yesScore: 'S' },
-  { id: 13, question: '我更相信实际经验，而非理论知识', dimension: 'SN', yesScore: 'S' },
-  { id: 14, question: '我喜欢处理具体的、可见的事物', dimension: 'SN', yesScore: 'S' },
-  { id: 15, question: '我善于记住具体的事实和数据', dimension: 'SN', yesScore: 'S' },
-  { id: 16, question: '我经常会想象未来的各种可能性', dimension: 'SN', yesScore: 'N' },
-  { id: 17, question: '我喜欢探索新的想法和概念', dimension: 'SN', yesScore: 'N' },
-  { id: 18, question: '我更关注事物背后的含义和关联', dimension: 'SN', yesScore: 'N' },
-  { id: 19, question: '我喜欢用隐喻和比喻来表达想法', dimension: 'SN', yesScore: 'N' },
-  { id: 20, question: '我对创新和改变充满兴趣', dimension: 'SN', yesScore: 'N' },
-
-  // T-F 维度 (思考-情感)
-  { id: 21, question: '在做决定时，我更注重逻辑分析而非个人感受', dimension: 'TF', yesScore: 'T' },
-  { id: 22, question: '我认为客观真理比人际和谐更重要', dimension: 'TF', yesScore: 'T' },
-  { id: 23, question: '我能够保持情绪稳定，即使在压力下也能理性思考', dimension: 'TF', yesScore: 'T' },
-  { id: 24, question: '我更看重事情的公平性，而非当事人的感受', dimension: 'TF', yesScore: 'T' },
-  { id: 25, question: '批评别人时，我会直接指出问题所在', dimension: 'TF', yesScore: 'T' },
-  { id: 26, question: '做决定时，我会优先考虑对他人的影响', dimension: 'TF', yesScore: 'F' },
-  { id: 27, question: '我很容易感受到他人的情绪变化', dimension: 'TF', yesScore: 'F' },
-  { id: 28, question: '维持和谐的人际关系对我很重要', dimension: 'TF', yesScore: 'F' },
-  { id: 29, question: '我在批评他人时会特别注意措辞', dimension: 'TF', yesScore: 'F' },
-  { id: 30, question: '我经常基于个人价值观做判断', dimension: 'TF', yesScore: 'F' },
-
-  // J-P 维度 (判断-感知)
-  { id: 31, question: '我喜欢制定详细的计划并按计划执行', dimension: 'JP', yesScore: 'J' },
-  { id: 32, question: '我倾向于尽早完成任务，而不是拖到最后', dimension: 'JP', yesScore: 'J' },
-  { id: 33, question: '我喜欢有条理、有组织的生活方式', dimension: 'JP', yesScore: 'J' },
-  { id: 34, question: '我不喜欢临时改变已定的计划', dimension: 'JP', yesScore: 'J' },
-  { id: 35, question: '我认为守时和遵守承诺很重要', dimension: 'JP', yesScore: 'J' },
-  { id: 36, question: '我喜欢保持灵活性，随机应变', dimension: 'JP', yesScore: 'P' },
-  { id: 37, question: '我在最后期限前能发挥出最佳状态', dimension: 'JP', yesScore: 'P' },
-  { id: 38, question: '我享受探索新事物，即使没有明确的计划', dimension: 'JP', yesScore: 'P' },
-  { id: 39, question: '我能够同时处理多项任务', dimension: 'JP', yesScore: 'P' },
-  { id: 40, question: '我喜欢保持开放的选择，不急于做决定', dimension: 'JP', yesScore: 'P' }
-];
+const api = require('../../util/api.js');
 
 Page({
   data: {
-    questions: questions,
+    questions: [],
     currentIndex: 0,
     answers: [], // 存储答案
-    currentQuestion: questions[0],
+    currentQuestion: null,
     progressPercent: 0,
     isAllAnswered: false,
-    showExitModal: false
+    showExitModal: false,
+    isLoading: true,
+    loadError: false
   },
 
   onLoad() {
-    // 初始化answers数组
-    const answers = new Array(questions.length).fill(null);
-    this.setData({
-      answers: answers
+    // 从API加载题目
+    this.loadQuestions();
+  },
+
+  // 从API加载题目
+  loadQuestions() {
+    xhs.showLoading({
+      title: '加载题目中...'
     });
 
-    // 尝试恢复之前的答题进度
+    this.setData({
+      isLoading: true,
+      loadError: false
+    });
+
+    api.getQuestions()
+      .then((data) => {
+        // 转换API返回的数据格式
+        const questions = data
+          .filter(q => q.is_active) // 只使用激活的题目
+          .sort((a, b) => a.order - b.order) // 按order排序
+          .map(q => ({
+            id: q.id,
+            question: q.content,
+            dimension: q.dimension,
+            yesScore: q.direction
+          }));
+
+        if (questions.length === 0) {
+          throw new Error('没有可用的题目');
+        }
+
+        // 初始化answers数组
+        const answers = new Array(questions.length).fill(null);
+
+        this.setData({
+          questions: questions,
+          answers: answers,
+          currentQuestion: questions[0],
+          isLoading: false
+        });
+
+        xhs.hideLoading();
+
+        // 尝试恢复之前的答题进度
+        this.restoreProgress(questions.length);
+      })
+      .catch((err) => {
+        console.error('加载题目失败:', err);
+        
+        xhs.hideLoading();
+        
+        this.setData({
+          isLoading: false,
+          loadError: true
+        });
+
+        xhs.showModal({
+          title: '加载失败',
+          content: err.message || '无法加载题目，请检查网络后重试',
+          confirmText: '重试',
+          cancelText: '返回',
+          success: (res) => {
+            if (res.confirm) {
+              this.loadQuestions();
+            } else {
+              xhs.navigateBack();
+            }
+          }
+        });
+      });
+  },
+
+  // 恢复答题进度
+  restoreProgress(questionsLength) {
     const savedAnswers = xhs.getStorageSync('mbti_test_progress');
-    if (savedAnswers && savedAnswers.length === questions.length) {
+    if (savedAnswers && savedAnswers.length === questionsLength) {
       xhs.showModal({
         title: '提示',
         content: '检测到未完成的测评，是否继续？',

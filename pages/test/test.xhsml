@@ -63,16 +63,15 @@
       <button class="btn-ghost nav-btn" bindtap="prevQuestion" disabled="{{currentIndex === 0}}">
         上一题
       </button>
-      <button xhs:if="{{currentIndex < questions.length - 1}}" 
+      <button xhs:if="{{!isAllAnswered}}" 
               class="btn-secondary nav-btn" 
               bindtap="nextQuestion"
-              disabled="{{!answers[currentIndex]}}">
+              disabled="{{currentIndex >= questions.length - 1}}">
         下一题
       </button>
-      <button xhs:else 
+      <button xhs:if="{{isAllAnswered}}" 
               class="btn-primary nav-btn" 
-              bindtap="submitTest"
-              disabled="{{!isAllAnswered}}">
+              bindtap="submitTest">
         提交测评
       </button>
     </view>

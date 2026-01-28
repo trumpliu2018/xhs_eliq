@@ -69,9 +69,9 @@
 }
 
 .btn-secondary {
-  background: white;
+  background: white !important;
   color: var(--primary-color) !important;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--primary-color) !important;
   border-radius: var(--radius-button);
   padding: 0;
   font-size: 16px;
@@ -81,17 +81,20 @@
 }
 
 .btn-secondary::after {
-  border: none;
+  border: none !important;
 }
 
 .btn-secondary[disabled] {
-  opacity: 0.4;
+  opacity: 0.4 !important;
+  background: white !important;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
 }
 
 .btn-ghost {
-  background: transparent;
+  background: transparent !important;
   color: var(--text-secondary) !important;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color) !important;
   border-radius: var(--radius-button);
   padding: 0;
   font-size: 14px;
@@ -100,11 +103,14 @@
 }
 
 .btn-ghost::after {
-  border: none;
+  border: none !important;
 }
 
 .btn-ghost[disabled] {
-  opacity: 0.4;
+  opacity: 0.4 !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--border-color) !important;
 }
 
 /* 标题样式 */

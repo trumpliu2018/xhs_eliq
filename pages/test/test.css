@@ -212,6 +212,82 @@
   max-width: 120px;
 }
 
+/* 重置button默认样式 */
+.nav-btn {
+  position: relative;
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  overflow: visible;
+  border-radius: 12px;
+}
+
+.nav-btn::after {
+  display: none;
+  border: none;
+}
+
+.button-hover {
+  opacity: 0.8;
+}
+
+/* btn-secondary 样式（下一题按钮） - 正常状态 */
+xhs-button.nav-btn.btn-secondary,
+button.nav-btn.btn-secondary {
+  background-color: #FFFFFF !important;
+  color: #FF2442 !important;
+  border: 2px solid #FF2442 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+/* btn-secondary 样式（下一题按钮） - 禁用状态 */
+xhs-button.nav-btn.btn-secondary.disabled,
+button.nav-btn.btn-secondary.disabled {
+  background-color: #FFFFFF !important;
+  color: #FF2442 !important;
+  border: 2px solid #FF2442 !important;
+  font-weight: 600 !important;
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+}
+
+/* btn-ghost 样式（上一题按钮） - 正常状态 */
+xhs-button.nav-btn.btn-ghost,
+button.nav-btn.btn-ghost {
+  background-color: transparent !important;
+  color: #666666 !important;
+  border: 1px solid #E8E8E8 !important;
+  opacity: 1 !important;
+}
+
+/* btn-ghost 样式（上一题按钮） - 禁用状态 */
+xhs-button.nav-btn.btn-ghost.disabled,
+button.nav-btn.btn-ghost.disabled {
+  background-color: transparent !important;
+  color: #666666 !important;
+  border: 1px solid #E8E8E8 !important;
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+}
+
+/* btn-primary 样式（提交测评按钮） */
+xhs-button.nav-btn.btn-primary,
+button.nav-btn.btn-primary {
+  background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
 /* 题目索引导航 */
 .question-nav {
   background: white;

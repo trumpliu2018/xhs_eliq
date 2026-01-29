@@ -52,16 +52,14 @@ Page({
   },
 
   onLoad() {
-    this.checkLoginStatus();
-    this.loadMBTIResult();
+    this.checkLoginStatus(); // 会自动调用 loadMBTIResult()
     this.loadStats();
     this.calculateCacheSize();
   },
 
   onShow() {
     // 每次显示页面时检查登录状态和刷新数据
-    this.checkLoginStatus();
-    this.loadMBTIResult();
+    this.checkLoginStatus(); // 会自动调用 loadMBTIResult()
   },
 
   // 检查登录状态
@@ -80,6 +78,9 @@ Page({
           id: null,
           mbti_type: null
         }
+      }, () => {
+        // userInfo更新后，重新加载MBTI结果
+        this.loadMBTIResult();
       });
     }
   },
@@ -88,22 +89,29 @@ Page({
   loadUserInfo() {
     const userInfo = auth.getCurrentUser();
     if (userInfo) {
-      this.setData({ userInfo });
-      
-      // 如果用户有 MBTI 类型，同步到 mbtiResult
-      if (userInfo.mbti_type) {
-        this.setData({
-          mbtiResult: {
-            type: userInfo.mbti_type,
-            name: mbtiNames[userInfo.mbti_type] || userInfo.mbti_type
-          }
-        });
-      }
+      this.setData({ userInfo }, () => {
+        // userInfo更新后，重新加载MBTI结果
+        this.loadMBTIResult();
+      });
     }
   },
 
   // 加载MBTI结果
   loadMBTIResult() {
+    const userInfo = this.data.userInfo;
+    
+    // 优先使用用户信息中的 mbti_type（服务器数据）
+    if (userInfo && userInfo.mbti_type) {
+      this.setData({
+        mbtiResult: {
+          type: userInfo.mbti_type,
+          name: mbtiNames[userInfo.mbti_type] || userInfo.mbti_type
+        }
+      });
+      return;
+    }
+    
+    // 其次使用本地存储的测评结果
     const result = xhs.getStorageSync('mbti_result');
     if (result && result.type) {
       this.setData({
@@ -113,6 +121,7 @@ Page({
         }
       });
     } else {
+      // 都没有，显示未测评
       this.setData({
         mbtiResult: null
       });

@@ -10,7 +10,8 @@ Page({
     isAllAnswered: false,
     showExitModal: false,
     isLoading: true,
-    loadError: false
+    loadError: false,
+    scrollIntoView: ''
   },
 
   onLoad() {
@@ -154,7 +155,8 @@ Page({
       const newIndex = this.data.currentIndex - 1;
       this.setData({
         currentIndex: newIndex,
-        currentQuestion: this.data.questions[newIndex]
+        currentQuestion: this.data.questions[newIndex],
+        scrollIntoView: `nav-item-${newIndex}`
       });
     }
   },
@@ -165,7 +167,8 @@ Page({
       const newIndex = this.data.currentIndex + 1;
       this.setData({
         currentIndex: newIndex,
-        currentQuestion: this.data.questions[newIndex]
+        currentQuestion: this.data.questions[newIndex],
+        scrollIntoView: `nav-item-${newIndex}`
       });
     }
   },
@@ -175,7 +178,8 @@ Page({
     const index = e.currentTarget.dataset.index;
     this.setData({
       currentIndex: index,
-      currentQuestion: this.data.questions[index]
+      currentQuestion: this.data.questions[index],
+      scrollIntoView: `nav-item-${index}`
     });
   },
 

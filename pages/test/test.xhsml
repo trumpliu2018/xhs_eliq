@@ -81,12 +81,16 @@
 
     <!-- 题目索引导航 -->
     <view class="question-nav">
-      <scroll-view scroll-x class="question-nav-scroll">
+      <scroll-view scroll-x 
+                   class="question-nav-scroll"
+                   scroll-into-view="{{scrollIntoView}}"
+                   scroll-with-animation="{{true}}">
         <view class="question-nav-list">
           <view xhs:for-items="{{questions}}" 
                 xhs:for-item="q" 
                 xhs:for-index="idx"
                 xhs:key="*item"
+                id="nav-item-{{idx}}"
                 class="question-nav-item {{answers[idx] ? 'answered' : ''}} {{currentIndex === idx ? 'current' : ''}}"
                 bindtap="jumpToQuestion"
                 data-index="{{idx}}">

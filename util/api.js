@@ -83,6 +83,14 @@ function getQuestions() {
   });
 }
 
+// 获取当前测试会话
+function getCurrentTestSession() {
+  return request('/test/session/current', {
+    method: 'GET',
+    needAuth: true
+  });
+}
+
 // 创建测试会话
 function createTestSession() {
   return request('/test/session', {
@@ -97,7 +105,7 @@ function submitAnswers(testSessionId, answers) {
     method: 'POST',
     data: {
       test_session_id: testSessionId,
-      answers: answers
+      answers: answers // [{question_id: number, answer: 'yes'|'no'}]
     },
     needAuth: true
   });
@@ -116,6 +124,7 @@ module.exports = {
   getUserProfile,
   updateUserProfile,
   getQuestions,
+  getCurrentTestSession,
   createTestSession,
   submitAnswers,
   getMBTIInfo

@@ -11,24 +11,93 @@ Page({
     showExitModal: false,
     isLoading: true,
     loadError: false,
-    scrollIntoView: ''
+    scrollIntoView: '',
+    testSession: null, // 测试会话信息
+    testSessionId: null // 测试会话ID
   },
 
   onLoad() {
-    // 从API加载题目
-    this.loadQuestions();
+    // 初始化测试会话并加载题目
+    this.initTestSession();
   },
 
-  // 从API加载题目
-  loadQuestions() {
+  // 初始化测试会话
+  initTestSession() {
     xhs.showLoading({
-      title: '加载题目中...'
+      title: '初始化中...'
     });
 
     this.setData({
       isLoading: true,
       loadError: false
     });
+
+    // 先检查是否存在正在进行的会话
+    api.getCurrentTestSession()
+      .then((session) => {
+        if (session && session.status === 'in_progress') {
+          // 存在进行中的会话，使用该会话
+          console.log('找到正在进行的会话:', session);
+          this.setData({
+            testSession: session,
+            testSessionId: session.test_session_id
+          });
+          
+          // 加载题目
+          this.loadQuestions();
+        } else {
+          // 没有进行中的会话，创建新会话
+          console.log('没有进行中的会话，创建新会话');
+          return api.createTestSession();
+        }
+      })
+      .then((response) => {
+        if (response) {
+          // 创建了新会话
+          console.log('创建新会话成功:', response);
+          this.setData({
+            testSession: response.session,
+            testSessionId: response.test_session_id
+          });
+          
+          // 加载题目
+          this.loadQuestions();
+        }
+      })
+      .catch((err) => {
+        console.error('初始化测试会话失败:', err);
+        
+        xhs.hideLoading();
+        
+        this.setData({
+          isLoading: false,
+          loadError: true
+        });
+
+        xhs.showModal({
+          title: '初始化失败',
+          content: err.message || '无法初始化测试会话，请检查网络后重试',
+          confirmText: '重试',
+          cancelText: '返回',
+          success: (res) => {
+            if (res.confirm) {
+              this.initTestSession();
+            } else {
+              xhs.navigateBack();
+            }
+          }
+        });
+      });
+  },
+
+  // 从API加载题目
+  loadQuestions() {
+    // 如果已经在loading状态，不需要再次显示
+    if (!this.data.isLoading) {
+      xhs.showLoading({
+        title: '加载题目中...'
+      });
+    }
 
     api.getQuestions()
       .then((data) => {
@@ -193,27 +262,72 @@ Page({
       return;
     }
 
+    if (!this.data.testSessionId) {
+      xhs.showToast({
+        title: '会话异常，请重新开始测评',
+        icon: 'none'
+      });
+      return;
+    }
+
     xhs.showLoading({
-      title: '分析中...'
+      title: '提交中...'
     });
 
-    // 计算MBTI类型
-    setTimeout(() => {
-      const result = this.calculateMBTI();
-      
-      // 保存结果
-      xhs.setStorageSync('mbti_result', result);
-      
-      // 清除测评进度
-      xhs.removeStorageSync('mbti_test_progress');
-      
-      xhs.hideLoading();
-      
-      // 跳转到结果页面
-      xhs.redirectTo({
-        url: '/pages/result/result'
+    // 构造答案数据
+    const answers = this.data.questions.map((q, index) => ({
+      question_id: q.id,
+      answer: this.data.answers[index] // 'yes' 或 'no'
+    }));
+
+    // 提交到服务器
+    api.submitAnswers(this.data.testSessionId, answers)
+      .then((response) => {
+        console.log('提交成功:', response);
+        
+        // 保存结果到本地
+        const result = {
+          type: response.mbti_type,
+          result: response.result,
+          timestamp: new Date().getTime()
+        };
+        xhs.setStorageSync('mbti_result', result);
+        
+        // 清除测评进度
+        xhs.removeStorageSync('mbti_test_progress');
+        
+        xhs.hideLoading();
+        
+        xhs.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 1500
+        });
+        
+        // 跳转到结果页面
+        setTimeout(() => {
+          xhs.redirectTo({
+            url: '/pages/result/result'
+          });
+        }, 1500);
+      })
+      .catch((err) => {
+        console.error('提交失败:', err);
+        
+        xhs.hideLoading();
+        
+        xhs.showModal({
+          title: '提交失败',
+          content: err.message || '无法提交答案，请稍后重试',
+          confirmText: '重试',
+          cancelText: '取消',
+          success: (res) => {
+            if (res.confirm) {
+              this.submitTest();
+            }
+          }
+        });
       });
-    }, 1500);
   },
 
   // 计算MBTI类型

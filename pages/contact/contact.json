@@ -1,1 +1,8 @@
-{"navigationBarTitleText":"联系我们","navigationBarBackgroundColor":"#FFFFFF","navigationBarTextStyle":"black"}
+{
+  "navigationBarTitleText": "联系我们",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "social-media": "/components/social-media/social-media"
+  }
+}

@@ -40,6 +40,21 @@
     </view>
   </view>
 
+  <!-- 关于我 -->
+  <view class="about-section">
+    <text class="section-title">关于我</text>
+    <view class="about-card">
+      <view class="about-header">
+        <image class="about-avatar" src="/pages/assets/avatar/avatar.jpeg" mode="aspectFill"></image>
+        <view class="about-content">
+          <text class="about-text">ESTJ行动派，只给最精准高效的解决方案。</text>
+          <text class="about-text">100+企业客户认证，多家500强企业长期顾问。</text>
+          <text class="about-text">更多深度思考，在播客节目【书里书外】.....</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
   <social-media></social-media>
 
   <view class="menu-section">

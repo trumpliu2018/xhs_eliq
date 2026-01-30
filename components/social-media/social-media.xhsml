@@ -1,5 +1,5 @@
 <view class="social-media-container">
-  <view class="social-title">通过以下方式联系我们</view>
+  <view class="social-title">通过以下方式联系</view>
   <view class="social-list">
     <!-- 公众号 -->
     <view class="social-item" bindtap="showQRCode" data-type="gongzhonghao" data-title="书里书外精选" data-qrcode="/pages/assets/society/gzh.png">

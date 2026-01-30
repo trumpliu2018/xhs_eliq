@@ -7,11 +7,11 @@
 }
 
 .social-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 16px;
-  text-align: center;
+  color: var(--text-secondary);
+  padding: 0 8px 12px;
+  display: block;
 }
 
 .social-list {

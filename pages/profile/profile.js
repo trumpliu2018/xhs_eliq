@@ -464,14 +464,10 @@ Page({
           icon: 'success'
         });
 
-        // 更新本地用户信息
+        // 更新本地用户信息（不修改头像）
         const userInfo = this.data.userInfo;
         userInfo.nickname = nickname.trim();
         userInfo.mbti_type = mbti_type;
-        
-        // 根据MBTI类型更新头像
-        const avatarPath = `/pages/assets/avatar/${mbti_type.toLowerCase()}.png`;
-        userInfo.avatar = avatarPath;
 
         this.setData({
           userInfo: userInfo,

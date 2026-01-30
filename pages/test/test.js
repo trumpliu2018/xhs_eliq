@@ -294,13 +294,11 @@ Page({
         };
         xhs.setStorageSync('mbti_result', result);
         
-        // 更新用户信息中的 mbti_type
+        // 更新用户信息中的 mbti_type（不修改头像）
         if (auth.isLoggedIn()) {
           const userInfo = auth.getCurrentUser();
           if (userInfo) {
             userInfo.mbti_type = response.mbti_type;
-            // 可以选择性更新头像
-            userInfo.avatar = `/pages/assets/avatar/${response.mbti_type.toLowerCase()}.png`;
             auth.saveAuthInfo(auth.getToken(), userInfo);
             console.log('已更新用户MBTI类型:', response.mbti_type);
           }

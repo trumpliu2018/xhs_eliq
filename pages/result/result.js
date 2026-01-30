@@ -1,4 +1,5 @@
 const api = require('../../util/api.js');
+const auth = require('../../util/auth.js');
 
 // MBTI 16种人格类型详细数据（备用）
 const mbtiData = {
@@ -315,13 +316,31 @@ Page({
   },
 
   onLoad() {
-    // 获取测评结果
-    const testResult = xhs.getStorageSync('mbti_result');
+    // 优先从用户资料中获取MBTI类型
+    let mbtiType = null;
+    let testResult = null;
     
-    if (!testResult || !testResult.type) {
+    // 1. 首先检查用户是否有mbti_type
+    if (auth.isLoggedIn()) {
+      const userInfo = auth.getCurrentUser();
+      if (userInfo && userInfo.mbti_type) {
+        mbtiType = userInfo.mbti_type;
+      }
+    }
+    
+    // 2. 如果用户没有mbti_type，从测评结果获取
+    if (!mbtiType) {
+      testResult = xhs.getStorageSync('mbti_result');
+      if (testResult && testResult.type) {
+        mbtiType = testResult.type;
+      }
+    }
+    
+    // 3. 如果都没有，提示用户
+    if (!mbtiType) {
       xhs.showModal({
         title: '提示',
-        content: '未找到测评结果，请先完成测评',
+        content: '还没有MBTI类型信息，请先完成测评或更新资料',
         showCancel: false,
         success: () => {
           xhs.redirectTo({
@@ -337,7 +356,7 @@ Page({
     });
 
     // 从API获取MBTI信息
-    api.getMBTIInfo(testResult.type)
+    api.getMBTIInfo(mbtiType)
       .then((mbtiInfo) => {
         xhs.hideLoading();
         
@@ -355,41 +374,26 @@ Page({
             image: `/pages/assets/avatar/${mbtiInfo.type.toLowerCase()}.png`
           }
         });
-
-        // 如果有得分数据，计算维度得分
-        if (testResult.scores) {
-          const dimensions = this.calculateDimensions(testResult.scores);
-          this.setData({ dimensions: dimensions });
-        } else if (testResult.result) {
-          // 使用API返回的result数据
-          const dimensions = this.calculateDimensionsFromResult(testResult.result);
-          this.setData({ dimensions: dimensions });
-        }
       })
       .catch((err) => {
         console.error('获取MBTI信息失败:', err);
         xhs.hideLoading();
         
         // 使用本地备用数据
-        const mbtiInfo = mbtiData[testResult.type];
+        const mbtiInfo = mbtiData[mbtiType];
         if (mbtiInfo) {
           const descriptionHtml = this.markdownToHtml(mbtiInfo.description || '');
           
           this.setData({
             result: {
-              type: testResult.type,
+              type: mbtiType,
               name: mbtiInfo.name,
               brief: mbtiInfo.tagline,
               description: mbtiInfo.description,
               descriptionHtml: descriptionHtml,
-              image: `/pages/assets/avatar/${testResult.type.toLowerCase()}.png`
+              image: `/pages/assets/avatar/${mbtiType.toLowerCase()}.png`
             }
           });
-
-          if (testResult.scores) {
-            const dimensions = this.calculateDimensions(testResult.scores);
-            this.setData({ dimensions: dimensions });
-          }
         } else {
           xhs.showToast({
             title: '加载失败',

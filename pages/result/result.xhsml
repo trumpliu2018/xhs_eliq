@@ -18,27 +18,6 @@
     <rich-text class="markdown-content mt-16" nodes="{{result.descriptionHtml}}"></rich-text>
   </view>
 
-  <!-- 维度得分 -->
-  <view xhs:if="{{dimensions && dimensions.length > 0}}" class="card section-card">
-    <view class="section-header">
-      <text class="section-icon">📊</text>
-      <text class="title-medium">维度分析</text>
-    </view>
-    <view class="dimensions-list mt-24">
-      <view xhs:for-items="{{dimensions}}" xhs:for-item="dim" xhs:key="*dim" class="dimension-row">
-        <view class="dimension-labels">
-          <text class="dimension-left">{{dim.left}}</text>
-          <text class="dimension-right">{{dim.right}}</text>
-        </view>
-        <view class="dimension-bar">
-          <view class="dimension-fill dimension-fill-left" style="width: {{dim.leftPercent}}%"></view>
-          <view class="dimension-center">{{dim.leftScore}} : {{dim.rightScore}}</view>
-          <view class="dimension-fill dimension-fill-right" style="width: {{dim.rightPercent}}%"></view>
-        </view>
-      </view>
-    </view>
-  </view>
-
   <!-- 专业咨询服务 -->
   <view class="card consult-card">
     <view class="consult-header">
@@ -89,16 +68,6 @@
         <text class="contact-arrow">→</text>
       </view>
     </view>
-  </view>
-
-  <!-- 操作按钮 -->
-  <view class="action-buttons">
-    <button class="btn-secondary action-btn" bindtap="shareResult">
-      分享结果
-    </button>
-    <button class="btn-primary action-btn" bindtap="retakeTest">
-      重新测评
-    </button>
   </view>
 
   <!-- 底部安全区域 -->

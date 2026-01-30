@@ -16,7 +16,7 @@
   <view class="card section-card">
     <view class="section-header">
       <view class="section-icon">💡</view>
-      <text class="title-medium">什么是MBTI？</text>
+      <text class="title-medium">关于MBTI</text>
     </view>
     <view class="text-body mt-16">MBTI（Myers-Briggs Type Indicator）是一种性格分类模型，通过评估个体在四个维度上的偏好，将人格分为16种类型。</view>
     <view class="dimension-grid mt-24">

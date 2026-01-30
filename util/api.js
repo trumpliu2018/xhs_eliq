@@ -118,6 +118,58 @@ function getMBTIInfo(type) {
   });
 }
 
+// ====== Bingo游戏相关API ======
+
+// 获取房间参与者列表
+function getRoomParticipants(roomCode) {
+  return request(`/bingo/rooms/${roomCode}/participants`, {
+    method: 'GET',
+    needAuth: true
+  });
+}
+
+// 获取MBTI特质列表（26条：1条介绍 + 25条特质）
+function getBingoTraits(mbtiType) {
+  return request(`/bingo/traits/${mbtiType}`, {
+    method: 'GET',
+    needAuth: true
+  });
+}
+
+// 获取收到的评价数据
+function getReceivedEvaluations(roomId, targetId) {
+  return request(`/bingo/interactions/received?room_id=${roomId}&target_id=${targetId}`, {
+    method: 'GET',
+    needAuth: true
+  });
+}
+
+// 创建评价（选中格子）
+function createBingoInteraction(roomId, targetId, traitId) {
+  return request('/bingo/interactions', {
+    method: 'POST',
+    data: {
+      room_id: roomId,
+      target_id: targetId,
+      trait_id: traitId
+    },
+    needAuth: true
+  });
+}
+
+// 删除评价（取消选中）
+function deleteBingoInteraction(roomId, targetId, traitId) {
+  return request('/bingo/interactions', {
+    method: 'DELETE',
+    data: {
+      room_id: roomId,
+      target_id: targetId,
+      trait_id: traitId
+    },
+    needAuth: true
+  });
+}
+
 module.exports = {
   request,
   xhsLogin,
@@ -127,5 +179,10 @@ module.exports = {
   getCurrentTestSession,
   createTestSession,
   submitAnswers,
-  getMBTIInfo
+  getMBTIInfo,
+  getRoomParticipants,
+  getBingoTraits,
+  getReceivedEvaluations,
+  createBingoInteraction,
+  deleteBingoInteraction
 };

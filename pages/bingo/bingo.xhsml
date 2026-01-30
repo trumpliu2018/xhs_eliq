@@ -1,49 +1,98 @@
 <view class="page-container">
-  <!-- 游戏标题 -->
-  <view class="game-header">
-    <text class="game-title">Bingo游戏</text>
-    <text class="game-subtitle">连成一线即可获胜！</text>
+  <!-- 加载中 -->
+  <view xhs:if="{{isLoading}}" class="loading-container">
+    <view class="loading-icon"></view>
+    <text class="loading-text">加载中...</text>
   </view>
 
-  <!-- 游戏板 -->
-  <view class="bingo-board">
-    <view xhs:for-items="{{board}}" xhs:for-item="row" xhs:for-index="i" xhs:key="*item" class="bingo-row">
-      <view xhs:for-items="{{row}}" xhs:for-item="cell" xhs:for-index="j" xhs:key="*item"
-            class="bingo-cell {{cell.selected ? 'selected' : ''}}"
-            bindtap="selectCell"
-            data-row="{{i}}"
-            data-col="{{j}}">
-        <text class="cell-number">{{cell.number}}</text>
-        <view xhs:if="{{cell.selected}}" class="cell-mark">✓</view>
+  <view xhs:else>
+    <!-- 参与者列表 -->
+    <view class="participants-section">
+      <text class="section-title">参与者</text>
+      <scroll-view scroll-x class="participants-scroll" scroll-with-animation>
+        <view class="participants-list">
+          <view 
+            xhs:for="{{participants}}" 
+            xhs:key="user_id"
+            class="participant-item {{item.user_id === targetId ? 'active' : ''}}"
+            bindtap="onParticipantSelect"
+            data-user-id="{{item.user_id}}">
+            <image 
+              class="participant-avatar" 
+              src="{{item.user.avatar || '/pages/assets/avatar/' + item.mbti_type.toLowerCase() + '.png'}}" 
+              mode="aspectFill">
+            </image>
+            <text class="participant-name">{{item.user.nickname || '用户' + item.user_id}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- Bingo游戏区域 -->
+    <view xhs:if="{{targetParticipant}}" class="game-card">
+      <!-- 标题栏 -->
+      <view class="game-header mbti-{{targetParticipant.mbti_type || 'default'}}">
+        <view class="header-content">
+          <text class="game-title">{{targetParticipant.user.nickname || '用户' + targetId}}的Bingo游戏</text>
+          <text class="game-subtitle">五个连成一条线，你就是一只 {{mbtiIntro || '加载中...'}}</text>
+        </view>
+        <image 
+          xhs:if="{{targetParticipant.mbti_type}}"
+          class="header-avatar" 
+          src="/pages/assets/avatar/{{targetParticipant.mbti_type.toLowerCase()}}.png" 
+          mode="aspectFit">
+        </image>
+      </view>
+
+      <!-- 5x5格子 -->
+      <view class="grid-container mbti-{{targetParticipant.mbti_type || 'default'}}">
+        <view class="grid-wrapper">
+          <view 
+            xhs:for="{{gridCells}}" 
+            xhs:key="id"
+            class="grid-cell {{item.evaluated_by_me ? 'evaluated' : ''}} score-{{item.score > 5 ? 5 : item.score}}"
+            bindtap="onCellTap"
+            data-cell-id="{{item.id}}"
+            data-evaluated-by-me="{{item.evaluated_by_me}}">
+            <view class="cell-text">{{item.trait_text}}</view>
+            <view class="cell-score">{{item.score}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 成就列表 -->
+    <view class="achievements-section">
+      <view class="section-header">
+        <text class="section-title">成就 / Bingo</text>
+        <text class="section-desc">当某行/列/斜线全部被评价时达成</text>
+      </view>
+      
+      <view xhs:if="{{achievements.length === 0}}" class="empty-achievements">
+        <text class="empty-text">暂无成就</text>
+      </view>
+      
+      <view xhs:else class="achievements-list">
+        <view 
+          xhs:for="{{achievements}}" 
+          xhs:key="id"
+          class="achievement-item">
+          <view class="achievement-icon">
+            <!-- 横线 -->
+            <view xhs:if="{{item.achievement_type === 'row'}}" class="line-icon horizontal"></view>
+            <!-- 竖线 -->
+            <view xhs:elif="{{item.achievement_type === 'col'}}" class="line-icon vertical"></view>
+            <!-- 主对角线 -->
+            <view xhs:elif="{{item.achievement_type === 'diagonal' && item.line_index === 0}}" class="line-icon diagonal-main"></view>
+            <!-- 副对角线 -->
+            <view xhs:else class="line-icon diagonal-anti"></view>
+          </view>
+          <text class="achievement-text">{{item.achievement_type === 'row' ? '横线 第' + (item.line_index + 1) + '行' : (item.achievement_type === 'col' ? '竖线 第' + (item.line_index + 1) + '列' : (item.line_index === 0 ? '主对角线' : '副对角线'))}}</text>
+        </view>
       </view>
     </view>
   </view>
 
-  <!-- 游戏信息 -->
-  <view class="game-info-panel">
-    <view class="info-item">
-      <text class="info-label">已选择</text>
-      <text class="info-value">{{selectedCount}}/25</text>
-    </view>
-    <view class="info-item">
-      <text class="info-label">连线数</text>
-      <text class="info-value">{{bingoLines}}</text>
-    </view>
-  </view>
-
-  <!-- 操作按钮 -->
-  <view class="game-actions">
-    <button class="btn-secondary action-btn" bindtap="resetGame">重新开始</button>
-    <button class="btn-primary action-btn" bindtap="checkBingo">检查Bingo</button>
-  </view>
-
-  <!-- 获胜弹窗 -->
-  <view xhs:if="{{showWinModal}}" class="modal-mask" bindtap="hideWinModal">
-    <view class="modal-content win-modal" catchtap="preventClose">
-      <view class="win-icon">🎉</view>
-      <text class="win-title">恭喜获胜！</text>
-      <text class="win-text">你成功连成了 {{bingoLines}} 条线！</text>
-      <button class="btn-primary modal-btn" bindtap="resetGame">再玩一局</button>
-    </view>
-  </view>
+  <!-- 底部安全区域 -->
+  <view class="safe-area-bottom"></view>
 </view>

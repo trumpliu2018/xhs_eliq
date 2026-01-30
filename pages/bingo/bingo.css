@@ -36,37 +36,27 @@
 
 /* 参与者区域 */
 .participants-section {
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  padding: 0 4px 8px;
-  display: block;
-}
-
-.participants-scroll {
-  white-space: nowrap;
+  margin-bottom: 12px;
 }
 
 .participants-list {
-  display: inline-flex;
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
   padding: 4px;
 }
 
 .participant-item {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 8px;
+  gap: 4px;
+  padding: 6px;
   background: white;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 2px solid transparent;
-  min-width: 70px;
+  min-width: 50px;
+  flex: 1;
   transition: all 0.3s;
 }
 
@@ -76,16 +66,16 @@
 }
 
 .participant-avatar {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
 }
 
 .participant-name {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-primary);
   text-align: center;
-  max-width: 60px;
+  max-width: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -422,6 +412,13 @@
 
 .section-header {
   margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
 }
 
 .section-desc {

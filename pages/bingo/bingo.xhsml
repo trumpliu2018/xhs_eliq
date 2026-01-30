@@ -8,24 +8,21 @@
   <view xhs:else>
     <!-- 参与者列表 -->
     <view class="participants-section">
-      <text class="section-title">参与者</text>
-      <scroll-view scroll-x class="participants-scroll" scroll-with-animation>
-        <view class="participants-list">
-          <view 
-            xhs:for="{{participants}}" 
-            xhs:key="user_id"
-            class="participant-item {{item.user_id === targetId ? 'active' : ''}}"
-            bindtap="onParticipantSelect"
-            data-user-id="{{item.user_id}}">
-            <image 
-              class="participant-avatar" 
-              src="{{item.user.avatar || '/pages/assets/avatar/' + item.mbti_type.toLowerCase() + '.png'}}" 
-              mode="aspectFill">
-            </image>
-            <text class="participant-name">{{item.user.nickname || '用户' + item.user_id}}</text>
-          </view>
+      <view class="participants-list">
+        <view 
+          xhs:for="{{participants}}" 
+          xhs:key="user_id"
+          class="participant-item {{item.user_id === targetId ? 'active' : ''}}"
+          bindtap="onParticipantSelect"
+          data-user-id="{{item.user_id}}">
+          <image 
+            class="participant-avatar" 
+            src="{{item.user.avatar || '/pages/assets/avatar/' + item.mbti_type.toLowerCase() + '.png'}}" 
+            mode="aspectFill">
+          </image>
+          <text class="participant-name">{{item.user.nickname || '用户' + item.user_id}}</text>
         </view>
-      </scroll-view>
+      </view>
     </view>
 
     <!-- Bingo游戏区域 -->
@@ -64,7 +61,7 @@
     <!-- 成就列表 -->
     <view class="achievements-section">
       <view class="section-header">
-        <text class="section-title">成就 / Bingo</text>
+        <text class="section-title">🏆 成就 / Bingo</text>
         <text class="section-desc">当某行/列/斜线全部被评价时达成</text>
       </view>
       

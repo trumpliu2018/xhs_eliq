@@ -1,4 +1,6 @@
-// MBTI 16种人格类型详细数据
+const api = require('../../util/api.js');
+
+// MBTI 16种人格类型详细数据（备用）
 const mbtiData = {
   INTJ: {
     name: '建筑师',
@@ -330,22 +332,160 @@ Page({
       return;
     }
 
-    // 获取对应的人格类型数据
-    const mbtiInfo = mbtiData[testResult.type];
-    
-    // 计算维度得分
-    const dimensions = this.calculateDimensions(testResult.scores);
-
-    this.setData({
-      result: {
-        type: testResult.type,
-        ...mbtiInfo
-      },
-      dimensions: dimensions
+    xhs.showLoading({
+      title: '加载中...'
     });
+
+    // 从API获取MBTI信息
+    api.getMBTIInfo(testResult.type)
+      .then((mbtiInfo) => {
+        xhs.hideLoading();
+        
+        // 将markdown格式转换为HTML
+        const descriptionHtml = this.markdownToHtml(mbtiInfo.description || '');
+        
+        // 设置结果数据
+        this.setData({
+          result: {
+            type: mbtiInfo.type,
+            name: mbtiInfo.name,
+            brief: mbtiInfo.brief,
+            description: mbtiInfo.description,
+            descriptionHtml: descriptionHtml,
+            image: `/pages/assets/avatar/${mbtiInfo.type.toLowerCase()}.png`
+          }
+        });
+
+        // 如果有得分数据，计算维度得分
+        if (testResult.scores) {
+          const dimensions = this.calculateDimensions(testResult.scores);
+          this.setData({ dimensions: dimensions });
+        } else if (testResult.result) {
+          // 使用API返回的result数据
+          const dimensions = this.calculateDimensionsFromResult(testResult.result);
+          this.setData({ dimensions: dimensions });
+        }
+      })
+      .catch((err) => {
+        console.error('获取MBTI信息失败:', err);
+        xhs.hideLoading();
+        
+        // 使用本地备用数据
+        const mbtiInfo = mbtiData[testResult.type];
+        if (mbtiInfo) {
+          const descriptionHtml = this.markdownToHtml(mbtiInfo.description || '');
+          
+          this.setData({
+            result: {
+              type: testResult.type,
+              name: mbtiInfo.name,
+              brief: mbtiInfo.tagline,
+              description: mbtiInfo.description,
+              descriptionHtml: descriptionHtml,
+              image: `/pages/assets/avatar/${testResult.type.toLowerCase()}.png`
+            }
+          });
+
+          if (testResult.scores) {
+            const dimensions = this.calculateDimensions(testResult.scores);
+            this.setData({ dimensions: dimensions });
+          }
+        } else {
+          xhs.showToast({
+            title: '加载失败',
+            icon: 'none'
+          });
+        }
+      });
   },
 
-  // 计算维度得分
+  // 将简单的markdown格式转换为HTML
+  markdownToHtml(markdown) {
+    if (!markdown) return '';
+    
+    let html = markdown;
+    
+    // 按双换行符分割段落
+    const paragraphs = html.split(/\n\n+/);
+    const processedParagraphs = [];
+    
+    paragraphs.forEach(para => {
+      para = para.trim();
+      if (!para) return;
+      
+      // 检查是否是列表项（以 - 或 • 开头）
+      if (para.match(/^[-•]\s+/m)) {
+        // 处理列表
+        const items = para.split(/\n/).filter(line => line.trim());
+        const listItems = items.map(item => {
+          const content = item.replace(/^[-•]\s+/, '').trim();
+          return `<li>${content}</li>`;
+        }).join('');
+        processedParagraphs.push(`<ul>${listItems}</ul>`);
+      } else {
+        // 普通段落，处理单个换行符为<br/>
+        const content = para.replace(/\n/g, '<br/>');
+        processedParagraphs.push(`<p>${content}</p>`);
+      }
+    });
+    
+    return processedParagraphs.join('');
+  },
+
+  // 从API返回的result对象计算维度得分
+  calculateDimensionsFromResult(result) {
+    if (!result) return [];
+
+    const dimensions = [];
+
+    // E-I 维度
+    const scoreEI = result.score_ei || 0;
+    dimensions.push({
+      left: '外向 E',
+      right: '内向 I',
+      leftScore: scoreEI > 0 ? scoreEI : 0,
+      rightScore: scoreEI < 0 ? Math.abs(scoreEI) : 0,
+      leftPercent: scoreEI > 0 ? 100 : 0,
+      rightPercent: scoreEI < 0 ? 100 : 0
+    });
+
+    // S-N 维度
+    const scoreSN = result.score_sn || 0;
+    dimensions.push({
+      left: '感觉 S',
+      right: '直觉 N',
+      leftScore: scoreSN > 0 ? scoreSN : 0,
+      rightScore: scoreSN < 0 ? Math.abs(scoreSN) : 0,
+      leftPercent: scoreSN > 0 ? 100 : 0,
+      rightPercent: scoreSN < 0 ? 100 : 0
+    });
+
+    // T-F 维度
+    const scoreTF = result.score_tf || 0;
+    dimensions.push({
+      left: '思考 T',
+      right: '情感 F',
+      leftScore: scoreTF > 0 ? scoreTF : 0,
+      rightScore: scoreTF < 0 ? Math.abs(scoreTF) : 0,
+      leftPercent: scoreTF > 0 ? 100 : 0,
+      rightPercent: scoreTF < 0 ? 100 : 0
+    });
+
+    // J-P 维度
+    const scoreJP = result.score_jp || 0;
+    dimensions.push({
+      left: '判断 J',
+      right: '知觉 P',
+      leftScore: scoreJP > 0 ? scoreJP : 0,
+      rightScore: scoreJP < 0 ? Math.abs(scoreJP) : 0,
+      leftPercent: scoreJP > 0 ? 100 : 0,
+      rightPercent: scoreJP < 0 ? 100 : 0
+    });
+
+    return dimensions;
+  },
+
+  // 计算维度得分（旧版本，兼容本地数据）
   calculateDimensions(scores) {
     return [
       {
@@ -383,27 +523,7 @@ Page({
     ];
   },
 
-  // 预约咨询
-  bookConsultation() {
-    xhs.showModal({
-      title: '预约咨询',
-      content: '请添加微信：MBTI_Consultant 进行预约',
-      confirmText: '复制微信号',
-      success: (res) => {
-        if (res.confirm) {
-          xhs.setClipboardData({
-            data: 'MBTI_Consultant',
-            success: () => {
-              xhs.showToast({
-                title: '微信号已复制',
-                icon: 'success'
-              });
-            }
-          });
-        }
-      }
-    });
-  },
+
 
   // 处理联系方式点击
   handleContact(e) {

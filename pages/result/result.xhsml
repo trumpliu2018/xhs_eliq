@@ -5,7 +5,7 @@
       <text class="result-type">{{result.type}}</text>
       <text class="result-name">{{result.name}}</text>
     </view>
-    <text class="result-tagline">{{result.tagline}}</text>
+    <text class="result-tagline">{{result.brief}}</text>
     <image class="result-image" src="{{result.image}}" mode="aspectFill"></image>
   </view>
 
@@ -13,23 +13,13 @@
   <view class="card section-card">
     <view class="section-header">
       <text class="section-icon">✨</text>
-      <text class="title-medium">人格特征</text>
+      <text class="title-medium">人格描述</text>
     </view>
-    <text class="text-body mt-16">{{result.description}}</text>
-    
-    <view class="traits-list mt-24">
-      <view xhs:for-items="{{result.traits}}" xhs:for-item="trait" xhs:key="*trait" class="trait-item">
-        <view class="trait-icon">{{trait.icon}}</view>
-        <view class="trait-content">
-          <text class="trait-title">{{trait.title}}</text>
-          <text class="trait-desc">{{trait.desc}}</text>
-        </view>
-      </view>
-    </view>
+    <rich-text class="markdown-content mt-16" nodes="{{result.descriptionHtml}}"></rich-text>
   </view>
 
   <!-- 维度得分 -->
-  <view class="card section-card">
+  <view xhs:if="{{dimensions && dimensions.length > 0}}" class="card section-card">
     <view class="section-header">
       <text class="section-icon">📊</text>
       <text class="title-medium">维度分析</text>
@@ -45,33 +35,6 @@
           <view class="dimension-center">{{dim.leftScore}} : {{dim.rightScore}}</view>
           <view class="dimension-fill dimension-fill-right" style="width: {{dim.rightPercent}}%"></view>
         </view>
-      </view>
-    </view>
-  </view>
-
-  <!-- 职业建议 -->
-  <view class="card section-card">
-    <view class="section-header">
-      <text class="section-icon">💼</text>
-      <text class="title-medium">适合职业</text>
-    </view>
-    <view class="career-grid mt-24">
-      <view xhs:for-items="{{result.careers}}" xhs:for-item="career" xhs:key="*career" class="career-tag">
-        {{career}}
-      </view>
-    </view>
-  </view>
-
-  <!-- 名人代表 -->
-  <view class="card section-card">
-    <view class="section-header">
-      <text class="section-icon">⭐</text>
-      <text class="title-medium">名人代表</text>
-    </view>
-    <view class="celebrity-list mt-24">
-      <view xhs:for-items="{{result.celebrities}}" xhs:for-item="celeb" xhs:key="*celeb" class="celebrity-item">
-        <image class="celebrity-avatar" src="{{celeb.avatar}}" mode="aspectFill"></image>
-        <text class="celebrity-name">{{celeb.name}}</text>
       </view>
     </view>
   </view>
@@ -103,10 +66,6 @@
       <text class="price-value">¥99</text>
       <text class="price-original">原价¥299</text>
     </view>
-
-    <button class="btn-primary consult-button" bindtap="bookConsultation">
-      立即预约咨询
-    </button>
   </view>
 
   <!-- 联系方式 -->

@@ -4,6 +4,43 @@
   padding-bottom: 120px;
 }
 
+/* Markdown内容样式 */
+.markdown-content {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: var(--text-primary) !important;
+  word-wrap: break-word;
+}
+
+/* rich-text组件内部样式 */
+.markdown-content >>> p {
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.markdown-content >>> ul {
+  margin: 8px 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.markdown-content >>> li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+.markdown-content >>> li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  color: #FF2442;
+  font-weight: 700;
+  font-size: 16px;
+}
+
 /* 结果Hero区域 */
 .result-hero {
   position: relative;

@@ -45,10 +45,6 @@
       <text class="price-value">¥99</text>
       <text class="price-original">原价¥299</text>
     </view>
-
-    <button class="btn-primary consult-button" bindtap="bookConsultation">
-      立即预约咨询
-    </button>
   </view>
 
   <!-- 社交媒体 -->

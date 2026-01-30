@@ -155,4 +155,12 @@
   border-radius: 8px;
   border: none;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.copy-email-btn::after {
+  border: none;
 }

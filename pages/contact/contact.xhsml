@@ -1,6 +1,5 @@
 <view class="page-container">
   <view class="content-card">
-    <text class="page-title">联系我们</text>
     <scroll-view scroll-y class="content-scroll">
       <!-- 社交媒体 -->
       <social-media></social-media>

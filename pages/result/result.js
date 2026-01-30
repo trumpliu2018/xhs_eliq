@@ -505,15 +505,6 @@ Page({
     });
   },
 
-  // 预约咨询
-  bookConsultation() {
-    xhs.showToast({
-      title: '请通过下方社交媒体联系我们',
-      icon: 'none',
-      duration: 2000
-    });
-  },
-
   // 重新测评
   retakeTest() {
     xhs.showModal({

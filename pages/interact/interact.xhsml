@@ -10,8 +10,8 @@
         </view>
       </view>
       
-      <view class="game-preview">
-        <image class="game-image" src="/pages/assets/bingo-preview.png" mode="aspectFill"></image>
+      <view class="game-detail">
+        <view class="detail-text">多人互动评价游戏，通过评价了解彼此的MBTI特质。邀请朋友对你进行评价，收集足够的评价后即可连成Bingo，解锁你的人格特质图谱。</view>
       </view>
     </view>
 
@@ -32,10 +32,9 @@
         </view>
       </view>
       
-      <view class="game-preview">
-        <image class="game-image" src="/pages/assets/chess-preview.png" mode="aspectFill"></image>
+      <view class="game-detail">
+        <view class="detail-text">结合MBTI理论的线下互动桌游，通过掷骰子、闯关卡的方式，在轻松的游戏氛围中深入更加深入了解自己和伙伴。</view>
       </view>
-
     </view>
 
     <view class="game-action">

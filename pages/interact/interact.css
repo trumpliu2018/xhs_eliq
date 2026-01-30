@@ -48,7 +48,6 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
 }
 
 .game-icon {
@@ -83,6 +82,25 @@
 .game-desc {
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+/* 游戏详细介绍 */
+.game-detail {
+  margin-top: 16px;
+  padding: 16px;
+  background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 100%);
+  border-radius: 12px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.detail-text {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-primary);
+}
+
+.chess-card .game-detail {
+  border-left-color: #6C5CE7;
 }
 
 /* 游戏预览图 */

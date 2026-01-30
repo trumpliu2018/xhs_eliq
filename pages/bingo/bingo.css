@@ -42,7 +42,7 @@
 .participants-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1px;
+  gap: 2px;
   padding: 4px;
 }
 
@@ -50,13 +50,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 2px;
+  gap: 4px;
+  padding: 6px;
   background: white;
   border-radius: 10px;
   border: 2px solid transparent;
   min-width: 50px;
-  flex: 1;
   transition: all 0.3s;
 }
 

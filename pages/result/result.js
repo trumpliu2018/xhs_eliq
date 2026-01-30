@@ -280,39 +280,7 @@ const mbtiData = {
 Page({
   data: {
     result: null,
-    dimensions: [],
-    contacts: [
-      {
-        type: 'wechat',
-        name: '微信咨询',
-        value: 'MBTI_Consultant',
-        icon: '/pages/assets/icon-wechat.png'
-      },
-      {
-        type: 'xiaohongshu',
-        name: '小红书',
-        value: '@MBTI心理测评',
-        icon: '/pages/assets/icon-xhs.png'
-      },
-      {
-        type: 'douyin',
-        name: '抖音',
-        value: '@MBTI性格解析',
-        icon: '/pages/assets/icon-douyin.png'
-      },
-      {
-        type: 'phone',
-        name: '电话咨询',
-        value: '400-123-4567',
-        icon: '/pages/assets/icon-phone.png'
-      },
-      {
-        type: 'email',
-        name: '邮箱',
-        value: 'contact@mbti.com',
-        icon: '/pages/assets/icon-email.png'
-      }
-    ]
+    dimensions: []
   },
 
   onLoad() {
@@ -529,38 +497,20 @@ Page({
 
 
 
-  // 处理联系方式点击
-  handleContact(e) {
-    const { type, value } = e.currentTarget.dataset;
-    
-    switch(type) {
-      case 'wechat':
-      case 'xiaohongshu':
-      case 'douyin':
-      case 'email':
-        xhs.setClipboardData({
-          data: value,
-          success: () => {
-            xhs.showToast({
-              title: '已复制到剪贴板',
-              icon: 'success'
-            });
-          }
-        });
-        break;
-      case 'phone':
-        xhs.makePhoneCall({
-          phoneNumber: value
-        });
-        break;
-    }
-  },
-
   // 分享结果
   shareResult() {
     // 小红书小程序的分享功能
     xhs.showShareMenu({
       withShareTicket: true
+    });
+  },
+
+  // 预约咨询
+  bookConsultation() {
+    xhs.showToast({
+      title: '请通过下方社交媒体联系我们',
+      icon: 'none',
+      duration: 2000
     });
   },
 

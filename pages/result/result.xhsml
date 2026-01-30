@@ -45,30 +45,14 @@
       <text class="price-value">¥99</text>
       <text class="price-original">原价¥299</text>
     </view>
+
+    <button class="btn-primary consult-button" bindtap="bookConsultation">
+      立即预约咨询
+    </button>
   </view>
 
-  <!-- 联系方式 -->
-  <view class="card contact-card">
-    <view class="section-header">
-      <text class="section-icon">📱</text>
-      <text class="title-medium">联系我们</text>
-    </view>
-    
-    <view class="contact-list mt-24">
-      <view xhs:for-items="{{contacts}}" xhs:for-item="contact" xhs:key="*contact" 
-            class="contact-item"
-            data-type="{{contact.type}}"
-            data-value="{{contact.value}}"
-            bindtap="handleContact">
-        <image class="contact-icon" src="{{contact.icon}}" mode="aspectFit"></image>
-        <view class="contact-content">
-          <text class="contact-name">{{contact.name}}</text>
-          <text class="contact-value">{{contact.value}}</text>
-        </view>
-        <text class="contact-arrow">→</text>
-      </view>
-    </view>
-  </view>
+  <!-- 社交媒体 -->
+  <social-media></social-media>
 
   <!-- 底部安全区域 -->
   <view class="safe-area-bottom"></view>

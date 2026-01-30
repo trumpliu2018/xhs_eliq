@@ -1,0 +1,136 @@
+/* 社交媒体容器 */
+.social-media-container {
+  padding: 24px 16px;
+  background: white;
+  border-radius: 16px;
+  margin: 16px;
+}
+
+.social-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.social-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.social-item:active {
+  transform: scale(0.95);
+}
+
+.social-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.social-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.social-name {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+/* 弹窗样式 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-container {
+  background: white;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 400px;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.modal-close {
+  font-size: 32px;
+  color: #999;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.modal-body {
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.qrcode-image {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+
+.modal-tip {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+}

@@ -4,5 +4,7 @@
   "navigationBarTextStyle": "black",
   "backgroundColor": "#F7F8FA",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "social-media": "/components/social-media/social-media"
+  }
 }

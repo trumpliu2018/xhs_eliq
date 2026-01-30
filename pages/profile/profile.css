@@ -68,18 +68,15 @@
 .mbti-content {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
+  flex: 1;
 }
 
-.mbti-icon {
-  font-size: 32px;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.mbti-avatar {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
 }
 
 .mbti-info {
@@ -501,8 +498,8 @@
 }
 
 .mbti-avatar {
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
 }
 
 .mbti-type-info {

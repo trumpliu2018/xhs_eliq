@@ -282,3 +282,65 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+/* 联系我们弹窗 */
+.contact-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.contact-modal-container {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.contact-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-modal-close {
+  font-size: 32px;
+  color: #999;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.contact-modal-body {
+  max-height: calc(80vh - 60px);
+  overflow-y: auto;
+}

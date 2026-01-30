@@ -23,11 +23,11 @@
     <!-- MBTI类型 -->
     <view xhs:if="{{mbtiResult}}" class="mbti-badge" bindtap="viewMBTIResult">
       <view class="mbti-content">
-        <view class="mbti-icon">🎯</view>
         <view class="mbti-info">
           <text class="mbti-type">{{mbtiResult.type}}</text>
           <text class="mbti-name">{{mbtiResult.name}}</text>
         </view>
+        <image class="mbti-avatar" src="{{mbtiResult.avatar}}" mode="aspectFit"></image>
       </view>
       <text class="mbti-arrow">→</text>
     </view>
@@ -54,7 +54,7 @@
       </view>
     </view>
   </view>
-  
+
   <social-media></social-media>
 
   <view class="menu-section">

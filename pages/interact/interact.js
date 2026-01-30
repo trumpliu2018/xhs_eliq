@@ -1,6 +1,6 @@
 Page({
   data: {
-    // 可以添加一些动态数据，比如游戏统计等
+    showContactModal: false
   },
 
   onLoad() {
@@ -18,11 +18,23 @@ Page({
     });
   },
 
-  // 跳转到飞行棋
-  navigateToChess() {
-    xhs.navigateTo({
-      url: '/pages/flight-chess/flight-chess'
+  // 显示联系我们弹窗
+  showContactModal() {
+    this.setData({
+      showContactModal: true
     });
+  },
+
+  // 隐藏联系我们弹窗
+  hideContactModal() {
+    this.setData({
+      showContactModal: false
+    });
+  },
+
+  // 阻止冒泡
+  preventClose() {
+    // 空函数，用于阻止点击弹窗内容时关闭
   },
 
   // 分享

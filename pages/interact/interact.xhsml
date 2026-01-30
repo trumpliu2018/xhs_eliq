@@ -22,7 +22,7 @@
   </view>
 
   <!-- 飞行棋游戏卡片 -->
-  <view class="game-card chess-card" bindtap="navigateToChess">
+  <view class="game-card chess-card" bindtap="showContactModal">
     <view class="game-content">
       <view class="game-header">
         <view class="game-icon chess-icon">🎲</view>
@@ -45,4 +45,17 @@
 
   <!-- 底部安全区域 -->
   <view class="safe-area-bottom"></view>
+
+  <!-- 联系我们弹窗 -->
+  <view xhs:if="{{showContactModal}}" class="contact-modal-overlay" bindtap="hideContactModal">
+    <view class="contact-modal-container" catchtap="preventClose">
+      <view class="contact-modal-header">
+        <text class="contact-modal-title">联系我们</text>
+        <text class="contact-modal-close" bindtap="hideContactModal">×</text>
+      </view>
+      <view class="contact-modal-body">
+        <social-media></social-media>
+      </view>
+    </view>
+  </view>
 </view>

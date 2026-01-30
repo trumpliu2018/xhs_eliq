@@ -105,7 +105,8 @@ Page({
       this.setData({
         mbtiResult: {
           type: userInfo.mbti_type,
-          name: mbtiNames[userInfo.mbti_type] || userInfo.mbti_type
+          name: mbtiNames[userInfo.mbti_type] || userInfo.mbti_type,
+          avatar: `/pages/assets/avatar/${userInfo.mbti_type.toLowerCase()}.png`
         }
       });
       return;
@@ -117,7 +118,8 @@ Page({
       this.setData({
         mbtiResult: {
           type: result.type,
-          name: mbtiNames[result.type] || result.type
+          name: mbtiNames[result.type] || result.type,
+          avatar: `/pages/assets/avatar/${result.type.toLowerCase()}.png`
         }
       });
     } else {

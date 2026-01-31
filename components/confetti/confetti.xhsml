@@ -1,0 +1,5 @@
+<canvas 
+  canvas-id="confettiCanvas" 
+  class="confetti-canvas"
+  id="confettiCanvas">
+</canvas>

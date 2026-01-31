@@ -483,6 +483,62 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
+/* 高亮动画 */
+.grid-cell.highlighted {
+  animation: highlight-pulse 0.6s ease-in-out;
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(255, 36, 66, 0.6);
+}
+
+@keyframes highlight-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* 不同MBTI类型的高亮边框颜色 */
+.mbti-INTJ .grid-cell.highlighted,
+.mbti-INTP .grid-cell.highlighted,
+.mbti-ENTJ .grid-cell.highlighted,
+.mbti-ENTP .grid-cell.highlighted {
+  border-color: #8B5CF6;
+  border-width: 3px;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+}
+
+.mbti-INFJ .grid-cell.highlighted,
+.mbti-INFP .grid-cell.highlighted,
+.mbti-ENFJ .grid-cell.highlighted,
+.mbti-ENFP .grid-cell.highlighted {
+  border-color: #10B981;
+  border-width: 3px;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+}
+
+.mbti-ISTJ .grid-cell.highlighted,
+.mbti-ISFJ .grid-cell.highlighted,
+.mbti-ESTJ .grid-cell.highlighted,
+.mbti-ESFJ .grid-cell.highlighted {
+  border-color: #3B82F6;
+  border-width: 3px;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+.mbti-ISTP .grid-cell.highlighted,
+.mbti-ISFP .grid-cell.highlighted,
+.mbti-ESTP .grid-cell.highlighted,
+.mbti-ESFP .grid-cell.highlighted {
+  border-color: #F59E0B;
+  border-width: 3px;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+}
+
 /* 成就区域 */
 .achievements-section {
   background: white;

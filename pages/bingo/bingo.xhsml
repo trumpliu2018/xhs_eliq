@@ -73,8 +73,9 @@
         <view class="grid-wrapper">
           <view 
             xhs:for="{{gridCells}}" 
+            xhs:for-index="idx"
             xhs:key="id"
-            class="grid-cell {{item.evaluated_by_me ? 'evaluated' : ''}} score-{{item.score > 5 ? 5 : item.score}}"
+            class="grid-cell {{item.evaluated_by_me ? 'evaluated' : ''}} score-{{item.score > 5 ? 5 : item.score}} {{highlightedCells.indexOf(item.position) !== -1 ? 'highlighted' : ''}}"
             bindtap="onCellTap"
             data-cell-id="{{item.id}}"
             data-evaluated-by-me="{{item.evaluated_by_me}}">
@@ -119,4 +120,7 @@
 
   <!-- 底部安全区域 -->
   <view class="safe-area-bottom"></view>
+
+  <!-- 烟花特效 -->
+  <confetti show="{{showConfetti}}" bind:finished="onConfettiFinished"></confetti>
 </view>

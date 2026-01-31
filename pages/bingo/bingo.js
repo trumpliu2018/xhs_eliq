@@ -1,5 +1,11 @@
 const api = require('../../util/api.js');
 const auth = require('../../util/auth.js');
+const { 
+  saveAchievements, 
+  loadAchievements, 
+  detectAchievementChanges, 
+  getAchievementDescription 
+} = require('../../utils/achievementStorage.js');
 
 Page({
   data: {
@@ -33,7 +39,13 @@ Page({
     inputRoomCode: '',
     
     // 定时器
-    evaluationTimer: null
+    evaluationTimer: null,
+    
+    // 特效相关
+    highlightedCells: [],
+    showConfetti: false,
+    storedAchievements: [],
+    isInitialized: false
   },
 
   onLoad() {
@@ -199,6 +211,114 @@ Page({
   // 阻止弹窗关闭
   preventClose() {},
 
+  // 获取成就对应的格子位置（position 从 1 开始）
+  getAchievementCellPositions(achievement) {
+    const { achievement_type, line_index } = achievement;
+    
+    if (achievement_type === 'row') {
+      // 横线：第 line_index 行的 5 个格子
+      const startPos = line_index * 5 + 1;
+      return [startPos, startPos + 1, startPos + 2, startPos + 3, startPos + 4];
+    } else if (achievement_type === 'col') {
+      // 竖线：第 line_index 列的 5 个格子
+      const startPos = line_index + 1;
+      return [startPos, startPos + 5, startPos + 10, startPos + 15, startPos + 20];
+    } else if (achievement_type === 'diagonal') {
+      if (line_index === 0) {
+        // 主对角线：position 1,7,13,19,25
+        return [1, 7, 13, 19, 25];
+      } else {
+        // 副对角线：position 5,9,13,17,21
+        return [5, 9, 13, 17, 21];
+      }
+    }
+    return [];
+  },
+
+  // 逐个高亮格子的动画
+  async animateAchievement(achievement) {
+    const positions = this.getAchievementCellPositions(achievement);
+    let highlightedCells = [];
+    
+    // 逐个高亮格子
+    for (let i = 0; i < positions.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 300));
+      highlightedCells.push(positions[i]);
+      this.setData({ highlightedCells: [...highlightedCells] });
+    }
+    
+    // 所有格子高亮后，闪烁效果
+    await new Promise(resolve => setTimeout(resolve, 500));
+    this.setData({ highlightedCells: [] });
+    await new Promise(resolve => setTimeout(resolve, 200));
+    this.setData({ highlightedCells: positions });
+    await new Promise(resolve => setTimeout(resolve, 400));
+    
+    // 清除高亮
+    this.setData({ highlightedCells: [] });
+  },
+
+  // 触发烟花特效
+  triggerConfetti() {
+    this.setData({ showConfetti: true });
+  },
+
+  // 烟花动画完成
+  onConfettiFinished() {
+    this.setData({ showConfetti: false });
+  },
+
+  // 检测成就变化
+  checkAchievementChanges(newAchievements) {
+    const { roomId, targetId, storedAchievements, isInitialized } = this.data;
+    
+    if (!roomId || !targetId || !newAchievements) return;
+    
+    // 首次初始化：直接设置为基准，不触发任何提示
+    if (!isInitialized) {
+      this.setData({
+        storedAchievements: newAchievements,
+        isInitialized: true
+      });
+      saveAchievements(roomId, targetId, newAchievements);
+      return;
+    }
+    
+    // 检测变化
+    const { added } = detectAchievementChanges(storedAchievements, newAchievements);
+    
+    // 新增成就：显示特效和提示
+    if (added.length > 0) {
+      // 异步执行动画
+      this.playAchievementAnimations(added);
+    }
+    
+    // 更新本地存储
+    if (JSON.stringify(storedAchievements) !== JSON.stringify(newAchievements)) {
+      this.setData({ storedAchievements: newAchievements });
+      saveAchievements(roomId, targetId, newAchievements);
+    }
+  },
+
+  // 播放成就动画序列
+  async playAchievementAnimations(achievements) {
+    for (const achievement of achievements) {
+      // 显示提示
+      const description = getAchievementDescription(achievement);
+      xhs.showToast({
+        title: `🎉 达成 Bingo！${description}`,
+        icon: 'none',
+        duration: 3000
+      });
+      
+      // 播放扫描动画
+      await this.animateAchievement(achievement);
+    }
+    
+    // 所有动画完成后触发烟花
+    this.triggerConfetti();
+  },
+
   // 初始化游戏
   initGame() {
     if (!this.data.hasJoined || !this.data.roomCode) {
@@ -309,6 +429,9 @@ Page({
         
         // 构建格子数据
         this.buildGridCells();
+        
+        // 检测成就变化
+        this.checkAchievementChanges(res.achievements || []);
       })
       .catch((err) => {
         console.error('加载评价失败:', err);
@@ -373,12 +496,19 @@ Page({
     // 停止轮询
     this.stopPolling();
     
+    // 从本地存储加载该用户的成就作为基准
+    const { roomId } = this.data;
+    const stored = roomId ? loadAchievements(roomId, userId) : [];
+    
     this.setData({
       targetId: userId,
       targetParticipant: targetParticipant,
       isLoading: true,
       gridCells: [],
-      achievements: []
+      achievements: [],
+      storedAchievements: stored,
+      isInitialized: false,
+      highlightedCells: []
     });
     
     // 重新加载特质和评价

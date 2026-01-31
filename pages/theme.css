@@ -51,7 +51,7 @@
   font-weight: 600;
   box-shadow: var(--shadow-button);
   transition: all 0.3s;
-  line-height: 1;
+  /* line-height: 1; */
   height: auto;
 }
 

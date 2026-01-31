@@ -110,14 +110,29 @@
   height: 48px;
   font-size: 16px;
   font-weight: 600;
-  opacity: 1;
-  background: var(--primary-gradient) !important;
-  color: white !important;
 }
 
-/* 仅在实际加载中时显示禁用样式 */
+/* 4位房间号且未在请求：明确的可点击样式，覆盖小程序 button 默认 */
+.join-btn.join-btn-enabled,
+button.join-btn.join-btn-enabled,
+button.btn-primary.join-btn.join-btn-enabled {
+  opacity: 1 !important;
+  background: var(--primary-gradient) !important;
+  background-color: #FF2442 !important;
+  color: white !important;
+  box-shadow: 0 8px 16px rgba(255, 36, 66, 0.3);
+}
+
+/* 房间号未满4位时：禁用样式，不可点击 */
+.join-btn.join-btn-disabled {
+  opacity: 0.5 !important;
+  background: #ccc !important;
+  color: #999 !important;
+}
+
+/* 正在请求时：禁用样式 */
 .join-btn.join-btn-loading {
-  opacity: 0.6;
+  opacity: 0.6 !important;
 }
 
 /* 参与者区域 */

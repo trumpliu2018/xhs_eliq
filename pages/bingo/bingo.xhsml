@@ -10,18 +10,32 @@
         <input 
           class="room-input" 
           type="text" 
-          placeholder="请输入房间号" 
+          placeholder="请输入4位房间号" 
           value="{{inputRoomCode}}"
           bindinput="onRoomCodeInput"
-          maxlength="20">
+          maxlength="4">
         </input>
       </view>
       
+      <!-- 可点击时单独渲染，不带 disabled 属性，避免框架把 disabled="false" 仍当禁用 -->
       <button 
-        class="btn-primary join-btn {{isLoading ? 'join-btn-loading' : ''}}" 
-        bindtap="handleJoinRoom"
-        disabled="{{isLoading}}">
-        {{isLoading ? '加入中...' : '开始游戏'}}
+        xhs:if="{{canJoin && !isLoading}}"
+        class="btn-primary join-btn join-btn-enabled" 
+        bindtap="handleJoinRoom">
+        开始游戏
+      </button>
+      <button 
+        xhs:elif="{{!canJoin}}"
+        class="btn-primary join-btn join-btn-disabled" 
+        disabled
+        bindtap="handleJoinRoom">
+        开始游戏
+      </button>
+      <button 
+        xhs:else
+        class="btn-primary join-btn join-btn-loading" 
+        disabled>
+        加入中...
       </button>
     </view>
   </view>

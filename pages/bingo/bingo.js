@@ -37,6 +37,7 @@ Page({
     // 加入房间弹窗
     showJoinModal: true,
     inputRoomCode: '',
+    canJoin: false, // 房间号为4位时可点击
     
     // 定时器
     evaluationTimer: null,
@@ -116,20 +117,22 @@ Page({
     }
   },
 
-  // 输入房间号
+  // 输入房间号（4位数时启用按钮）
   onRoomCodeInput(e) {
+    const value = e.detail.value;
     this.setData({
-      inputRoomCode: e.detail.value
+      inputRoomCode: value,
+      canJoin: value.length === 4
     });
   },
 
   // 加入房间
   handleJoinRoom() {
-    const { inputRoomCode, currentUserInfo } = this.data;
+    const { inputRoomCode, currentUserInfo, canJoin } = this.data;
     
-    if (!inputRoomCode || inputRoomCode.trim() === '') {
+    if (!canJoin || !inputRoomCode || inputRoomCode.trim().length !== 4) {
       xhs.showToast({
-        title: '请输入房间号',
+        title: '请输入4位房间号',
         icon: 'none'
       });
       return;

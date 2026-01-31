@@ -56,7 +56,7 @@
         <text class="email-text">{{email}}</text>
         <button class="copy-email-btn" bindtap="copyEmail">复制邮箱</button>
       </view>
-      <text xhs:if="{{qrcodeUrl}}" class="modal-tip">长按识别二维码关注</text>
+      <text xhs:if="{{qrcodeUrl}}" class="modal-tip">扫描二维码关注</text>
     </view>
   </view>
 </view>

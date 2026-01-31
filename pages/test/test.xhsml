@@ -12,8 +12,8 @@
     <button class="btn-primary retry-btn" bindtap="loadQuestions">重试</button>
   </view>
 
-  <!-- 正常内容 -->
-  <view xhs:else>
+  <!-- 正常内容：一屏 flex 布局 -->
+  <view xhs:else class="test-content">
     <!-- 进度条 -->
     <view class="progress-section">
       <view class="progress-header">

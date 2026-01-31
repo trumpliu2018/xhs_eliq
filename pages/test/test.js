@@ -75,6 +75,21 @@ Page({
           loadError: true
         });
 
+        // 401 未登录：提示登录并跳转到「我」tab
+        if (err.code === 401) {
+          xhs.showModal({
+            title: '请先登录',
+            content: '登录后可进行MBTI测评',
+            showCancel: false,
+            success: () => {
+              xhs.switchTab({
+                url: '/pages/profile/profile'
+              });
+            }
+          });
+          return;
+        }
+
         xhs.showModal({
           title: '初始化失败',
           content: err.message || '无法初始化测试会话，请检查网络后重试',

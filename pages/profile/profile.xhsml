@@ -13,7 +13,7 @@
 
     <!-- 未登录状态 -->
     <view xhs:else class="user-header login-prompt">
-      <image class="user-avatar avatar-placeholder" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+      <image class="user-avatar avatar-placeholder" src="/pages/assets/avatar/avatar.png" mode="aspectFill"></image>
       <view class="user-info">
         <text class="user-name">{{userInfo.nickname}}</text>
         <button class="login-button" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">点击登录</button>

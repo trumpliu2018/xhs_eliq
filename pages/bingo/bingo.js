@@ -3,9 +3,10 @@ const auth = require('../../util/auth.js');
 
 Page({
   data: {
-    // 房间信息（写死）
-    roomCode: '7238',
-    roomId: 4,
+    // 房间信息
+    roomCode: '',
+    roomId: null,
+    hasJoined: false,
     
     // 参与者列表
     participants: [],
@@ -25,6 +26,11 @@ Page({
     
     // 当前登录用户ID
     currentUserId: null,
+    currentUserInfo: null,
+    
+    // 加入房间弹窗
+    showJoinModal: true,
+    inputRoomCode: '',
     
     // 定时器
     evaluationTimer: null
@@ -48,11 +54,14 @@ Page({
     }
     
     this.setData({
-      currentUserId: userInfo.id
+      currentUserId: userInfo.id,
+      currentUserInfo: userInfo
     });
     
-    // 初始化游戏
-    this.initGame();
+    // 显示加入房间弹窗
+    this.setData({
+      showJoinModal: true
+    });
   },
 
   onShow() {
@@ -95,8 +104,107 @@ Page({
     }
   },
 
+  // 输入房间号
+  onRoomCodeInput(e) {
+    this.setData({
+      inputRoomCode: e.detail.value
+    });
+  },
+
+  // 加入房间
+  handleJoinRoom() {
+    const { inputRoomCode, currentUserInfo } = this.data;
+    
+    if (!inputRoomCode || inputRoomCode.trim() === '') {
+      xhs.showToast({
+        title: '请输入房间号',
+        icon: 'none'
+      });
+      return;
+    }
+    
+    if (!currentUserInfo || !currentUserInfo.mbti_type) {
+      xhs.showModal({
+        title: '请先完善MBTI类型',
+        content: '加入游戏需要设置您的MBTI类型',
+        showCancel: false,
+        success: () => {
+          xhs.switchTab({
+            url: '/pages/profile/profile'
+          });
+        }
+      });
+      return;
+    }
+    
+    this.setData({ isLoading: true });
+    
+    api.joinRoom(inputRoomCode.trim(), currentUserInfo.mbti_type)
+      .then((res) => {
+        // 加入成功
+        const roomId = res.participant?.room_id || res.room?.id;
+        
+        this.setData({
+          roomCode: inputRoomCode.trim(),
+          roomId: roomId,
+          hasJoined: true,
+          showJoinModal: false,
+          isLoading: false
+        });
+        
+        xhs.showToast({
+          title: '加入成功',
+          icon: 'success'
+        });
+        
+        // 初始化游戏
+        this.initGame();
+      })
+      .catch((err) => {
+        // 如果是409，说明已经加入
+        if (err.code === 409) {
+          this.setData({
+            roomCode: inputRoomCode.trim(),
+            hasJoined: true,
+            showJoinModal: false,
+            isLoading: false
+          });
+          
+          xhs.showToast({
+            title: '已在房间中',
+            icon: 'success'
+          });
+          
+          // 初始化游戏
+          this.initGame();
+        } else {
+          console.error('加入房间失败:', err);
+          xhs.showToast({
+            title: err.message || '加入失败',
+            icon: 'none'
+          });
+          this.setData({ isLoading: false });
+        }
+      });
+  },
+
+  // 关闭加入房间弹窗
+  closeJoinModal() {
+    // 如果还没加入房间，返回上一页
+    if (!this.data.hasJoined) {
+      xhs.navigateBack();
+    }
+  },
+
+  // 阻止弹窗关闭
+  preventClose() {},
+
   // 初始化游戏
   initGame() {
+    if (!this.data.hasJoined || !this.data.roomCode) {
+      return;
+    }
+    
     this.setData({ isLoading: true });
     
     // 加载参与者列表
@@ -118,6 +226,9 @@ Page({
           return;
         }
         
+        // 从第一个参与者获取 room_id
+        const roomId = participants[0]?.room_id;
+        
         // 设置默认被评价者：第一个不是自己的用户
         let defaultTarget = participants.find(p => p.user_id !== this.data.currentUserId);
         if (!defaultTarget) {
@@ -126,6 +237,7 @@ Page({
         
         this.setData({
           participants: participants,
+          roomId: roomId,
           targetId: defaultTarget.user_id,
           targetParticipant: defaultTarget
         });

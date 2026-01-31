@@ -120,6 +120,17 @@ function getMBTIInfo(type) {
 
 // ====== Bingo游戏相关API ======
 
+// 加入房间
+function joinRoom(roomCode, mbtiType) {
+  return request(`/bingo/rooms/${roomCode}/join`, {
+    method: 'POST',
+    data: {
+      mbti_type: mbtiType
+    },
+    needAuth: true
+  });
+}
+
 // 获取房间参与者列表
 function getRoomParticipants(roomCode) {
   return request(`/bingo/rooms/${roomCode}/participants`, {
@@ -180,6 +191,7 @@ module.exports = {
   createTestSession,
   submitAnswers,
   getMBTIInfo,
+  joinRoom,
   getRoomParticipants,
   getBingoTraits,
   getReceivedEvaluations,

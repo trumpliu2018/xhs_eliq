@@ -34,6 +34,88 @@
   color: var(--text-secondary);
 }
 
+/* 加入房间弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  margin: 0 32px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.join-modal {
+  padding: 32px 24px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: block;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 24px;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.room-input {
+  width: 100%;
+  height: 48px;
+  background: #F7F8FA;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.room-input:focus {
+  background: white;
+  border-color: var(--primary-color);
+}
+
+.join-btn {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.join-btn[disabled] {
+  opacity: 0.6;
+}
+
 /* 参与者区域 */
 .participants-section {
   margin-bottom: 12px;

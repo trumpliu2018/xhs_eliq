@@ -1,11 +1,38 @@
 <view class="page-container">
+  <!-- 加入房间弹窗 -->
+  <view xhs:if="{{showJoinModal}}" class="modal-mask" bindtap="closeJoinModal">
+    <view class="modal-content join-modal" catchtap="preventClose">
+      <text class="modal-title">加入Bingo游戏</text>
+      <text class="modal-desc">请输入房间号开始游戏</text>
+      
+      <view class="input-group">
+        <text class="input-label">房间号</text>
+        <input 
+          class="room-input" 
+          type="text" 
+          placeholder="请输入房间号" 
+          value="{{inputRoomCode}}"
+          bindinput="onRoomCodeInput"
+          maxlength="20">
+        </input>
+      </view>
+      
+      <button 
+        class="btn-primary join-btn" 
+        bindtap="handleJoinRoom"
+        disabled="{{isLoading}}">
+        {{isLoading ? '加入中...' : '开始游戏'}}
+      </button>
+    </view>
+  </view>
+
   <!-- 加载中 -->
-  <view xhs:if="{{isLoading}}" class="loading-container">
+  <view xhs:if="{{isLoading && hasJoined}}" class="loading-container">
     <view class="loading-icon"></view>
     <text class="loading-text">加载中...</text>
   </view>
 
-  <view xhs:else>
+  <view xhs:elif="{{hasJoined}}">
     <!-- 参与者列表 -->
     <view class="participants-section">
       <view class="participants-list">

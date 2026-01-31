@@ -18,7 +18,7 @@
       </view>
       
       <button 
-        class="btn-primary join-btn" 
+        class="btn-primary join-btn {{isLoading ? 'join-btn-loading' : ''}}" 
         bindtap="handleJoinRoom"
         disabled="{{isLoading}}">
         {{isLoading ? '加入中...' : '开始游戏'}}

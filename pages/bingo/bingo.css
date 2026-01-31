@@ -110,9 +110,13 @@
   height: 48px;
   font-size: 16px;
   font-weight: 600;
+  opacity: 1;
+  background: var(--primary-gradient) !important;
+  color: white !important;
 }
 
-.join-btn[disabled] {
+/* 仅在实际加载中时显示禁用样式 */
+.join-btn.join-btn-loading {
   opacity: 0.6;
 }
 

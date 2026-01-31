@@ -1,7 +1,7 @@
 // API 配置文件
 // 根据环境自动选择 API 地址
 
-const ENV = 'development'; // 'development' | 'production'
+const ENV = 'production'; // 'development' | 'production'
 
 const API_CONFIG = {
   development: {
@@ -9,7 +9,7 @@ const API_CONFIG = {
     timeout: 10000
   },
   production: {
-    baseURL: 'https://your-production-api.com/api', // 生产环境需要替换为实际的 API 地址
+    baseURL: 'https://mbti.nengwing.com/api', // 生产环境需要替换为实际的 API 地址
     timeout: 10000
   }
 };

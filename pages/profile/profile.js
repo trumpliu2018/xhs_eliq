@@ -471,21 +471,19 @@ Page({
         userInfo.nickname = nickname.trim();
         userInfo.mbti_type = mbti_type;
 
+        // 一次 setData 同时更新用户信息、弹窗状态和 MBTI 展示，保证页面立即刷新
         this.setData({
           userInfo: userInfo,
-          showUpdateForm: false
+          showUpdateForm: false,
+          mbtiResult: {
+            type: mbti_type,
+            name: mbtiNames[mbti_type] || mbti_type,
+            avatar: `/pages/assets/avatar/${mbti_type.toLowerCase()}.png`
+          }
         });
 
         // 保存到本地存储
         auth.saveAuthInfo(auth.getToken(), userInfo);
-
-        // 更新MBTI结果显示
-        this.setData({
-          mbtiResult: {
-            type: mbti_type,
-            name: mbtiNames[mbti_type] || mbti_type
-          }
-        });
 
         // 同时保存到 mbti_result 存储
         xhs.setStorageSync('mbti_result', {

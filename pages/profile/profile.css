@@ -186,19 +186,22 @@
 
 .about-header {
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
 }
 
 .about-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+  border-radius: 12px;
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 .about-content {
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;

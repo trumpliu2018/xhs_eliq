@@ -42,14 +42,11 @@
 
   <!-- 关于我 -->
   <view class="about-section">
-    <text class="section-title">关于我</text>
     <view class="about-card">
       <view class="about-header">
-        <image class="about-avatar" src="/pages/assets/avatar/avatar.jpeg" mode="aspectFill"></image>
+        <image class="about-avatar" src="/pages/assets/avatar/about.jpg" mode="aspectFit"></image>
         <view class="about-content">
-          <text class="about-text">ESTJ行动派，只给最精准高效的解决方案。</text>
-          <text class="about-text">100+企业客户认证，多家500强企业长期顾问。</text>
-          <text class="about-text">更多深度思考，在播客节目【书里书外】.....</text>
+          <text class="about-text">【书里书外】创新咨询是一家有着16年企业服务经验的公司。专注于团队凝聚力的各个方面，提供包括企业文化建设，员工培训和团建活动等形式多样的服务内容。拥有“e来i去"MBTI系列，“故事大学”Storytelling系列，“一平方米的静心”心理系列等原创版权产品。我们懂老板，懂员工，更懂HR，全程1对1定制，快速响应，服务专业，是您身边的团队凝聚力专家。</text>
         </view>
       </view>
     </view>

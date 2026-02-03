@@ -1,22 +1,12 @@
 <view class="page-container">
-  <view class="content-card">
-    <view class="page-title">合作案例</view>
-    <view class="content-section">
-      <text class="section-title">企业合作</text>
-      <view class="case-list">
-        <view xhs:for-items="{{cases}}" xhs:for-item="item" xhs:key="*item" class="case-item">
-          <image class="case-logo" src="{{item.logo}}" mode="aspectFit"></image>
-          <view class="case-info">
-            <text class="case-name">{{item.name}}</text>
-            <text class="case-desc">{{item.desc}}</text>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="content-section">
-      <text class="section-title">合作咨询</text>
-      <text class="section-text">如需商务合作，请联系：cooperation@mbti.com</text>
-      <button class="btn-primary contact-btn" bindtap="contactUs">联系我们</button>
-    </view>
+  <view class="image-list">
+    <image 
+      xhs:for-items="{{images}}" 
+      xhs:for-item="img" 
+      xhs:key="*img" 
+      class="case-image" 
+      src="{{img}}" 
+      mode="widthFix">
+    </image>
   </view>
 </view>

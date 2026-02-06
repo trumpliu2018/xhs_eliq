@@ -381,7 +381,7 @@ Page({
 
   // 加载MBTI特质列表
   loadTraits() {
-    const mbtiType = this.data.targetParticipant?.mbti_type;
+    const mbtiType = this.data.targetParticipant?.user?.mbti_type;
     
     if (!mbtiType) {
       return;

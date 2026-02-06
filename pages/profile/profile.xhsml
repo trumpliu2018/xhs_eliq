@@ -66,6 +66,11 @@
         <text class="menu-text">隐私政策</text>
         <text class="menu-arrow">→</text>
       </view>
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/cookie/cookie">
+        <view class="menu-icon privacy-icon">🍪</view>
+        <text class="menu-text">Cookie 政策</text>
+        <text class="menu-arrow">→</text>
+      </view>
       <view class="menu-item" bindtap="navigateTo" data-url="/pages/terms/terms">
         <view class="menu-icon terms-icon">📄</view>
         <text class="menu-text">用户协议</text>

@@ -1,8 +1,1 @@
-<view class="page-container">
-  <view class="content-card">
-    <text class="page-title">用户协议</text>
-    <scroll-view scroll-y class="content-scroll">
-      <text class="content-text">欢迎使用本小程序...</text>
-    </scroll-view>
-  </view>
-</view>
+<web-view src="https://mbti.nengwing.com/terms"></web-view>

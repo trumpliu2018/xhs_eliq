@@ -58,7 +58,7 @@
           data-user-id="{{item.user_id}}">
           <image 
             class="participant-avatar" 
-            src="{{item.user.avatar || '/pages/assets/avatar/' + item.mbti_type.toLowerCase() + '.png'}}" 
+            src="{{item.user.avatar || '/pages/assets/avatar/' + (item.user.mbti_type || 'default').toLowerCase() + '.png'}}" 
             mode="aspectFill">
           </image>
           <text class="participant-name">{{item.user.nickname || '用户' + item.user_id}}</text>
@@ -69,21 +69,21 @@
     <!-- Bingo游戏区域 -->
     <view xhs:if="{{targetParticipant}}" class="game-card">
       <!-- 标题栏 -->
-      <view class="game-header mbti-{{targetParticipant.mbti_type || 'default'}}">
+      <view class="game-header mbti-{{targetParticipant.user.mbti_type || 'default'}}">
         <view class="header-content">
           <text class="game-title">{{targetParticipant.user.nickname || '用户' + targetId}}的Bingo游戏</text>
           <text class="game-subtitle">五个连成一条线，你就是一只 {{mbtiIntro || '加载中...'}}</text>
         </view>
         <image 
-          xhs:if="{{targetParticipant.mbti_type}}"
+          xhs:if="{{targetParticipant.user.mbti_type}}"
           class="header-avatar" 
-          src="/pages/assets/avatar/{{targetParticipant.mbti_type.toLowerCase()}}.png" 
+          src="/pages/assets/avatar/{{targetParticipant.user.mbti_type.toLowerCase()}}.png" 
           mode="aspectFit">
         </image>
       </view>
 
       <!-- 5x5格子 -->
-      <view class="grid-container mbti-{{targetParticipant.mbti_type || 'default'}}">
+      <view class="grid-container mbti-{{targetParticipant.user.mbti_type || 'default'}}">
         <view class="grid-wrapper">
           <view 
             xhs:for="{{gridCells}}" 

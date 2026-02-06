@@ -1,8 +1,1 @@
-<view class="page-container">
-  <view class="content-card">
-    <text class="page-title">隐私政策</text>
-    <scroll-view scroll-y class="content-scroll">
-      <text class="content-text">我们重视您的隐私保护...</text>
-    </scroll-view>
-  </view>
-</view>
+<web-view src="https://mbti.nengwing.com/privacy-policy"></web-view>

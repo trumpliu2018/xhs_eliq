@@ -1,3 +1,5 @@
+const api = require('../../util/api.js');
+
 Page({
   data: {
     coverImage: '',
@@ -20,29 +22,7 @@ Page({
       { code: 'ESTP', name: '企业家' },
       { code: 'ESFP', name: '表演者' }
     ],
-    reviews: [
-      {
-        avatar: 'https://nengying-1304691500.cos.ap-shanghai.myqcloud.com/avatar.png',
-        username: '小红',
-        mbti: 'INFP',
-        intro: '互联网设计师',
-        content: '测评结果非常准确！帮助我更好地理解了自己的性格特点，推荐给大家！'
-      },
-      {
-        avatar: 'https://nengying-1304691500.cos.ap-shanghai.myqcloud.com/avatar.png',
-        username: '阿明',
-        mbti: 'ENTJ',
-        intro: '创业者',
-        content: '专业的性格分析，对我的职业规划很有帮助，值得一试！'
-      },
-      {
-        avatar: 'https://nengying-1304691500.cos.ap-shanghai.myqcloud.com/avatar.png',
-        username: '晓雯',
-        mbti: 'ISFJ',
-        intro: '教育工作者',
-        content: '界面设计很美观，测评过程体验流畅，结果分析也很详细。'
-      }
-    ]
+    reviews: []
   },
 
   onLoad() {
@@ -52,6 +32,17 @@ Page({
     this.setData({
       coverImage: coverImage
     });
+
+    // 拉取用户评价
+    api.getTestimonials({ page: 1, size: 10 })
+      .then((res) => {
+        this.setData({
+          reviews: res.items || []
+        });
+      })
+      .catch(() => {
+        this.setData({ reviews: [] });
+      });
 
     // 检查是否已经完成过测评
     const mbtiResult = xhs.getStorageSync('mbti_result');

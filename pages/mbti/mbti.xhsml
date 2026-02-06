@@ -58,15 +58,15 @@
       <text class="title-medium">声音</text>
     </view>
     <view class="review-list mt-24">
-      <view xhs:for-items="{{reviews}}" xhs:for-item="review" xhs:key="*review" class="review-item">
+      <view xhs:for-items="{{reviews}}" xhs:for-item="review" xhs:key="review.id" class="review-item">
         <view class="review-header">
           <image class="avatar avatar-small" src="{{review.avatar}}" mode="aspectFill"></image>
           <view class="review-user">
-            <text class="text-body">{{review.username}}</text>
-            <text class="text-light">{{review.mbti}} · {{review.intro}}</text>
+            <text class="text-body">{{review.nickname}}</text>
+            <text class="text-light">{{review.profession}}</text>
           </view>
         </view>
-        <view class="text-secondary mt-12">{{review.content}}</view>
+        <view class="text-secondary mt-12">{{review.body}}</view>
       </view>
     </view>
   </view>

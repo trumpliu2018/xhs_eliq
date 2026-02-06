@@ -20,30 +20,10 @@
 
   <!-- 专业咨询服务 -->
   <view class="card consult-card">
-    <view class="consult-header">
-      <text class="consult-title">想要更深入了解自己？</text>
-      <text class="consult-subtitle">专业心理咨询师为您提供1对1深度解析</text>
-    </view>
-    
-    <view class="consult-features">
-      <view class="consult-feature">
-        <text class="consult-feature-icon">✓</text>
-        <text class="consult-feature-text">30分钟深度交流</text>
-      </view>
-      <view class="consult-feature">
-        <text class="consult-feature-icon">✓</text>
-        <text class="consult-feature-text">个性化发展建议</text>
-      </view>
-      <view class="consult-feature">
-        <text class="consult-feature-icon">✓</text>
-        <text class="consult-feature-text">职业规划指导</text>
-      </view>
-    </view>
-
-    <view class="consult-price">
-      <text class="price-label">体验价</text>
-      <text class="price-value">¥99</text>
-      <text class="price-original">原价¥299</text>
+    <text class="consult-title">1V1 咨询服务</text>
+    <view class="consult-body">
+      <text class="consult-body-p">如果您需要预约专业的 MBTI 施测师，体验完整的 MBTI 测评过程；或您所在的团队/企业需要进行测评、人才盘点、企业培训或 MBTI 主题团建，可添加微信 <text class="consult-highlight">engagementboy</text>，告知具体需求后获取服务报价与指引。</text>
+      <text class="consult-body-p">您也可以通过下方方式联系我们。</text>
     </view>
   </view>
 

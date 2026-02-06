@@ -118,6 +118,14 @@ function getMBTIInfo(type) {
   });
 }
 
+// 获取用户评价列表（testimonials）
+function getTestimonials(params = {}) {
+  const { page = 1, size = 10 } = params;
+  return request(`/testimonials?page=${page}&size=${size}`, {
+    method: 'GET'
+  });
+}
+
 // ====== Bingo游戏相关API ======
 
 // 加入房间
@@ -191,6 +199,7 @@ module.exports = {
   createTestSession,
   submitAnswers,
   getMBTIInfo,
+  getTestimonials,
   joinRoom,
   getRoomParticipants,
   getBingoTraits,

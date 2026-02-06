@@ -1,7 +1,7 @@
 // API 配置文件
 // 根据环境自动选择 API 地址
 
-const ENV = 'production'; // 'development' | 'production'
+const ENV = 'development'; // 'development' | 'production'
 
 const API_CONFIG = {
   development: {

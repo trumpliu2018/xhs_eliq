@@ -524,33 +524,59 @@ Page({
 
   // 点击格子：评价或取消评价
   onCellTap(e) {
-    const { cellId, evaluatedByMe } = e.currentTarget.dataset;
-    const { roomId, targetId, isEvaluating } = this.data;
-    
-    if (isEvaluating) {
-      return; // 防止重复点击
+    const { cellId } = e.currentTarget.dataset;
+    const { roomId, targetId, gridCells } = this.data;
+
+    if (!roomId || !targetId) {
+      return;
     }
-    
-    this.setData({ isEvaluating: true });
-    
-    // 根据当前状态决定是创建还是删除评价
-    const apiCall = evaluatedByMe 
+
+    // 找到当前格子
+    const index = gridCells.findIndex(cell => cell.id === cellId);
+    if (index === -1) {
+      return;
+    }
+
+    const oldCell = gridCells[index];
+    const wasEvaluatedByMe = !!oldCell.evaluated_by_me;
+
+    // 乐观更新：先在前端立即更新分数和选中状态
+    const delta = wasEvaluatedByMe ? -1 : 1;
+    const newScore = Math.max(0, (oldCell.score || 0) + delta);
+
+    const newGridCells = [...gridCells];
+    newGridCells[index] = {
+      ...oldCell,
+      evaluated_by_me: !wasEvaluatedByMe,
+      score: newScore
+    };
+
+    this.setData({
+      gridCells: newGridCells
+    });
+
+    // 异步调用后端接口，不阻塞界面
+    const apiCall = wasEvaluatedByMe
       ? api.deleteBingoInteraction(roomId, targetId, cellId)
       : api.createBingoInteraction(roomId, targetId, cellId);
-    
+
     apiCall
       .then(() => {
-        // 刷新评价数据
-        this.loadEvaluations();
-        this.setData({ isEvaluating: false });
+        // 成功时不强制立即刷新，定时轮询会同步最新聚合结果
+        // 如需更快同步，也可以在这里选择性调用 this.loadEvaluations();
       })
       .catch((err) => {
         console.error('评价操作失败:', err);
+
+        // 接口失败时回滚到点击前的本地状态
+        this.setData({
+          gridCells
+        });
+
         xhs.showToast({
           title: err.message || '操作失败',
           icon: 'none'
         });
-        this.setData({ isEvaluating: false });
       });
   },
 

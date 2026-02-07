@@ -1,4 +1,10 @@
 const api = require('../../util/api.js');
+let marked;
+try {
+  marked = require('marked');
+} catch (e) {
+  console.warn('marked 未安装，请在小程序根目录执行 npm install 并在 IDE 中构建 npm');
+}
 
 Page({
   data: {
@@ -20,19 +26,24 @@ Page({
     xhs.showLoading({ title: '加载中...' });
     api.getArticle(id)
       .then((article) => {
-        xhs.hideLoading();
-        const contentHtml = article.content_html || this.markdownToHtml(article.content || '');
-        this.setData({
-          title: article.title || '',
-          summary: article.summary || '',
-          contentHtml,
-          author: article.author || '',
-          view_count: article.view_count || 0,
-          isLoading: false
+        const htmlPromise = article.content_html
+          ? Promise.resolve(article.content_html)
+          : this.markdownToHtml(article.content || '');
+        return htmlPromise.then((contentHtml) => {
+          xhs.hideLoading();
+          const finalHtml = typeof contentHtml === 'string' ? contentHtml : String(contentHtml || '');
+          this.setData({
+            title: article.title || '',
+            summary: article.summary || '',
+            contentHtml: finalHtml,
+            author: article.author || '',
+            view_count: article.view_count || 0,
+            isLoading: false
+          });
+          if (article.title) {
+            xhs.setNavigationBarTitle({ title: article.title });
+          }
         });
-        if (article.title) {
-          xhs.setNavigationBarTitle({ title: article.title });
-        }
       })
       .catch((err) => {
         xhs.hideLoading();
@@ -46,118 +57,42 @@ Page({
   },
 
   markdownToHtml(markdown) {
+    if (!markdown) return Promise.resolve('');
+    if (typeof marked !== 'undefined' && marked.parse) {
+      const DefaultRenderer = typeof marked.Renderer === 'function' ? marked.Renderer : function () {};
+      const defaultRenderer = new DefaultRenderer();
+      const renderer = new DefaultRenderer();
+      // 小程序 rich-text 对 <blockquote> 可能无样式，改为带 class + 内联样式的 div，保证引用可见
+      renderer.blockquote = function (quote) {
+        const inner = typeof quote === 'string' ? quote : (defaultRenderer.blockquote ? defaultRenderer.blockquote.call(this, quote) : String(quote));
+        const style = 'margin:16px 0;padding:14px 18px;border-left:4px solid #FF2442;background:rgba(255,36,66,0.06);color:#666;line-height:1.7;border-radius:0 8px 8px 0;display:block;box-sizing:border-box;';
+        return '<div class="md-blockquote" style="' + style + '">' + inner + '</div>';
+      };
+      // 有序/无序列表：rich-text 内 >>> 可能不生效，用内联样式保证缩进
+      renderer.list = function (token) {
+        const html = defaultRenderer.list ? defaultRenderer.list.call(this, token) : '';
+        return html
+          .replace(/<ol([^>]*)>/g, '<ol$1 style="margin:12px 0;padding-left:36px;line-height:1.8;">')
+          .replace(/<ul([^>]*)>/g, '<ul$1 style="margin:12px 0;padding-left:24px;line-height:1.8;">')
+          .replace(/<li>/g, '<li style="margin-bottom:8px;padding-left:4px;">');
+      };
+      if (marked.use) {
+        marked.use({ gfm: true, breaks: true, renderer: renderer });
+      } else {
+        marked.setOptions({ gfm: true, breaks: true, renderer: renderer });
+      }
+      const result = marked.parse(markdown);
+      return Promise.resolve(result).then((html) => typeof html === 'string' ? html : '');
+    }
+    return Promise.resolve(this.markdownToHtmlFallback(markdown));
+  },
+
+  markdownToHtmlFallback(markdown) {
     if (!markdown) return '';
-    const escape = (s) => {
-      if (!s) return '';
-      return String(s)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-    };
-    const parseInline = (text) => {
-      const imgs = [];
-      let out = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => {
-        imgs.push({ alt: alt || '', url: url.trim() });
-        return '\x00IMG' + (imgs.length - 1) + '\x00';
-      });
-      out = escape(out);
-      out = out.replace(/\x00IMG(\d+)\x00/g, (_, n) => {
-        const { alt: a, url: u } = imgs[parseInt(n, 10)];
-        const safeUrl = (u || '').replace(/"/g, '&quot;');
-        const safeAlt = (a || '').replace(/"/g, '&quot;');
-        return '<img src="' + safeUrl + '" alt="' + safeAlt + '" class="md-img" />';
-      });
-      out = out.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      out = out.replace(/__(.+?)__/g, '<strong>$1</strong>');
-      out = out.replace(/\*(.+?)\*/g, '<em>$1</em>');
-      out = out.replace(/_(.+?)_/g, '<em>$1</em>');
-      out = out.replace(/`([^`]+)`/g, '<code>$1</code>');
-      out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-      return out;
-    };
-    const lines = markdown.split(/\n/);
-    const out = [];
-    let i = 0;
-    let inCodeBlock = false;
-    let codeBlockContent = [];
-    while (i < lines.length) {
-      const line = lines[i];
-      if (line.startsWith('```')) {
-        if (!inCodeBlock) {
-          inCodeBlock = true;
-          codeBlockContent = [];
-        } else {
-          out.push('<pre><code>' + escape(codeBlockContent.join('\n')) + '</code></pre>');
-          inCodeBlock = false;
-        }
-        i++;
-        continue;
-      }
-      if (inCodeBlock) {
-        codeBlockContent.push(line);
-        i++;
-        continue;
-      }
-      const trimmed = line.trim();
-      if (!trimmed) {
-        i++;
-        continue;
-      }
-      const hMatch = trimmed.match(/^(#{1,6})\s+(.+)$/);
-      if (hMatch) {
-        const level = Math.min(hMatch[1].length, 6);
-        out.push('<h' + level + '>' + parseInline(hMatch[2]) + '</h' + level + '>');
-        i++;
-        continue;
-      }
-      if (trimmed.charAt(0) === '>') {
-        const quoteLines = [];
-        while (i < lines.length && lines[i].trim().charAt(0) === '>') {
-          const content = lines[i].replace(/^\s*>+\s*/, '').trim();
-          if (content) quoteLines.push(parseInline(content));
-          i++;
-        }
-        if (quoteLines.length) {
-          const blockquoteStyle = 'margin:12px 0;padding:12px 16px;border-left:4px solid #FF2442;background:#f0f0f0;color:#333;line-height:1.7;font-style:italic;';
-          out.push('<div style="' + blockquoteStyle + '">' + quoteLines.join('<br/>') + '</div>');
-        }
-        continue;
-      }
-      if (/^[-*]\s+/.test(trimmed)) {
-        const items = [];
-        while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) {
-          const content = lines[i].trim().replace(/^[-*]\s+/, '');
-          items.push('<li>' + parseInline(content) + '</li>');
-          i++;
-        }
-        out.push('<ul>' + items.join('') + '</ul>');
-        continue;
-      }
-      if (/^\d+\.\s+/.test(trimmed)) {
-        const items = [];
-        while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
-          const content = lines[i].trim().replace(/^\d+\.\s+/, '');
-          items.push('<li>' + parseInline(content) + '</li>');
-          i++;
-        }
-        out.push('<ol>' + items.join('') + '</ol>');
-        continue;
-      }
-      const paraLines = [];
-      while (i < lines.length && lines[i].trim() !== '') {
-        const l = lines[i];
-        if (/^#{1,6}\s+/.test(l) || l.startsWith('```') || l.trim().startsWith('>') || /^[-*]\s+/.test(l.trim()) || /^\d+\.\s+/.test(l.trim())) break;
-        paraLines.push(parseInline(l));
-        i++;
-      }
-      if (paraLines.length) {
-        out.push('<p>' + paraLines.join('<br/>') + '</p>');
-      }
-    }
-    if (inCodeBlock) {
-      out.push('<pre><code>' + escape(codeBlockContent.join('\n')) + '</code></pre>');
-    }
-    return out.join('');
+    return markdown
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\n/g, '<br/>');
   }
 });

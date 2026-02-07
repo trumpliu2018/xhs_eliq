@@ -70,64 +70,110 @@
   padding: 20px 0;
 }
 
-/* Markdown 内容样式（与测评结果页一致） */
+/* 文章正文：与 theme 和测评结果页统一，符合小程序基本展示与品牌风格 */
 .markdown-content {
-  font-size: 15px !important;
-  line-height: 1.8 !important;
-  color: var(--text-primary) !important;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-primary);
   word-wrap: break-word;
 }
 
 .markdown-content >>> p {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   line-height: 1.8;
 }
 
+.markdown-content >>> h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 24px 0 12px;
+  line-height: 1.35;
+}
+
+.markdown-content >>> h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 20px 0 10px;
+  line-height: 1.35;
+}
+
+.markdown-content >>> h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 18px 0 10px;
+  line-height: 1.4;
+}
+
+.markdown-content >>> h4,
+.markdown-content >>> h5,
+.markdown-content >>> h6 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 16px 0 8px;
+  line-height: 1.4;
+}
+
+/* 无序列表：与 result 页一致，主色圆点 */
 .markdown-content >>> ul {
-  margin: 8px 0;
+  margin: 12px 0;
   padding-left: 0;
   list-style: none;
 }
 
-.markdown-content >>> li {
+.markdown-content >>> ul li {
   position: relative;
   padding-left: 24px;
   margin-bottom: 8px;
   line-height: 1.8;
 }
 
-.markdown-content >>> li::before {
+.markdown-content >>> ul li::before {
   content: "•";
   position: absolute;
   left: 8px;
   top: 0;
-  color: #FF2442;
+  color: var(--primary-color);
   font-weight: 700;
   font-size: 16px;
 }
 
-.markdown-content >>> h1 { font-size: 22px; font-weight: 700; margin: 20px 0 12px; line-height: 1.4; }
-.markdown-content >>> h2 { font-size: 20px; font-weight: 700; margin: 18px 0 10px; line-height: 1.4; }
-.markdown-content >>> h3 { font-size: 18px; font-weight: 600; margin: 16px 0 8px; line-height: 1.4; }
-.markdown-content >>> h4, .markdown-content >>> h5, .markdown-content >>> h6 { font-size: 16px; font-weight: 600; margin: 14px 0 8px; line-height: 1.4; }
+/* 有序列表：增加缩进 */
+.markdown-content >>> ol {
+  margin: 12px 0;
+  padding-left: 36px;
+  line-height: 1.8;
+}
 
+.markdown-content >>> ol li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+/* 引用：marked 默认输出 <blockquote>，小程序 rich-text 可能不认，改用 .md-blockquote（见 article-detail.js renderer） */
 .markdown-content >>> blockquote,
 .markdown-content >>> .md-blockquote {
-  margin: 12px 0;
-  padding: 12px 16px;
-  border-left: 4px solid #FF2442;
-  background: var(--bg-secondary);
+  margin: 16px 0;
+  padding: 14px 18px;
+  border-left: 4px solid var(--primary-color);
+  background: rgba(255, 36, 66, 0.06);
   color: var(--text-secondary);
   line-height: 1.7;
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
   display: block;
   box-sizing: border-box;
 }
 
+/* 代码：主题圆角与边框 */
 .markdown-content >>> pre {
-  margin: 12px 0;
+  margin: 14px 0;
   padding: 16px;
-  background: var(--bg-secondary);
-  border-radius: 8px;
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-small);
   overflow-x: auto;
   font-size: 14px;
   line-height: 1.6;
@@ -136,48 +182,41 @@
 .markdown-content >>> code {
   font-family: monospace;
   font-size: 14px;
-  background: rgba(0,0,0,0.06);
-  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 8px;
   border-radius: 4px;
+  color: var(--text-primary);
 }
 
 .markdown-content >>> pre code {
   background: none;
   padding: 0;
+  border-radius: 0;
 }
 
-.markdown-content >>> ol {
-  margin: 8px 0;
-  padding-left: 24px;
-  list-style: decimal;
-}
-
-.markdown-content >>> ol li {
-  padding-left: 8px;
-  margin-bottom: 8px;
-}
-
-.markdown-content >>> ol li::before {
-  content: none;
-}
-
-.markdown-content >>> a {
-  color: #FF2442;
-  text-decoration: none;
-}
-
-.markdown-content >>> img,
-.markdown-content >>> .md-img {
+/* 图片：主题圆角、安全边距 */
+.markdown-content >>> img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 12px 0;
-  border-radius: 8px;
-  vertical-align: middle;
+  margin: 16px 0;
+  border-radius: var(--radius-small);
 }
 
-.markdown-content >>> strong { font-weight: 700; }
-.markdown-content >>> em { font-style: italic; }
+/* 链接：主色 */
+.markdown-content >>> a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.markdown-content >>> strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.markdown-content >>> em {
+  font-style: italic;
+}
 
 .safe-area-bottom {
   height: constant(safe-area-inset-bottom);

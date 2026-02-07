@@ -111,13 +111,17 @@ Page({
         i++;
         continue;
       }
-      if (trimmed.startsWith('>')) {
+      if (trimmed.charAt(0) === '>') {
         const quoteLines = [];
-        while (i < lines.length && lines[i].trim().startsWith('>')) {
-          quoteLines.push(parseInline(lines[i].trim().slice(1).trim()));
+        while (i < lines.length && lines[i].trim().charAt(0) === '>') {
+          const content = lines[i].replace(/^\s*>+\s*/, '').trim();
+          if (content) quoteLines.push(parseInline(content));
           i++;
         }
-        out.push('<blockquote>' + quoteLines.join('<br/>') + '</blockquote>');
+        if (quoteLines.length) {
+          const blockquoteStyle = 'margin:12px 0;padding:12px 16px;border-left:4px solid #FF2442;background:#f0f0f0;color:#333;line-height:1.7;font-style:italic;';
+          out.push('<div style="' + blockquoteStyle + '">' + quoteLines.join('<br/>') + '</div>');
+        }
         continue;
       }
       if (/^[-*]\s+/.test(trimmed)) {

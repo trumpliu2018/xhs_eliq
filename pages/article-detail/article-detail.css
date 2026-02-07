@@ -111,13 +111,16 @@
 .markdown-content >>> h3 { font-size: 18px; font-weight: 600; margin: 16px 0 8px; line-height: 1.4; }
 .markdown-content >>> h4, .markdown-content >>> h5, .markdown-content >>> h6 { font-size: 16px; font-weight: 600; margin: 14px 0 8px; line-height: 1.4; }
 
-.markdown-content >>> blockquote {
+.markdown-content >>> blockquote,
+.markdown-content >>> .md-blockquote {
   margin: 12px 0;
   padding: 12px 16px;
   border-left: 4px solid #FF2442;
   background: var(--bg-secondary);
   color: var(--text-secondary);
   line-height: 1.7;
+  display: block;
+  box-sizing: border-box;
 }
 
 .markdown-content >>> pre {

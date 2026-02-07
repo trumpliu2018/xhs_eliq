@@ -1,7 +1,7 @@
 <view class="page-container">
   <view class="page-header">
-    <text class="page-title">星球</text>
-    <text class="page-subtitle">探索性格与成长的文章</text>
+    <text class="page-title">MBTI星球</text>
+    <text class="page-subtitle"></text>
   </view>
 
   <view xhs:if="{{isLoading && articles.length === 0}}" class="loading-wrap">

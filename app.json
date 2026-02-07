@@ -187,8 +187,8 @@
       },
       {
         "pagePath": "pages/planet/planet",
-        "iconPath": "image/tab-game.png",
-        "selectedIconPath": "image/tab-game-active.png",
+        "iconPath": "image/icon_cloud.png",
+        "selectedIconPath": "image/icon_cloud_HL.png",
         "text": "星球"
       },
       {

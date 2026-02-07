@@ -2,7 +2,9 @@
   "pages": [
     "pages/mbti/mbti",
     "pages/interact/interact",
+    "pages/planet/planet",
     "pages/profile/profile",
+    "pages/article-detail/article-detail",
     "pages/test/test",
     "pages/result/result",
     "pages/bingo/bingo",
@@ -182,6 +184,12 @@
         "iconPath": "image/tab-game.png",
         "selectedIconPath": "image/tab-game-active.png",
         "text": "互动"
+      },
+      {
+        "pagePath": "pages/planet/planet",
+        "iconPath": "image/tab-game.png",
+        "selectedIconPath": "image/tab-game-active.png",
+        "text": "星球"
       },
       {
         "pagePath": "pages/profile/profile",

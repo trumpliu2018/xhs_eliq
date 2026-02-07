@@ -1,0 +1,45 @@
+<view class="page-container">
+  <view class="page-header">
+    <text class="page-title">星球</text>
+    <text class="page-subtitle">探索性格与成长的文章</text>
+  </view>
+
+  <view xhs:if="{{isLoading && articles.length === 0}}" class="loading-wrap">
+    <view class="loading-icon"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <view xhs:elif="{{articles.length === 0}}" class="empty-wrap">
+    <text class="empty-text">暂无文章</text>
+  </view>
+
+  <scroll-view
+    xhs:else
+    scroll-y
+    class="article-list"
+    bindscrolltolower="loadArticles"
+    lower-threshold="100">
+    <view
+      xhs:for="{{articles}}"
+      xhs:key="id"
+      class="article-card"
+      bindtap="onArticleTap"
+      data-id="{{item.id}}">
+      <view class="article-body">
+        <text class="article-title">{{item.title}}</text>
+        <view class="article-meta">
+          <text xhs:if="{{item.author}}" class="meta-item">{{item.author}}</text>
+          <text xhs:if="{{item.view_count}}" class="meta-item">{{item.view_count}} 阅读</text>
+        </view>
+      </view>
+      <image
+        xhs:if="{{item.cover_image}}"
+        class="article-cover"
+        src="{{item.cover_image}}"
+        mode="aspectFill" />
+      <text xhs:if="{{!item.cover_image}}" class="article-arrow">→</text>
+    </view>
+  </scroll-view>
+
+  <view class="safe-area-bottom"></view>
+</view>

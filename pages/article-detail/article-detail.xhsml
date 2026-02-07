@@ -1,0 +1,25 @@
+<view class="page-container">
+  <view xhs:if="{{isLoading}}" class="loading-wrap">
+    <view class="loading-icon"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <view xhs:else class="article-detail">
+    <view class="article-header">
+      <text class="article-title">{{title}}</text>
+      <view xhs:if="{{summary}}" class="article-summary-wrap">
+        <text class="article-summary">{{summary}}</text>
+      </view>
+      <view class="article-meta">
+        <text xhs:if="{{author}}" class="meta-item">{{author}}</text>
+        <text xhs:if="{{view_count}}" class="meta-item">{{view_count}} 阅读</text>
+      </view>
+    </view>
+
+    <view class="article-content-card">
+      <rich-text class="markdown-content" nodes="{{contentHtml}}"></rich-text>
+    </view>
+  </view>
+
+  <view class="safe-area-bottom"></view>
+</view>

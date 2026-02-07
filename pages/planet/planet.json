@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "星球",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

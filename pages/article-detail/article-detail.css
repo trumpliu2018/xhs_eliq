@@ -1,0 +1,182 @@
+@import "../theme.css";
+
+.page-container {
+  padding-bottom: 40px;
+  min-height: 100vh;
+}
+
+.loading-wrap {
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.loading-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  border: 3px solid var(--border-light);
+  border-top-color: #FF2442;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.article-detail {
+  padding: 0 16px;
+}
+
+.article-header {
+  padding: 24px 0 20px;
+}
+
+.article-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.article-summary-wrap {
+  margin-bottom: 12px;
+}
+
+.article-summary {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.article-meta {
+  margin-top: 8px;
+}
+
+.meta-item {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-right: 16px;
+}
+
+.article-content-card {
+  padding: 20px 0;
+}
+
+/* Markdown 内容样式（与测评结果页一致） */
+.markdown-content {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: var(--text-primary) !important;
+  word-wrap: break-word;
+}
+
+.markdown-content >>> p {
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.markdown-content >>> ul {
+  margin: 8px 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.markdown-content >>> li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+.markdown-content >>> li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  color: #FF2442;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.markdown-content >>> h1 { font-size: 22px; font-weight: 700; margin: 20px 0 12px; line-height: 1.4; }
+.markdown-content >>> h2 { font-size: 20px; font-weight: 700; margin: 18px 0 10px; line-height: 1.4; }
+.markdown-content >>> h3 { font-size: 18px; font-weight: 600; margin: 16px 0 8px; line-height: 1.4; }
+.markdown-content >>> h4, .markdown-content >>> h5, .markdown-content >>> h6 { font-size: 16px; font-weight: 600; margin: 14px 0 8px; line-height: 1.4; }
+
+.markdown-content >>> blockquote {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-left: 4px solid #FF2442;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.markdown-content >>> pre {
+  margin: 12px 0;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.markdown-content >>> code {
+  font-family: monospace;
+  font-size: 14px;
+  background: rgba(0,0,0,0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.markdown-content >>> pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown-content >>> ol {
+  margin: 8px 0;
+  padding-left: 24px;
+  list-style: decimal;
+}
+
+.markdown-content >>> ol li {
+  padding-left: 8px;
+  margin-bottom: 8px;
+}
+
+.markdown-content >>> ol li::before {
+  content: none;
+}
+
+.markdown-content >>> a {
+  color: #FF2442;
+  text-decoration: none;
+}
+
+.markdown-content >>> img,
+.markdown-content >>> .md-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px 0;
+  border-radius: 8px;
+  vertical-align: middle;
+}
+
+.markdown-content >>> strong { font-weight: 700; }
+.markdown-content >>> em { font-style: italic; }
+
+.safe-area-bottom {
+  height: constant(safe-area-inset-bottom);
+  height: env(safe-area-inset-bottom);
+}

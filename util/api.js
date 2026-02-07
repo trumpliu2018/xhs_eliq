@@ -126,6 +126,23 @@ function getTestimonials(params = {}) {
   });
 }
 
+// ====== 文章 Articles API ======
+
+// 获取文章列表（分页）
+function getArticles(params = {}) {
+  const { page = 1, size = 10 } = params;
+  return request(`/articles?page=${page}&size=${size}`, {
+    method: 'GET'
+  });
+}
+
+// 获取文章详情
+function getArticle(id) {
+  return request(`/articles/${id}`, {
+    method: 'GET'
+  });
+}
+
 // ====== Bingo游戏相关API ======
 
 // 加入房间
@@ -200,6 +217,8 @@ module.exports = {
   submitAnswers,
   getMBTIInfo,
   getTestimonials,
+  getArticles,
+  getArticle,
   joinRoom,
   getRoomParticipants,
   getBingoTraits,

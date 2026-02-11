@@ -5,6 +5,7 @@
     "pages/planet/planet",
     "pages/profile/profile",
     "pages/article-detail/article-detail",
+    "pages/article-webview/article-webview",
     "pages/test/test",
     "pages/result/result",
     "pages/bingo/bingo",

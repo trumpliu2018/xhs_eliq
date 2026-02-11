@@ -105,7 +105,8 @@ function submitAnswers(testSessionId, answers) {
     method: 'POST',
     data: {
       test_session_id: testSessionId,
-      answers: answers // [{question_id: number, answer: 'yes'|'no'}]
+      // answer 现在为具体维度字母：E / I / S / N / T / F / J / P
+      answers: answers // [{question_id: number, answer: 'E'|'I'|'S'|'N'|'T'|'F'|'J'|'P'}]
     },
     needAuth: true
   });

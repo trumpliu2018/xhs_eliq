@@ -51,7 +51,7 @@ Page({
     const id = e.currentTarget.dataset.id;
     if (!id) return;
     xhs.navigateTo({
-      url: `/pages/article-detail/article-detail?id=${id}`
+      url: `/pages/article-webview/article-webview?id=${id}`
     });
   },
 

@@ -124,8 +124,11 @@ Page({
           .map(q => ({
             id: q.id,
             question: q.content,
+            // 维度对，例如 "EI"、"SN"、"TF"、"JP"
             dimension: q.dimension,
-            yesScore: q.direction
+            // 题目两端的具体文案
+            positive: q.positive,
+            negative: q.negative
           }));
 
         if (questions.length === 0) {
@@ -202,9 +205,29 @@ Page({
 
   // 选择选项
   selectOption(e) {
-    const value = e.currentTarget.dataset.value;
-    const answers = this.data.answers;
-    answers[this.data.currentIndex] = value;
+    const choice = e.currentTarget.dataset.value; // 'positive' | 'negative'
+    const answers = this.data.answers.slice();
+
+    const currentQuestion = this.data.questions[this.data.currentIndex];
+    const dim = currentQuestion.dimension || '';
+
+    // 根据题目维度和选择，映射到具体维度字母，例如 'E' / 'I'
+    let answerValue = null;
+    if (dim && dim.length === 2) {
+      // positive 对应第一个字母，negative 对应第二个字母
+      answerValue = choice === 'positive' ? dim.charAt(0) : dim.charAt(1);
+    }
+
+    if (!answerValue) {
+      console.warn('无法根据题目维度计算答案', currentQuestion, choice);
+      xhs.showToast({
+        title: '题目配置异常，请稍后重试',
+        icon: 'none'
+      });
+      return;
+    }
+
+    answers[this.data.currentIndex] = answerValue;
     
     this.setData({
       answers: answers
@@ -290,10 +313,10 @@ Page({
       title: '提交中...'
     });
 
-    // 构造答案数据
+    // 构造答案数据（answer 为具体维度字母，如 'E' / 'I' 等）
     const answers = this.data.questions.map((q, index) => ({
       question_id: q.id,
-      answer: this.data.answers[index] // 'yes' 或 'no'
+      answer: this.data.answers[index] // 'E' / 'I' / 'S' / 'N' / 'T' / 'F' / 'J' / 'P'
     }));
 
     // 提交到服务器
@@ -365,15 +388,10 @@ Page({
       J: 0, P: 0
     };
 
-    // 统计各维度得分
-    this.data.questions.forEach((q, index) => {
-      const answer = this.data.answers[index];
-      if (answer === 'yes') {
-        scores[q.yesScore]++;
-      } else {
-        // 如果选择'no'，则相反的选项得分
-        const opposite = this.getOppositeType(q.yesScore);
-        scores[opposite]++;
+    // 统计各维度得分：本地 answers 已经是具体维度字母
+    this.data.answers.forEach((answer) => {
+      if (answer && scores.hasOwnProperty(answer)) {
+        scores[answer]++;
       }
     });
 

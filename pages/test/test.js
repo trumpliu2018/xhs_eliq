@@ -7,6 +7,7 @@ Page({
     currentIndex: 0,
     answers: [], // 存储答案
     currentQuestion: null,
+    currentAnswer: null, // 当前题目的已选答案（维度字母）
     progressPercent: 0,
     isAllAnswered: false,
     showExitModal: false,
@@ -142,6 +143,9 @@ Page({
           questions: questions,
           answers: answers,
           currentQuestion: questions[0],
+          currentAnswer: null,
+          isPositiveSelected: false,
+          isNegativeSelected: false,
           isLoading: false
         });
 
@@ -195,6 +199,9 @@ Page({
               const firstUnanswered = savedAnswers.findIndex(a => a === null);
               if (firstUnanswered !== -1) {
                 this.jumpToQuestion({ currentTarget: { dataset: { index: firstUnanswered } } });
+              } else {
+                // 如果都已回答，保持在当前题目并刷新选中状态
+                this.updateCurrentSelection(this.data.currentIndex);
               }
             });
           }
@@ -227,10 +234,18 @@ Page({
       return;
     }
 
-    answers[this.data.currentIndex] = answerValue;
+    const index = this.data.currentIndex;
+    answers[index] = answerValue;
     
+    // 更新当前题目的选中状态
+    const isPositiveSelected = answerValue === dim.charAt(0);
+    const isNegativeSelected = answerValue === dim.charAt(1);
+
     this.setData({
-      answers: answers
+      answers: answers,
+      currentAnswer: answerValue,
+      isPositiveSelected,
+      isNegativeSelected
     }, () => {
       this.updateProgress();
       // 保存进度
@@ -261,11 +276,7 @@ Page({
   prevQuestion() {
     if (this.data.currentIndex > 0) {
       const newIndex = this.data.currentIndex - 1;
-      this.setData({
-        currentIndex: newIndex,
-        currentQuestion: this.data.questions[newIndex],
-        scrollIntoView: `nav-item-${newIndex}`
-      });
+      this.updateCurrentSelection(newIndex);
     }
   },
 
@@ -273,20 +284,35 @@ Page({
   nextQuestion() {
     if (this.data.currentIndex < this.data.questions.length - 1) {
       const newIndex = this.data.currentIndex + 1;
-      this.setData({
-        currentIndex: newIndex,
-        currentQuestion: this.data.questions[newIndex],
-        scrollIntoView: `nav-item-${newIndex}`
-      });
+      this.updateCurrentSelection(newIndex);
     }
   },
 
   // 跳转到指定题目
   jumpToQuestion(e) {
     const index = e.currentTarget.dataset.index;
+    this.updateCurrentSelection(index);
+  },
+
+  // 根据指定题目的答案，更新当前题目和选中态
+  updateCurrentSelection(index) {
+    const question = this.data.questions[index];
+    const answer = this.data.answers[index];
+    const dim = question && question.dimension ? question.dimension : '';
+
+    let isPositiveSelected = false;
+    let isNegativeSelected = false;
+    if (answer && dim && dim.length === 2) {
+      isPositiveSelected = answer === dim.charAt(0);
+      isNegativeSelected = answer === dim.charAt(1);
+    }
+
     this.setData({
       currentIndex: index,
-      currentQuestion: this.data.questions[index],
+      currentQuestion: question,
+      currentAnswer: answer || null,
+      isPositiveSelected,
+      isNegativeSelected,
       scrollIntoView: `nav-item-${index}`
     });
   },

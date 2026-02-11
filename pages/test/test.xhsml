@@ -39,22 +39,18 @@
 
     <!-- 选项按钮：使用题目返回的 positive / negative 文案 -->
     <view class="options-section">
-      <view class="option-card" bindtap="selectOption" data-value="positive">
-        <view class="option-icon">✓</view>
-        <view class="option-content">
+      <view class="option-card {{isPositiveSelected ? 'selected' : ''}}" bindtap="selectOption" data-value="positive">
+        <view class="option-icon">A</view>
+        <view class="option-content single-line">
           <text class="option-title">{{currentQuestion.positive || '选项A'}}</text>
-          <text class="option-desc">更符合我的情况</text>
         </view>
-        <view class="option-arrow">→</view>
       </view>
 
-      <view class="option-card" bindtap="selectOption" data-value="negative">
-        <view class="option-icon">✗</view>
-        <view class="option-content">
+      <view class="option-card {{isNegativeSelected ? 'selected' : ''}}" bindtap="selectOption" data-value="negative">
+        <view class="option-icon">B</view>
+        <view class="option-content single-line">
           <text class="option-title">{{currentQuestion.negative || '选项B'}}</text>
-          <text class="option-desc">不太像我是这样</text>
         </view>
-        <view class="option-arrow">→</view>
       </view>
     </view>
 

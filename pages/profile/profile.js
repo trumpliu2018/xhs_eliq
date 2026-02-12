@@ -19,6 +19,7 @@ Page({
       mbti_type: null
     },
     mbtiResult: null,
+    dimensions: null,
     stats: {
       tests: 0,
       games: 0,
@@ -92,8 +93,62 @@ Page({
       this.setData({ userInfo }, () => {
         // userInfo更新后，重新加载MBTI结果
         this.loadMBTIResult();
+        // 加载维度百分比
+        this.loadDimensionPercentages();
       });
     }
+  },
+
+  // 加载MBTI维度百分比
+  loadDimensionPercentages() {
+    const userInfo = this.data.userInfo;
+    
+    // 如果没有百分比数据，不显示
+    if (!userInfo || !userInfo.percentage_e) {
+      this.setData({ dimensions: null });
+      return;
+    }
+
+    const dimensions = [
+      {
+        name: 'E-I',
+        leftLabel: 'E 外向',
+        rightLabel: 'I 内向',
+        leftPercent: userInfo.percentage_e || 0,
+        rightPercent: userInfo.percentage_i || 0,
+        leftColor: '#FF6B9D',
+        rightColor: '#6C5CE7'
+      },
+      {
+        name: 'S-N',
+        leftLabel: 'S 感觉',
+        rightLabel: 'N 直觉',
+        leftPercent: userInfo.percentage_s || 0,
+        rightPercent: userInfo.percentage_n || 0,
+        leftColor: '#FFB347',
+        rightColor: '#00D9A3'
+      },
+      {
+        name: 'T-F',
+        leftLabel: 'T 思考',
+        rightLabel: 'F 情感',
+        leftPercent: userInfo.percentage_t || 0,
+        rightPercent: userInfo.percentage_f || 0,
+        leftColor: '#4A90E2',
+        rightColor: '#FF6B9D'
+      },
+      {
+        name: 'J-P',
+        leftLabel: 'J 判断',
+        rightLabel: 'P 感知',
+        leftPercent: userInfo.percentage_j || 0,
+        rightPercent: userInfo.percentage_p || 0,
+        leftColor: '#8B7EE8',
+        rightColor: '#FFA940'
+      }
+    ];
+
+    this.setData({ dimensions });
   },
 
   // 加载MBTI结果

@@ -60,6 +60,29 @@
       <text class="empty-text">还未完成MBTI测评</text>
       <text class="empty-btn">立即测评</text>
     </view>
+
+    <!-- MBTI维度百分比 -->
+    <view xhs:if="{{dimensions}}" class="dimensions-card">
+      <view class="dimensions-header">
+        <text class="dimensions-title">维度分析</text>
+      </view>
+      <view class="dimensions-list">
+        <view xhs:for="{{dimensions}}" xhs:key="name" class="dimension-item">
+          <view class="dimension-labels">
+            <text class="dimension-label left">{{item.leftLabel}}</text>
+            <text class="dimension-label right">{{item.rightLabel}}</text>
+          </view>
+          <view class="dimension-bar">
+            <view class="dimension-bar-left" style="width: {{item.leftPercent}}%; background: {{item.leftColor}};"></view>
+            <view class="dimension-bar-right" style="width: {{item.rightPercent}}%; background: {{item.rightColor}};"></view>
+          </view>
+          <view class="dimension-percentages">
+            <text class="dimension-percent left">{{item.leftPercent}}%</text>
+            <text class="dimension-percent right">{{item.rightPercent}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 
   <!-- 关于我 -->

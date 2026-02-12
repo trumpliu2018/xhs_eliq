@@ -194,6 +194,100 @@
   line-height: 1.4;
 }
 
+/* MBTI维度百分比 */
+.dimensions-card {
+  margin-top: 16px;
+  padding: 16px;
+  background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dimensions-header {
+  margin-bottom: 16px;
+}
+
+.dimensions-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.dimensions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dimension-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dimension-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dimension-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dimension-label.left {
+  text-align: left;
+}
+
+.dimension-label.right {
+  text-align: right;
+}
+
+.dimension-bar {
+  height: 12px;
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #E8E8E8;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dimension-bar-left {
+  height: 100%;
+  transition: width 0.6s ease;
+  border-radius: 6px 0 0 6px;
+}
+
+.dimension-bar-right {
+  height: 100%;
+  transition: width 0.6s ease;
+  border-radius: 0 6px 6px 0;
+}
+
+.dimension-percentages {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dimension-percent {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.dimension-percent.left {
+  text-align: left;
+}
+
+.dimension-percent.right {
+  text-align: right;
+}
+
 /* 未测评提示 */
 .mbti-empty {
   display: flex;

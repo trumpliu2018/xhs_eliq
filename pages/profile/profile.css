@@ -100,98 +100,110 @@
   font-size: 24px;
 }
 
-/* X类型特殊样式 */
-.mbti-badge-x {
+/* X类型特殊样式 - 重新设计布局 */
+.mbti-x-container {
   background: linear-gradient(135deg, #FFB347 0%, #FFCC70 100%);
-  cursor: default;
+  border-radius: 16px;
+  padding: 16px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.mbti-badge-x:active {
-  transform: none;
+.x-header-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.mbti-content-x {
+.x-avatar {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.x-title-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.x-type-text {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.x-subtitle {
+  font-size: 12px;
+  opacity: 0.9;
+  color: white;
+}
+
+.x-types-section {
+  width: 100%;
+  overflow: visible;
+}
+
+.possible-types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.type-option-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 6px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+.type-option-card:active {
+  background: white;
+  border-color: white;
+  transform: scale(0.97);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.type-option-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #FF2442;
   flex: 1;
 }
 
-.mbti-avatar-x {
-  width: 80px;
-  height: 80px;
+.type-option-arrow {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FF2442;
   flex-shrink: 0;
 }
 
-.mbti-info-x {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
+.x-footer-section {
+  padding-top: 4px;
 }
 
-.mbti-type-x {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.mbti-hint {
-  font-size: 12px;
-  opacity: 0.9;
-  margin-top: 4px;
-  margin-bottom: 8px;
-}
-
-.possible-types {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 4px;
-}
-
-.type-link-card {
-  flex: 1;
-  min-width: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s;
-}
-
-.type-link-card:active {
-  background: white;
-  border-color: white;
-  transform: scale(0.96);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.type-link {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #FF2442;
-}
-
-.type-link-arrow {
-  font-size: 18px;
-  font-weight: 600;
-  color: #FF2442;
-}
-
-.consult-hint {
+.x-consult-hint {
   font-size: 11px;
-  opacity: 0.85;
-  margin-top: 6px;
-  line-height: 1.4;
+  opacity: 0.9;
+  line-height: 1.5;
+  text-align: center;
+  color: white;
+  display: block;
 }
 
 /* MBTI维度百分比 */

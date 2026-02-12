@@ -168,8 +168,7 @@ Page({
             name: '待确定',
             avatar: '/pages/assets/avatar/x.png',
             hasXType: true,
-            type1: possibleTypes[0],
-            type2: possibleTypes[1]
+            possibleTypes: possibleTypes
           }
         });
         return;
@@ -201,8 +200,7 @@ Page({
             name: '待确定',
             avatar: '/pages/assets/avatar/x.png',
             hasXType: true,
-            type1: possibleTypes[0],
-            type2: possibleTypes[1]
+            possibleTypes: possibleTypes
           }
         });
       } else {
@@ -223,14 +221,19 @@ Page({
     }
   },
 
-  // 计算可能的MBTI类型（当包含X时）
+  // 计算可能的MBTI类型（当包含X时，支持多个X）
   calculatePossibleTypes(mbtiType) {
     const letters = mbtiType.split('');
-    const possibleTypes = [];
     
-    // 找到 X 的位置
-    const xIndex = letters.indexOf('X');
-    if (xIndex === -1) return [];
+    // 找到所有 X 的位置
+    const xIndices = [];
+    letters.forEach((letter, index) => {
+      if (letter === 'X') {
+        xIndices.push(index);
+      }
+    });
+    
+    if (xIndices.length === 0) return [];
     
     // 根据位置确定可能的字母对
     const pairs = [
@@ -240,16 +243,22 @@ Page({
       ['J', 'P']  // 位置 3
     ];
     
-    const [option1, option2] = pairs[xIndex];
+    // 生成所有可能的组合
+    const possibleTypes = [];
+    const totalCombinations = Math.pow(2, xIndices.length);
     
-    // 生成两个可能的类型
-    const type1 = [...letters];
-    type1[xIndex] = option1;
-    possibleTypes.push(type1.join(''));
-    
-    const type2 = [...letters];
-    type2[xIndex] = option2;
-    possibleTypes.push(type2.join(''));
+    for (let i = 0; i < totalCombinations; i++) {
+      const newType = [...letters];
+      
+      // 对于每个X位置，根据二进制位决定使用哪个字母
+      xIndices.forEach((xIndex, bitPosition) => {
+        const bit = (i >> bitPosition) & 1;
+        const [option1, option2] = pairs[xIndex];
+        newType[xIndex] = bit === 0 ? option1 : option2;
+      });
+      
+      possibleTypes.push(newType.join(''));
+    }
     
     return possibleTypes;
   },

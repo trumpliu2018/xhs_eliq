@@ -21,24 +21,26 @@
     </view>
 
     <!-- MBTI类型 - X类型特殊处理 -->
-    <view xhs:if="{{mbtiResult && mbtiResult.hasXType}}" class="mbti-badge mbti-badge-x">
-      <view class="mbti-content-x">
-        <view class="mbti-info-x">
-          <text class="mbti-type-x">{{mbtiResult.type}}</text>
-          <text class="mbti-hint">您可能是以下两种类型之一：</text>
-          <view class="possible-types">
-            <view class="type-link-card" bindtap="viewSpecificType" data-type="{{mbtiResult.type1}}">
-              <text class="type-link">{{mbtiResult.type1}}</text>
-              <text class="type-link-arrow">→</text>
-            </view>
-            <view class="type-link-card" bindtap="viewSpecificType" data-type="{{mbtiResult.type2}}">
-              <text class="type-link">{{mbtiResult.type2}}</text>
-              <text class="type-link-arrow">→</text>
-            </view>
-          </view>
-          <text class="consult-hint">您可以联系我们，预约施测师的1vs1咨询，确认您的mbti类型</text>
+    <view xhs:if="{{mbtiResult && mbtiResult.hasXType}}" class="mbti-x-container">
+      <view class="x-header-section">
+        <image class="x-avatar" src="{{mbtiResult.avatar}}" mode="aspectFit"></image>
+        <view class="x-title-area">
+          <text class="x-type-text">{{mbtiResult.type}}</text>
+          <text class="x-subtitle">您可能是以下 {{mbtiResult.possibleTypes.length}} 种类型之一</text>
         </view>
-        <image class="mbti-avatar-x" src="{{mbtiResult.avatar}}" mode="aspectFit"></image>
+      </view>
+      
+      <view class="x-types-section">
+        <view class="possible-types-grid">
+          <view xhs:for="{{mbtiResult.possibleTypes}}" xhs:key="*this" class="type-option-card" bindtap="viewSpecificType" data-type="{{item}}">
+            <text class="type-option-text">{{item}}</text>
+            <text class="type-option-arrow">→</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="x-footer-section">
+        <text class="x-consult-hint">💡 您可以联系我们，预约施测师的1vs1咨询，确认您的mbti类型</text>
       </view>
     </view>
 

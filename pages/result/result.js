@@ -283,28 +283,36 @@ Page({
     dimensions: []
   },
 
-  onLoad() {
-    // 优先从用户资料中获取MBTI类型
+  onLoad(options) {
+    // 获取MBTI类型，优先级：URL参数 > 用户资料 > 测评结果
     let mbtiType = null;
     let testResult = null;
     
-    // 1. 首先检查用户是否有mbti_type
-    if (auth.isLoggedIn()) {
+    // 1. 首先检查URL参数（从profile点击具体类型时传入）
+    if (options && options.type) {
+      mbtiType = options.type;
+      console.log('从URL参数获取类型:', mbtiType);
+    }
+    
+    // 2. 如果没有URL参数，检查用户是否有mbti_type
+    if (!mbtiType && auth.isLoggedIn()) {
       const userInfo = auth.getCurrentUser();
       if (userInfo && userInfo.mbti_type) {
         mbtiType = userInfo.mbti_type;
+        console.log('从用户资料获取类型:', mbtiType);
       }
     }
     
-    // 2. 如果用户没有mbti_type，从测评结果获取
+    // 3. 如果用户没有mbti_type，从测评结果获取
     if (!mbtiType) {
       testResult = xhs.getStorageSync('mbti_result');
       if (testResult && testResult.type) {
         mbtiType = testResult.type;
+        console.log('从测评结果获取类型:', mbtiType);
       }
     }
     
-    // 3. 如果都没有，提示用户
+    // 4. 如果都没有，提示用户
     if (!mbtiType) {
       xhs.showModal({
         title: '提示',
@@ -318,6 +326,8 @@ Page({
       });
       return;
     }
+
+    console.log('最终使用的MBTI类型:', mbtiType);
 
     xhs.showLoading({
       title: '加载中...'

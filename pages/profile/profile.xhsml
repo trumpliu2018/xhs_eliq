@@ -20,8 +20,30 @@
       </view>
     </view>
 
-    <!-- MBTI类型 -->
-    <view xhs:if="{{mbtiResult}}" class="mbti-badge" bindtap="viewMBTIResult">
+    <!-- MBTI类型 - X类型特殊处理 -->
+    <view xhs:if="{{mbtiResult && mbtiResult.hasXType}}" class="mbti-badge mbti-badge-x">
+      <view class="mbti-content-x">
+        <view class="mbti-info-x">
+          <text class="mbti-type-x">{{mbtiResult.type}}</text>
+          <text class="mbti-hint">您可能是以下两种类型之一：</text>
+          <view class="possible-types">
+            <view class="type-link-card" bindtap="viewSpecificType" data-type="{{mbtiResult.type1}}">
+              <text class="type-link">{{mbtiResult.type1}}</text>
+              <text class="type-link-arrow">→</text>
+            </view>
+            <view class="type-link-card" bindtap="viewSpecificType" data-type="{{mbtiResult.type2}}">
+              <text class="type-link">{{mbtiResult.type2}}</text>
+              <text class="type-link-arrow">→</text>
+            </view>
+          </view>
+          <text class="consult-hint">您可以联系我们，预约施测师的1vs1咨询，确认您的mbti类型</text>
+        </view>
+        <image class="mbti-avatar-x" src="{{mbtiResult.avatar}}" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <!-- MBTI类型 - 正常类型 -->
+    <view xhs:elif="{{mbtiResult && !mbtiResult.hasXType}}" class="mbti-badge" bindtap="viewMBTIResult">
       <view class="mbti-content">
         <view class="mbti-info">
           <text class="mbti-type">{{mbtiResult.type}}</text>

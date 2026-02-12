@@ -102,11 +102,31 @@ Page({
     
     // 优先使用用户信息中的 mbti_type（服务器数据）
     if (userInfo && userInfo.mbti_type) {
+      const mbtiType = userInfo.mbti_type;
+      
+      // 检测是否包含 X
+      if (mbtiType.includes('X')) {
+        const possibleTypes = this.calculatePossibleTypes(mbtiType);
+        this.setData({
+          mbtiResult: {
+            type: mbtiType,
+            name: '待确定',
+            avatar: '/pages/assets/avatar/x.png',
+            hasXType: true,
+            type1: possibleTypes[0],
+            type2: possibleTypes[1]
+          }
+        });
+        return;
+      }
+      
+      // 正常类型
       this.setData({
         mbtiResult: {
-          type: userInfo.mbti_type,
-          name: mbtiNames[userInfo.mbti_type] || userInfo.mbti_type,
-          avatar: `/pages/assets/avatar/${userInfo.mbti_type.toLowerCase()}.png`
+          type: mbtiType,
+          name: mbtiNames[mbtiType] || mbtiType,
+          avatar: `/pages/assets/avatar/${mbtiType.toLowerCase()}.png`,
+          hasXType: false
         }
       });
       return;
@@ -115,19 +135,68 @@ Page({
     // 其次使用本地存储的测评结果
     const result = xhs.getStorageSync('mbti_result');
     if (result && result.type) {
-      this.setData({
-        mbtiResult: {
-          type: result.type,
-          name: mbtiNames[result.type] || result.type,
-          avatar: `/pages/assets/avatar/${result.type.toLowerCase()}.png`
-        }
-      });
+      const mbtiType = result.type;
+      
+      // 检测是否包含 X
+      if (mbtiType.includes('X')) {
+        const possibleTypes = this.calculatePossibleTypes(mbtiType);
+        this.setData({
+          mbtiResult: {
+            type: mbtiType,
+            name: '待确定',
+            avatar: '/pages/assets/avatar/x.png',
+            hasXType: true,
+            type1: possibleTypes[0],
+            type2: possibleTypes[1]
+          }
+        });
+      } else {
+        this.setData({
+          mbtiResult: {
+            type: mbtiType,
+            name: mbtiNames[mbtiType] || mbtiType,
+            avatar: `/pages/assets/avatar/${mbtiType.toLowerCase()}.png`,
+            hasXType: false
+          }
+        });
+      }
     } else {
       // 都没有，显示未测评
       this.setData({
         mbtiResult: null
       });
     }
+  },
+
+  // 计算可能的MBTI类型（当包含X时）
+  calculatePossibleTypes(mbtiType) {
+    const letters = mbtiType.split('');
+    const possibleTypes = [];
+    
+    // 找到 X 的位置
+    const xIndex = letters.indexOf('X');
+    if (xIndex === -1) return [];
+    
+    // 根据位置确定可能的字母对
+    const pairs = [
+      ['E', 'I'], // 位置 0
+      ['S', 'N'], // 位置 1
+      ['T', 'F'], // 位置 2
+      ['J', 'P']  // 位置 3
+    ];
+    
+    const [option1, option2] = pairs[xIndex];
+    
+    // 生成两个可能的类型
+    const type1 = [...letters];
+    type1[xIndex] = option1;
+    possibleTypes.push(type1.join(''));
+    
+    const type2 = [...letters];
+    type2[xIndex] = option2;
+    possibleTypes.push(type2.join(''));
+    
+    return possibleTypes;
   },
 
   // 加载统计数据
@@ -296,6 +365,24 @@ Page({
   viewMBTIResult() {
     xhs.navigateTo({
       url: '/pages/result/result'
+    });
+  },
+
+  // 查看特定类型的MBTI结果（用于X类型）
+  viewSpecificType(e) {
+    const type = e.currentTarget.dataset.type;
+    console.log('点击查看类型:', type);
+    
+    if (!type) {
+      xhs.showToast({
+        title: '类型参数错误',
+        icon: 'none'
+      });
+      return;
+    }
+    
+    xhs.navigateTo({
+      url: `/pages/result/result?type=${type}`
     });
   },
 

@@ -348,9 +348,12 @@ Page({
       .then((response) => {
         console.log('提交成功:', response);
         
+        const mbtiType = response.mbti_type;
+        const hasXType = mbtiType && mbtiType.includes('X');
+        
         // 保存结果到本地
         const result = {
-          type: response.mbti_type,
+          type: mbtiType,
           result: response.result,
           timestamp: new Date().getTime()
         };
@@ -360,9 +363,9 @@ Page({
         if (auth.isLoggedIn()) {
           const userInfo = auth.getCurrentUser();
           if (userInfo) {
-            userInfo.mbti_type = response.mbti_type;
+            userInfo.mbti_type = mbtiType;
             auth.saveAuthInfo(auth.getToken(), userInfo);
-            console.log('已更新用户MBTI类型:', response.mbti_type);
+            console.log('已更新用户MBTI类型:', mbtiType);
           }
         }
         
@@ -371,18 +374,36 @@ Page({
         
         xhs.hideLoading();
         
-        xhs.showToast({
-          title: '提交成功',
-          icon: 'success',
-          duration: 1500
-        });
-        
-        // 跳转到结果页面
-        setTimeout(() => {
-          xhs.redirectTo({
-            url: '/pages/result/result'
+        // 根据是否包含X决定跳转目标
+        if (hasXType) {
+          console.log('检测到X类型，跳转到"我"页面');
+          xhs.showToast({
+            title: '测评完成',
+            icon: 'success',
+            duration: 1500
           });
-        }, 1500);
+          
+          // 跳转到"我"tab页
+          setTimeout(() => {
+            xhs.switchTab({
+              url: '/pages/profile/profile'
+            });
+          }, 1500);
+        } else {
+          console.log('正常类型，跳转到结果页');
+          xhs.showToast({
+            title: '提交成功',
+            icon: 'success',
+            duration: 1500
+          });
+          
+          // 跳转到结果页面
+          setTimeout(() => {
+            xhs.redirectTo({
+              url: '/pages/result/result'
+            });
+          }, 1500);
+        }
       })
       .catch((err) => {
         console.error('提交失败:', err);

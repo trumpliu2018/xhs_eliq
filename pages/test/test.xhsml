@@ -96,6 +96,14 @@
       </scroll-view>
     </view>
 
+    <!-- 题目出处信息 -->
+    <view class="source-card">
+      <view class="source-header">
+        <text class="source-title"></text>
+      </view>
+      <text class="source-text">本测试出自中科院心理所修订的MBTI-70题标准版本。测试基于迈尔斯-布里格斯类型指标（MBTI）理论，由中国科学院心理研究所的心理学工作者，在与美国东卡罗莱纳大学合作的基础上，对原版MBTI量表（如Form G、Form M）进行了本土化修订和简化。</text>
+    </view>
+
     <!-- 退出提示弹窗 -->
     <view xhs:if="{{showExitModal}}" class="modal-mask" bindtap="hideExitModal">
       <view class="modal-content" catchtap="preventClose">

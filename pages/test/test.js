@@ -13,7 +13,6 @@ Page({
     showExitModal: false,
     isLoading: true,
     loadError: false,
-    scrollIntoView: '',
     testSession: null, // 测试会话信息
     testSessionId: null // 测试会话ID
   },
@@ -312,8 +311,7 @@ Page({
       currentQuestion: question,
       currentAnswer: answer || null,
       isPositiveSelected,
-      isNegativeSelected,
-      scrollIntoView: `nav-item-${index}`
+      isNegativeSelected
     });
   },
 

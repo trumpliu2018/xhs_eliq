@@ -75,25 +75,19 @@
       </button>
     </view>
 
-    <!-- 题目索引导航 -->
+    <!-- 题目索引导航：平铺全部题号，不左右滑动 -->
     <view class="question-nav">
-      <scroll-view scroll-x 
-                   class="question-nav-scroll"
-                   scroll-into-view="{{scrollIntoView}}"
-                   scroll-with-animation="{{true}}">
-        <view class="question-nav-list">
-          <view xhs:for-items="{{questions}}" 
-                xhs:for-item="q" 
-                xhs:for-index="idx"
-                xhs:key="*item"
-                id="nav-item-{{idx}}"
-                class="question-nav-item {{answers[idx] ? 'answered' : ''}} {{currentIndex === idx ? 'current' : ''}}"
-                bindtap="jumpToQuestion"
-                data-index="{{idx}}">
-            {{idx + 1}}
-          </view>
+      <view class="question-nav-grid">
+        <view xhs:for-items="{{questions}}" 
+              xhs:for-item="q" 
+              xhs:for-index="idx"
+              xhs:key="*item"
+              class="question-nav-item {{answers[idx] ? 'answered' : ''}} {{currentIndex === idx ? 'current' : ''}}"
+              bindtap="jumpToQuestion"
+              data-index="{{idx}}">
+          {{idx + 1}}
         </view>
-      </scroll-view>
+      </view>
     </view>
 
     <!-- 题目出处信息 -->

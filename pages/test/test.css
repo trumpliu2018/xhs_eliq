@@ -1,31 +1,32 @@
 @import "../theme.css";
 
-/* 一屏内完整显示，无上下滑动 */
+/* ==================== 页面容器 ==================== */
 .page-container {
   min-height: 100vh;
-  overflow-y: auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 6px 12px 10px;
+  padding: 8px 12px;
   box-sizing: border-box;
+  background: var(--bg-page);
+  overflow: hidden;
 }
 
+/* ==================== 测试内容主区域 ==================== */
 .test-content {
   flex: 1;
-  min-height: 0;
   display: flex;
   flex-direction: column;
-  overflow: visible;
-}
-
-.page-container .safe-area-bottom {
-  flex-shrink: 0;
+  gap: 8px;
   min-height: 0;
-  padding-bottom: env(safe-area-inset-bottom, 8px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* 加载状态 */
-.loading-container {
+/* ==================== 加载和错误状态 ==================== */
+.loading-container,
+.error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,30 +51,15 @@
   }
 }
 
-.loading-text {
-  font-size: 16px;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-/* 错误状态 */
-.error-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  gap: 20px;
-}
-
-.error-icon {
-  font-size: 64px;
-}
-
+.loading-text,
 .error-text {
   font-size: 16px;
   color: var(--text-secondary);
   font-weight: 500;
+}
+
+.error-icon {
+  font-size: 64px;
 }
 
 .retry-btn {
@@ -81,13 +67,12 @@
   min-width: 120px;
 }
 
-/* 进度条区域 */
+/* ==================== 进度条区域 ==================== */
 .progress-section {
   flex-shrink: 0;
   background: white;
   border-radius: 12px;
   padding: 10px 14px;
-  margin-bottom: 10px;
   box-shadow: var(--shadow-card);
 }
 
@@ -121,22 +106,22 @@
   height: 100%;
   background: var(--primary-color);
   border-radius: 2px;
-  transition: width 0.3s;
+  transition: width 0.3s ease;
 }
 
-/* 题目卡片 */
+/* ==================== 题目卡片 ==================== */
 .question-card {
-  flex: 1;
-  min-height: 0;
+  flex-shrink: 0;
   background: white;
   border-radius: 12px;
-  padding: 16px 14px;
-  margin-bottom: 10px;
+  padding: 20px 14px;
   box-shadow: var(--shadow-card);
+  position: relative;
+  min-height: 120px;
+  max-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
 }
 
 .question-number {
@@ -152,15 +137,13 @@
 }
 
 .question-text {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 600;
   padding-right: 50px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .question-image {
@@ -171,13 +154,12 @@
   object-fit: cover;
 }
 
-/* 选项区域 */
+/* ==================== 选项区域 ==================== */
 .options-section {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 8px;
 }
 
 .option-card {
@@ -187,30 +169,17 @@
   display: flex;
   align-items: center;
   box-shadow: var(--shadow-card);
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   border: 2px solid transparent;
+  min-height: 48px;
 }
 
 .option-card.selected {
   border-color: var(--primary-color);
   background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 100%);
+  box-shadow: 0 2px 8px rgba(255, 36, 66, 0.15);
 }
 
-.option-content {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.option-title {
-  font-size: 14px;
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-/* A/B 图标，去掉对勾/叉的对错含义 */
 .option-icon {
   width: 28px;
   height: 28px;
@@ -222,23 +191,37 @@
   font-size: 14px;
   color: var(--text-secondary);
   background: #F7F7F7;
-  margin-right: 8px;
+  margin-right: 10px;
   flex-shrink: 0;
 }
 
-/* 选中时 A/B 的背景也强调一下 */
 .option-card.selected .option-icon {
   border-color: #FFABB9;
   background: linear-gradient(135deg, #FFE5EB 0%, #FFFFFF 100%);
   color: #FF2442;
 }
 
-/* 导航按钮 */
+.option-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.option-title {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.4;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ==================== 导航按钮 ==================== */
 .nav-buttons {
   flex-shrink: 0;
   display: flex;
   gap: 8px;
-  margin-bottom: 6px;
   justify-content: space-between;
 }
 
@@ -249,23 +232,13 @@
   padding: 0 !important;
   flex: 1;
   max-width: 100px;
-}
-
-/* 重置button默认样式 */
-.nav-btn {
   position: relative;
   display: block;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  margin: 0;
   box-sizing: border-box;
   text-align: center;
-  text-decoration: none;
-  overflow: visible;
   border-radius: 12px;
+  font-weight: 600;
 }
 
 .nav-btn::after {
@@ -277,28 +250,7 @@
   opacity: 0.8;
 }
 
-/* btn-secondary 样式（下一题按钮） - 正常状态 */
-xhs-button.nav-btn.btn-secondary,
-button.nav-btn.btn-secondary {
-  background-color: #FFFFFF !important;
-  color: #FF2442 !important;
-  border: 2px solid #FF2442 !important;
-  font-weight: 600 !important;
-  opacity: 1 !important;
-}
-
-/* btn-secondary 样式（下一题按钮） - 禁用状态 */
-xhs-button.nav-btn.btn-secondary.disabled,
-button.nav-btn.btn-secondary.disabled {
-  background-color: #FFFFFF !important;
-  color: #FF2442 !important;
-  border: 2px solid #FF2442 !important;
-  font-weight: 600 !important;
-  opacity: 0.4 !important;
-  pointer-events: none !important;
-}
-
-/* btn-ghost 样式（上一题按钮） - 正常状态 */
+/* 上一题按钮样式 */
 xhs-button.nav-btn.btn-ghost,
 button.nav-btn.btn-ghost {
   background-color: transparent !important;
@@ -307,88 +259,65 @@ button.nav-btn.btn-ghost {
   opacity: 1 !important;
 }
 
-/* btn-ghost 样式（上一题按钮） - 禁用状态 */
-xhs-button.nav-btn.btn-ghost.disabled,
 button.nav-btn.btn-ghost.disabled {
-  background-color: transparent !important;
-  color: #666666 !important;
-  border: 1px solid #E8E8E8 !important;
   opacity: 0.4 !important;
   pointer-events: none !important;
 }
 
-/* btn-primary 样式（提交测评按钮） */
+/* 下一题按钮样式 */
+xhs-button.nav-btn.btn-secondary,
+button.nav-btn.btn-secondary {
+  background-color: #FFFFFF !important;
+  color: #FF2442 !important;
+  border: 2px solid #FF2442 !important;
+  opacity: 1 !important;
+}
+
+button.nav-btn.btn-secondary.disabled {
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+}
+
+/* 提交按钮样式 */
 xhs-button.nav-btn.btn-primary,
 button.nav-btn.btn-primary {
   background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%) !important;
   color: #FFFFFF !important;
   border: none !important;
-  font-weight: 600 !important;
   opacity: 1 !important;
 }
 
-/* 题目索引导航 */
+/* ==================== 题目索引导航（平铺，不滑动） ==================== */
 .question-nav {
   flex-shrink: 0;
   background: white;
-  border-radius: 12px;
-  padding: 6px 8px;
+  border-radius: 8px;
+  padding: 8px 10px;
   box-shadow: var(--shadow-card);
+  margin-bottom: 4px;
 }
 
-/* 题目出处信息 */
-.source-card {
-  flex-shrink: 0;
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 10px 12px;
-  margin-top: 6px;
-  box-shadow: var(--shadow-card);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.source-header {
+.question-nav-grid {
   display: flex;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.source-title {
-  font-size: 12px;
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-.source-text {
-  font-size: 11px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  display: block;
-  /* 全部展示，不做局部滚动条 */
-}
-
-.question-nav-scroll {
-  width: 100%;
-  white-space: nowrap;
-}
-
-.question-nav-list {
-  display: inline-flex;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-start;
 }
 
 .question-nav-item {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-page);
+  text-align: center;
+  background: #F5F5F5;
   border-radius: 6px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-secondary);
   font-weight: 600;
-  transition: all 0.3s;
+  box-sizing: border-box;
   border: 1px solid transparent;
 }
 
@@ -400,11 +329,48 @@ button.nav-btn.btn-primary {
 .question-nav-item.current {
   background: linear-gradient(135deg, #FF2442 0%, #FF6B9D 100%);
   color: white;
-  border-color: var(--primary-color);
-  transform: scale(1.1);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(255, 36, 66, 0.3);
 }
 
-/* 退出弹窗 */
+/* ==================== 题目出处信息 ==================== */
+.source-card {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  margin-bottom: 8px;
+}
+
+.source-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.source-title {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.source-text {
+  font-size: 10px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: block;
+}
+
+/* ==================== 底部安全区域 ==================== */
+.safe-area-bottom {
+  flex-shrink: 0;
+  height: 20px;
+  min-height: env(safe-area-inset-bottom, 20px);
+}
+
+/* ==================== 退出弹窗 ==================== */
 .modal-mask {
   position: fixed;
   top: 0;

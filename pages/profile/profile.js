@@ -621,16 +621,45 @@ Page({
         const userInfo = this.data.userInfo;
         userInfo.nickname = nickname.trim();
         userInfo.mbti_type = mbti_type;
+        
+        // 重置所有维度百分比为 50%
+        userInfo.percentage_e = 50;
+        userInfo.percentage_i = 50;
+        userInfo.percentage_s = 50;
+        userInfo.percentage_n = 50;
+        userInfo.percentage_t = 50;
+        userInfo.percentage_f = 50;
+        userInfo.percentage_j = 50;
+        userInfo.percentage_p = 50;
+
+        // 检测是否包含 X
+        const hasXType = mbti_type.includes('X');
+        let mbtiResult;
+        
+        if (hasXType) {
+          const possibleTypes = this.calculatePossibleTypes(mbti_type);
+          mbtiResult = {
+            type: mbti_type,
+            name: '待确定',
+            avatar: '/pages/assets/avatar/x.png',
+            hasXType: true,
+            possibleTypes: possibleTypes
+          };
+        } else {
+          mbtiResult = {
+            type: mbti_type,
+            name: mbtiNames[mbti_type] || mbti_type,
+            avatar: `/pages/assets/avatar/${mbti_type.toLowerCase()}.png`,
+            hasXType: false
+          };
+        }
 
         // 一次 setData 同时更新用户信息、弹窗状态和 MBTI 展示，保证页面立即刷新
         this.setData({
           userInfo: userInfo,
           showUpdateForm: false,
-          mbtiResult: {
-            type: mbti_type,
-            name: mbtiNames[mbti_type] || mbti_type,
-            avatar: `/pages/assets/avatar/${mbti_type.toLowerCase()}.png`
-          }
+          mbtiResult: mbtiResult,
+          dimensions: null // 清空维度展示，因为百分比已重置为50%
         });
 
         // 保存到本地存储
@@ -641,6 +670,9 @@ Page({
           type: mbti_type,
           name: mbtiNames[mbti_type] || mbti_type
         });
+        
+        // 重新加载维度百分比（会因为都是50%而不显示或显示平衡状态）
+        this.loadDimensionPercentages();
       })
       .catch((err) => {
         xhs.hideLoading();

@@ -350,6 +350,7 @@ Page({
         
         const mbtiType = response.mbti_type;
         const hasXType = mbtiType && mbtiType.includes('X');
+        const resultData = response.result || {};
         
         // 保存结果到本地
         const result = {
@@ -359,11 +360,25 @@ Page({
         };
         xhs.setStorageSync('mbti_result', result);
         
-        // 更新用户信息中的 mbti_type（不修改头像）
+        // 更新用户信息中的 mbti_type 和维度百分比
         if (auth.isLoggedIn()) {
           const userInfo = auth.getCurrentUser();
           if (userInfo) {
             userInfo.mbti_type = mbtiType;
+            
+            // 更新维度百分比（从接口返回的 result 对象中获取）
+            if (resultData.percentage_e !== undefined) {
+              userInfo.percentage_e = resultData.percentage_e;
+              userInfo.percentage_i = resultData.percentage_i;
+              userInfo.percentage_s = resultData.percentage_s;
+              userInfo.percentage_n = resultData.percentage_n;
+              userInfo.percentage_t = resultData.percentage_t;
+              userInfo.percentage_f = resultData.percentage_f;
+              userInfo.percentage_j = resultData.percentage_j;
+              userInfo.percentage_p = resultData.percentage_p;
+              console.log('已更新用户维度百分比');
+            }
+            
             auth.saveAuthInfo(auth.getToken(), userInfo);
             console.log('已更新用户MBTI类型:', mbtiType);
           }

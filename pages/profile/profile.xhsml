@@ -91,10 +91,9 @@
   <view class="about-section">
     <view class="about-card">
       <view class="about-header">
-        <image class="about-avatar" src="/pages/assets/avatar/about.jpg" mode="aspectFit"></image>
+        <image class="about-avatar" src="/pages/assets/avatar/about.png" mode="aspectFit"></image>
         <view class="about-content">
-          <text class="about-text">【书里书外】创新咨询是一家有着16年企业服务经验的公司。专注于团队凝聚力的各个方面，提供包括企业文化建设，员工培训和团建活动等形式多样的服务内容。拥有“e来i去"MBTI系列，“故事大学”Storytelling系列，“一平方米的静心”心理系列等原创版权产品。我们懂老板，懂员工，更懂HR，全程1对1定制，快速响应，服务专业，是您身边的团队凝聚力专家。</text>
-           <text class="about-text">您可以通过微信公众号“书里书外精选”、视频号“书里书外精选”、小红书“书里书外”、网易云，小宇宙，蜻蜓FM等各大音频平台搜索“书里书外”、或者发送电子邮件engagementboy@163.com 联系我们。</text>
+          <text class="about-text">我们是【书里书外】品牌旗下，专注于提供MBTI体验式学习产品的系列，拥有近20年的专业经验与积累，是众多500强企业长期信赖的人才测评专家，提供包括专业测评和解读，团队培训和辅导，体验式教具和活动等服务。</text>
         </view>
       </view>
     </view>

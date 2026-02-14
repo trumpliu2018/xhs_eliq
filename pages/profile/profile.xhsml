@@ -71,16 +71,18 @@
       <view class="dimensions-list">
         <view xhs:for="{{dimensions}}" xhs:key="name" class="dimension-item">
           <view class="dimension-labels">
-            <text class="dimension-label left">{{item.leftLabel}}</text>
-            <text class="dimension-label right">{{item.rightLabel}}</text>
+            <view class="dimension-label-group">
+              <text class="dimension-label">{{item.leftLabel}}</text>
+              <text class="dimension-percent">{{item.leftPercent}}%</text>
+            </view>
+            <view class="dimension-label-group right">
+              <text class="dimension-percent">{{item.rightPercent}}%</text>
+              <text class="dimension-label">{{item.rightLabel}}</text>
+            </view>
           </view>
           <view class="dimension-bar">
             <view class="dimension-bar-left" style="width: {{item.leftPercent}}%; background: {{item.leftColor}};"></view>
             <view class="dimension-bar-right" style="width: {{item.rightPercent}}%; background: {{item.rightColor}};"></view>
-          </view>
-          <view class="dimension-percentages">
-            <text class="dimension-percent left">{{item.leftPercent}}%</text>
-            <text class="dimension-percent right">{{item.rightPercent}}%</text>
           </view>
         </view>
       </view>

@@ -178,25 +178,25 @@
         "pagePath": "pages/mbti/mbti",
         "iconPath": "image/tab-mbti.png",
         "selectedIconPath": "image/tab-mbti-active.png",
-        "text": "MBTI"
+        "text": "测评"
       },
       {
         "pagePath": "pages/interact/interact",
         "iconPath": "image/tab-game.png",
         "selectedIconPath": "image/tab-game-active.png",
-        "text": "互动"
+        "text": "体验式学习"
       },
       {
         "pagePath": "pages/planet/planet",
         "iconPath": "image/icon_cloud.png",
         "selectedIconPath": "image/icon_cloud_HL.png",
-        "text": "星球"
+        "text": "智享专栏"
       },
       {
         "pagePath": "pages/profile/profile",
         "iconPath": "image/tab-profile.png",
         "selectedIconPath": "image/tab-profile-active.png",
-        "text": "我"
+        "text": "我的"
       }
     ]
   },

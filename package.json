@@ -1,6 +1,6 @@
 {
   "name": "xhs-eliq",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "MBTI 性格测评小程序",
   "dependencies": {
     "marked": "^14.1.4"

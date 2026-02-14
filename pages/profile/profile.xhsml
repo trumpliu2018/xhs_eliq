@@ -71,16 +71,18 @@
       <view class="dimensions-list">
         <view xhs:for="{{dimensions}}" xhs:key="name" class="dimension-item">
           <view class="dimension-labels">
-            <text class="dimension-label left">{{item.leftLabel}}</text>
-            <text class="dimension-label right">{{item.rightLabel}}</text>
+            <view class="dimension-label-group left">
+              <text class="dimension-label">{{item.leftLabel}}</text>
+              <text class="dimension-percent">{{item.leftPercent}}%</text>
+            </view>
+            <view class="dimension-label-group right">
+              <text class="dimension-percent">{{item.rightPercent}}%</text>
+              <text class="dimension-label">{{item.rightLabel}}</text>
+            </view>
           </view>
           <view class="dimension-bar">
             <view class="dimension-bar-left" style="width: {{item.leftPercent}}%; background: {{item.leftColor}};"></view>
             <view class="dimension-bar-right" style="width: {{item.rightPercent}}%; background: {{item.rightColor}};"></view>
-          </view>
-          <view class="dimension-percentages">
-            <text class="dimension-percent left">{{item.leftPercent}}%</text>
-            <text class="dimension-percent right">{{item.rightPercent}}%</text>
           </view>
         </view>
       </view>
@@ -90,10 +92,55 @@
   <!-- 关于我 -->
   <view class="about-section">
     <view class="about-card">
-      <view class="about-header">
-        <image class="about-avatar" src="/pages/assets/avatar/about.png" mode="aspectFit"></image>
-        <view class="about-content">
-          <text class="about-text">我们是【书里书外】品牌旗下，专注于提供MBTI体验式学习产品的系列，拥有近20年的专业经验与积累，是众多500强企业长期信赖的人才测评专家，提供包括专业测评和解读，团队培训和辅导，体验式教具和活动等服务。</text>
+      <view class="about-logo-wrap">
+        <image class="about-logo" src="/pages/assets/avatar/about.png" mode="aspectFit"></image>
+      </view>
+      <text class="about-intro">我们是【书里书外】旗下品牌，专注于提供MBTI体验式学习产品的系列，拥有近20年的专业经验与积累，是众多500强企业长期信赖的人才测评专家。</text>
+      <text class="about-intro-secondary">提供包括专业测评和解读、团队培训和辅导、体验式教具和活动等服务。</text>
+      <text class="about-heading">我们持续赋能这四类人群</text>
+      <view class="about-cards">
+        <view class="about-target-card">
+          <text class="about-card-title">个人学习者 & 团队员工</text>
+          <text class="about-card-desc">理解自我与他人，增强团队凝聚力</text>
+        </view>
+        <view class="about-target-card">
+          <text class="about-card-title">培训师 / 内训师</text>
+          <text class="about-card-desc">收获专业课程包，适配各类培训场合</text>
+        </view>
+        <view class="about-target-card">
+          <text class="about-card-title">MBTI施测师 & 成长教练</text>
+          <text class="about-card-desc">拓展服务内容和落地工具</text>
+        </view>
+        <view class="about-target-card">
+          <text class="about-card-title">管理者 & 经营者</text>
+          <text class="about-card-desc">增强识人用人能力</text>
+        </view>
+      </view>
+
+      <!-- 引用与数据 -->
+      <view class="about-stats-card">
+        <text class="about-quote">"Knowing yourself is the beginning of all wisdom."</text>
+        <view class="about-stats-grid">
+          <view class="about-stat-item">
+            <text class="about-stat-value">91%</text>
+            <text class="about-stat-label">全球百强企业引进</text>
+          </view>
+          <view class="about-stat-item">
+            <text class="about-stat-value">20年</text>
+            <text class="about-stat-label">专业经验</text>
+          </view>
+          <view class="about-stat-item">
+            <text class="about-stat-value">6位</text>
+            <text class="about-stat-label">专业顾问</text>
+          </view>
+          <view class="about-stat-item">
+            <text class="about-stat-value">100+</text>
+            <text class="about-stat-label">项目经验</text>
+          </view>
+          <view class="about-stat-item about-stat-item-full">
+            <text class="about-stat-value">10000+</text>
+            <text class="about-stat-label">学员见证</text>
+          </view>
         </view>
       </view>
     </view>
@@ -101,6 +148,11 @@
 
   <view class="menu-section">
     <view class="menu-list">
+      <view class="menu-item" bindtap="showContactModal">
+        <view class="menu-icon contact-icon">💬</view>
+        <text class="menu-text">联系我们</text>
+        <text class="menu-arrow">→</text>
+      </view>
       <view class="menu-item" bindtap="navigateTo" data-url="/pages/cooperation/cooperation">
         <view class="menu-icon cooperation-icon">🤝</view>
         <text class="menu-text">合作案例</text>
@@ -138,6 +190,19 @@
 
   <!-- 底部安全区域 -->
   <view class="safe-area-bottom"></view>
+
+  <!-- 联系我们弹窗 -->
+  <view xhs:if="{{showContactModal}}" class="contact-modal-overlay" bindtap="hideContactModal">
+    <view class="contact-modal-container" catchtap="preventClose">
+      <view class="contact-modal-header">
+        <text class="contact-modal-title">联系我们</text>
+        <text class="contact-modal-close" bindtap="hideContactModal">×</text>
+      </view>
+      <view class="contact-modal-body">
+        <social-media></social-media>
+      </view>
+    </view>
+  </view>
 
   <!-- 更新信息弹窗 -->
   <view xhs:if="{{showUpdateForm}}" class="modal-overlay" bindtap="hideUpdateModal">

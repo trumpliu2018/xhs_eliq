@@ -5,7 +5,7 @@
       <view class="game-header">
         <view class="game-icon">🎯</view>
         <view class="game-info">
-          <text class="game-title">Bingo游戏</text>
+          <text class="game-title">寻找世另我，Bingo</text>
           <text class="game-desc">多人互动评价，拼出你的 Bingo 成就</text>
         </view>
       </view>
@@ -27,7 +27,7 @@
       <view class="game-header">
         <view class="game-icon chess-icon">🎲</view>
         <view class="game-info">
-          <text class="game-title">MBTI飞行棋</text>
+          <text class="game-title">趣味飞行棋</text>
           <text class="game-desc">轻松闯关，边玩边更理解自己 </text>
         </view>
       </view>

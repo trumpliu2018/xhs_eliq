@@ -243,6 +243,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 6px;
+}
+
+.dimension-label-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dimension-label-group.left {
+  justify-content: flex-start;
+}
+
+.dimension-label-group.right {
+  justify-content: flex-end;
 }
 
 .dimension-label {
@@ -251,12 +266,10 @@
   color: var(--text-primary);
 }
 
-.dimension-label.left {
-  text-align: left;
-}
-
-.dimension-label.right {
-  text-align: right;
+.dimension-percent {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
 .dimension-bar {
@@ -378,37 +391,128 @@
 }
 
 .about-card {
-  background: white;
+  background: #F8F9FA;
   border-radius: 16px;
-  padding: 20px;
+  padding: 24px 20px;
   box-shadow: var(--shadow-card);
 }
 
-.about-header {
+.about-logo-wrap {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.about-avatar {
+.about-logo {
   width: 100%;
-  max-width: 180px;
-  max-height: 120px;
-  flex-shrink: 0;
+  max-width: 160px;
+  max-height: 80px;
   object-fit: contain;
 }
 
-.about-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.about-intro {
+  display: block;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  text-align: left;
 }
 
-.about-text {
-  font-size: 14px;
+.about-intro-secondary {
+  display: block;
+  font-size: 13px;
   line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.about-heading {
+  display: block;
+  font-size: 17px;
+  font-weight: 700;
   color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-target-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.about-card-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.about-card-desc {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* 引用与数据卡片 */
+.about-stats-card {
+  margin-top: 24px;
+  background: white;
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.about-quote {
+  display: block;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
+}
+
+.about-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.about-stat-item-full {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+}
+
+.about-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FF2442;
+}
+
+.about-stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.4;
 }
 
 .menu-section {
@@ -778,4 +882,58 @@
 .submit-btn:active {
   opacity: 0.8;
   transform: scale(0.98);
+}
+
+/* 联系我们弹窗样式 */
+.contact-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.contact-modal-container {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  animation: modalSlideUp 0.3s ease-out;
+}
+
+.contact-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contact-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.contact-modal-close {
+  font-size: 32px;
+  color: var(--text-secondary);
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.contact-modal-body {
+  padding: 20px 24px 24px;
 }

@@ -27,6 +27,7 @@ Page({
     },
     cacheSize: '0 KB',
     showUpdateForm: false,
+    showContactModal: false,
     updateForm: {
       nickname: '',
       mbti_type: '',
@@ -461,6 +462,20 @@ Page({
   navigateTo(e) {
     const url = e.currentTarget.dataset.url;
     xhs.navigateTo({ url });
+  },
+
+  // 显示联系我们弹窗
+  showContactModal() {
+    this.setData({
+      showContactModal: true
+    });
+  },
+
+  // 隐藏联系我们弹窗
+  hideContactModal() {
+    this.setData({
+      showContactModal: false
+    });
   },
 
   // 清除缓存
